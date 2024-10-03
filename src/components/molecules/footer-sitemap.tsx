@@ -24,14 +24,14 @@ export function FooterWithSitemap() {
               </span>
             </Link>
 
-            <a href="tel:+817092831954">
+            <a href="tel:+966554400968">
               <div className="mt-4 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
-                <span className=" mb-1">Tel: +81 70 9283 1954</span>
+                <span className=" mb-1">Tel: +966 554400968</span>
               </div>
             </a>
-            <a href="mailto:asem@qaffaf.com?subject=Mail from My Site">
+            <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
               <div className="mb-2 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
-                <span className=" mb-1">Email: asem@qaffaf.com</span>
+                <span className=" mb-1">Email: badawii.ab@gmail.com</span>
               </div>
             </a>
 
@@ -41,7 +41,7 @@ export function FooterWithSitemap() {
               href="https://www.google.com/maps?sca_esv=600053872&rlz=1C5CHFA_enJP1080JP1081&output=search&q=roppongi&source=lnms&entry=mc"
             >
               <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
-                {/* <span className="mb-1">Asem Qaffaf</span> */}
+                {/* <span className="mb-1">Amer Albadawi</span> */}
                 <span className=" mb-1">{t("footer.element.address")}</span>
                 <span className=" md:flex">
                   {t("footer.element.address-2")}
@@ -115,7 +115,7 @@ export function FooterWithSitemap() {
               <ul className="font-light text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <a
-                    href="https://github.com/asemqaffaf"
+                    href="https://github.com/aalbadawi"
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
                   >
@@ -124,7 +124,7 @@ export function FooterWithSitemap() {
                 </li>
                 <li className="mb-4">
                   <a
-                    href="https://linkedin.com/in/asem-qaffaf-75b541199/"
+                    href="https://linkedin.com/in/albadawiamer/"
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
                   >
@@ -133,7 +133,7 @@ export function FooterWithSitemap() {
                 </li>
                 <li>
                   <a
-                    href="https://facebook.com/asemqaffaf"
+                    href="https://facebook.com/albadawiamer"
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
                   >
@@ -174,6 +174,15 @@ export function FooterWithSitemap() {
                     {t("footer.element.col-3-3")}
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="https://angular.dev"
+                    target="_blank"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
+                  >
+                    {t("footer.element.angularLink")}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -185,7 +194,7 @@ export function FooterWithSitemap() {
           </span>
           <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center ">
             <a
-              href="https://facebook.com/asemqaffaf"
+              href="https://www.facebook.com/albadawiamer"
               target="_blank"
               className="text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
             >
@@ -196,7 +205,7 @@ export function FooterWithSitemap() {
               <span className="sr-only">Facebook page</span>
             </a>
             <a
-              href="https://www.linkedin.com/in/asem-qaffaf-75b541199/"
+              href="https://www.linkedin.com/in/albadawiamer/"
               target="_blank"
               className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
             >
@@ -207,7 +216,7 @@ export function FooterWithSitemap() {
               <span className="sr-only">LinkedIn</span>
             </a>
             <a
-              href="https://twitter.com/asemqaffaf"
+              href="https://x.com/albadawiamer"
               target="_blank"
               className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
             >
@@ -218,7 +227,7 @@ export function FooterWithSitemap() {
               <span className="sr-only">X Twitter</span>
             </a>
             <a
-              href="https://github.com/asemqaffaf"
+              href="https://github.com/aalbadawi"
               target="_blank"
               className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
             >

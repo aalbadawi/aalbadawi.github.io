@@ -1,18 +1,18 @@
 const Header = () => {
   return (
     <>
-      <title>Asem Qaffaf, Full Stack Software Engineer</title>
+      <title>Amer Albadawi, Senior Software Engineer</title>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta charSet="utf-8" />
-      <link rel="canonical" href="http://asemqaffaf.github.io" />
-      <link href="http://asemqaffaf.github.io" />
+      <link rel="canonical" href="http://aalbadawi.github.io" />
+      <link href="http://aalbadawi.github.io" />
 
       <link href="https://asemqaffaf.github.io/images/asem.png" />
       <meta
         property="image:alt_text"
-        content="Asem Qaffaf's logo in white background"
+        content="Amer Albadawi's logo in white background"
       />
-      <meta property="og:site_name" content="Asem Qaffaf" />
+      <meta property="og:site_name" content="Amer Albadawi" />
 
       <meta property="og:url" content="https://asemqaffaf.github.io/" />
       <meta
@@ -21,7 +21,7 @@ const Header = () => {
       />
       <meta
         property="og:title"
-        content="Engineer  Software &amp; Development | Asem Qaffaf"
+        content="Engineer  Software &amp; Development | Amer Albadawi"
       />
 
       <meta
@@ -46,7 +46,7 @@ const Header = () => {
 
       <meta name="twitter:creator" content="@asemqaffaf" />
       <meta name="twitter:url" content="https://asemqaffaf.github.io/" />
-      <meta name="twitter:image:alt" content="Asem Qaffaf logo" />
+      <meta name="twitter:image:alt" content="Amer Albadawi logo" />
       <meta
         name="twitter:image"
         content="https://asemqaffaf.github.io/images/asem.png"

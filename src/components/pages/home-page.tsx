@@ -11,7 +11,6 @@ export default function HomePage() {
   const { t } = useTranslation();
 
   return (
-    // <div className="flex h-full w-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
     <div className="flex h-full w-screen flex-col items-center justify-center overflow-hidden">
       <div className="animate-glow hidden h-1 w-screen animate-fade-right bg-gradient-to-r from-[grey] via-[white] to-[grey] md:block" />
       <Particles
@@ -30,7 +29,7 @@ export default function HomePage() {
           {t("page.home.description")}{" "}
           <Link
             href="/?nav=1"
-            className="underline duration-500 hover:text-zinc-300"
+            className="underline duration-500 hover:text-black"
           >
             {t("page.home.description-2")}
           </Link>{" "}

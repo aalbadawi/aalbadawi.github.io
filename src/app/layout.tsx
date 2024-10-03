@@ -45,7 +45,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       </head>
 
       <body className="bg-custom-gradient">
-        <h1 className="hidden">Asem Qaffaf</h1>
+        <h1 className="hidden">Amer Albadawi</h1>
         <h1 className="hidden">Full stack software engineer</h1>
         <HydrationProvider>
           <Client>

@@ -46,7 +46,7 @@ module.exports = {
         "gradient-radial":
           "radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient":
-          "linear-gradient(90deg, rgba(69,55,129,1) 3%, rgba(73,61,126,1) 6%, rgba(92,121,137,1) 38%, rgba(115,175,142,1) 68%, rgba(130,227,173,1) 100%)",
+          "linear-gradient(90deg, rgba(70,130,180,1) 0%, rgba(25,25,112,1) 100%)",
       },
       animation: {
         "fade-in": "fade-in 3s ease-in-out forwards",

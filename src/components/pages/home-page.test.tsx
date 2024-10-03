@@ -15,7 +15,7 @@ describe("App", () => {
     render(<App />);
     // expect(true).toBe(true);
 
-    // const heading = screen.getByRole("heading", { name: "Asem Qaffaf" });
+    // const heading = screen.getByRole("heading", { name: "Amer Albadawi" });
     // expect(heading).toBeInTheDocument();
   });
 });

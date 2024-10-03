@@ -42,10 +42,6 @@ export default function Card({
             <Image
               width={50}
               height={50}
-              // objectFit="contains"
-              // fill
-              // objectFit=""
-              // content=""
               className="rounded-full"
               src={`${profilePic}`}
               alt={name}

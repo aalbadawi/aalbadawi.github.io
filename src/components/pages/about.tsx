@@ -10,12 +10,11 @@ export default function About() {
 
   return (
     <div className="flex h-screen w-screen flex-row">
-      <div className="mt-5 flex h-full w-full flex-col items-center justify-center self-center md:w-2/4 h-full">
+      <div className="mt-5 flex h-full w-full flex-col items-center justify-center self-center md:w-2/4">
         <Card
-          {...aboutMe}
-          name={t("component.element.name")}
-          brief={t("page.about.brief")}
-        />
+        flagUrl={""} {...aboutMe}
+        name={t("component.element.name")}
+        brief={t("page.about.brief")}        />
       </div>
       <div className="hidden w-full flex-col items-center justify-center md:flex  ">
         <div className="w-[95%] rounded-lg border border-gray-200 bg-zinc-100 shadow dark:border-gray-700 dark:bg-gray-800">
@@ -39,23 +38,23 @@ export default function About() {
                 </dd>
               </div>
               <div className="flex flex-col">
-                <dt className="mb-2 text-3xl font-extrabold">16+</dt>
+                <dt className="mb-2 text-3xl font-extrabold">5+</dt>
                 <dd className="text-gray-500 dark:text-gray-400">
                   {t("page.about.projects-contributed")}
                 </dd>
               </div>
               <div className="flex flex-col">
-                <dt className="mb-2 text-3xl font-extrabold">30+</dt>
+                <dt className="mb-2 text-3xl font-extrabold">10+</dt>
                 <dd className="text-gray-500 dark:text-gray-400">
                   {t("page.about.tech-frameworks")}
                 </dd>
               </div>
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <dt className="mb-2 text-3xl font-extrabold">7</dt>
                 <dd className="text-gray-500 dark:text-gray-400">
                   {t("page.about.countries")}
                 </dd>
-              </div>
+              </div> */}
             </dl>
           </div>
         </div>

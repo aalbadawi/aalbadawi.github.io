@@ -57,7 +57,7 @@ const Nav = (): React.JSX.Element => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <Image
-            src="/images/logo/logo-4.png"
+            src="/images/logo/ab-logo.png"
             alt="Logo"
             width={80}
             height={80}

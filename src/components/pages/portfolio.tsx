@@ -13,45 +13,68 @@ export default function Portfolio() {
         </h1>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <div className="grid gap-4">
-          <div>
+        <div className="grid-gap-4 p-4 flex items-center justify-center">
+          <a
+            href="https://www.tcs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              width={500}
+              height={500}
+              className="h-auto max-w-full rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              src="/images/companies/tata-logo.png"
+              alt="Tata Consultancy Services"
+            />
+          </a>
+        </div>
+        <div className="grid-gap-4 p-4 flex items-center justify-center">
+          <a
+            href="https://www.wipro.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               width={500}
               height={800}
               className="h-auto max-w-full rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-              src="/images/companies/expedia-group.webp"
-              alt="expedia group"
+              src="/images/companies/wipro-logo.png"
+              alt="Wipro Arabia Ltd"
             />
-          </div>
-          <div>
-            <Image
-              width={500}
-              height={500}
-              className="h-auto max-w-full rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-              src="/images/companies/ntt-docomo.jpg"
-              alt="ntt-docomo"
-            />
-          </div>
-          <div>
-            <Image
-              width={500}
-              height={500}
-              className="h-auto max-w-full   rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-              src="/images/companies/orange.svg.png"
-              alt="orange"
-            />
-          </div>
-          <div>
-            <Image
-              width={500}
-              height={500}
-              className="h-auto max-w-full rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-              src="/images/companies/WCnTMIyj_400x400.jpg"
-              alt=""
-            />
-          </div>
+          </a>
         </div>
-        <div className="grid gap-4">
+        <div className="grid-gap-4">
+          <a
+            href="https://www.sa.zain.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              width={500}
+              height={500}
+              className="h-auto max-w-full rounded-lg bg-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              src="/images/companies/zain-ksa-logo.jpeg"
+              alt="Zain KSA"
+            />
+          </a>
+        </div>
+        <div className="grid-gap-4 bg-black p-4 flex items-center justify-center">
+          <a
+            href="https://www.jo.zain.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              width={500}
+              height={500}
+              className="h-auto max-w-full rounded-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              src="/images/companies/zain-logo.png"
+              alt="Zain Jordan"
+            />
+          </a>
+        </div>
+
+        {/* <div className="grid gap-4">
           <div>
             <Image
               width={500}
@@ -167,7 +190,7 @@ export default function Portfolio() {
               alt="ATG"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
