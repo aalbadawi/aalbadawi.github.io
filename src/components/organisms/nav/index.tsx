@@ -1,11 +1,10 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { languagesList, navigationElements } from "@/util/nav-items";
+import { languagesList } from "@/util/nav-items";
 
 import LanguageList from "./language";
 
@@ -17,6 +16,15 @@ const Nav = (): React.JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const searchParams = useSearchParams();
+
+  const [activePage, setActivePage] = useState(0);
+
+  const navigationElements = [
+    { name: "home", index: 0 },
+    { name: "about", index: 1 },
+    { name: "portfolio", index: 2 },
+    { name: "contact", index: 3 },
+  ];
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -36,6 +44,7 @@ const Nav = (): React.JSX.Element => {
         `${pathname}?${createQueryString("nav", navNumber.toString())}`,
       );
       setIsMobileMenuOpen(false);
+      setActivePage(navNumber); // Update active page
     },
     [createQueryString, router],
   );
@@ -123,7 +132,7 @@ const Nav = (): React.JSX.Element => {
               return (
                 <li key={item.name}>
                   <button
-                    className={`${i < navigationElements.length - 1 && "mb-5"} md:mb-0`}
+                    className={`${i < navigationElements.length - 1 ? "mb-5" : ""} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? "border-orange-500 text-orange-500" : "border-transparent"} hover:border-red-500 hover:text-red-500`}
                     type="button"
                     onClick={() => handlePageChange(item.index)}
                   >

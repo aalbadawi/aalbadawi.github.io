@@ -1,5 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-
 "use client";
 
 import Link from "next/link";
@@ -18,23 +16,23 @@ export default function HomePage() {
         quantity={200}
       />
 
-      <h1 className="text-edge-outline z-10 animate-title cursor-default text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap">
+      <h1 className="text-edge-outline z-10 animate-title cursor-default text-white text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap">
         {t("page.home.title")}
       </h1>
 
       <div className="animate-glow hidden h-1 w-screen animate-fade-right bg-gradient-to-r from-[grey] via-[white] to-[grey] md:block" />
 
       <div className="absolute inset-x-0 bottom-0 my-16 animate-fade-in text-center">
-        <h2 className="animate-bounce text-sm text-zinc-100 ">
+        <h1 className="animate-bounce text-sm text-zinc-100 ">
           {t("page.home.description")}{" "}
           <Link
             href="/?nav=1"
-            className="underline duration-500 hover:text-black"
+            className="underline duration-500 hover:text-orange-600"
           >
             {t("page.home.description-2")}
           </Link>{" "}
           {t("page.home.description-3")}
-        </h2>
+        </h1>
       </div>
     </div>
   );

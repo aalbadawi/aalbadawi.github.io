@@ -1,5 +1,4 @@
 "use client";
-
 /* eslint-disable import/no-extraneous-dependencies */
 
 import "./globals.css";

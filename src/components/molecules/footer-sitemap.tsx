@@ -3,7 +3,9 @@
 import {
   faFacebookF,
   faGithub,
+  faInstagram,
   faLinkedinIn,
+  faWhatsapp,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,18 +21,18 @@ export function FooterWithSitemap() {
         <div className="items-center md:flex md:justify-between">
           <div className="mb-6 flex flex-col md:mb-0">
             <Link href="/?nav=0">
-              <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-500 duration-1000 hover:text-gray-900 dark:hover:text-white">
+              <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-500 duration-1000 hover:text-orange-600 dark:hover:text-white">
                 {t("footer.element.title")}
               </span>
             </Link>
 
             <a href="tel:+966554400968">
-              <div className="mt-4 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
-                <span className=" mb-1">Tel: +966 554400968</span>
+              <div className="mt-4 mb-1 flex flex-col font-light  duration-700  hover:text-blue-500 dark:text-gray-400   dark:hover:text-white">
+                <span className="mb-1">Tel: +966 554400968</span>
               </div>
             </a>
             <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
-              <div className="mb-2 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
+              <div className="mb-2 flex flex-col font-light text-gray-500 duration-700  hover:text-red-900 dark:text-gray-400   dark:hover:text-white">
                 <span className=" mb-1">Email: badawii.ab@gmail.com</span>
               </div>
             </a>
@@ -38,9 +40,9 @@ export function FooterWithSitemap() {
             <Link
               rel="noopener noreferrer"
               target="_blank"
-              href="https://www.google.com/maps?sca_esv=600053872&rlz=1C5CHFA_enJP1080JP1081&output=search&q=roppongi&source=lnms&entry=mc"
+              href="https://maps.app.goo.gl/kC9K6bN8YhawZdEU9"
             >
-              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
+              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-green-500 dark:text-gray-400   dark:hover:text-white">
                 {/* <span className="mb-1">Amer Albadawi</span> */}
                 <span className=" mb-1">{t("footer.element.address")}</span>
                 <span className=" md:flex">
@@ -48,17 +50,6 @@ export function FooterWithSitemap() {
                 </span>
               </div>
             </Link>
-            {/* <Link
-              rel="noopener noreferrer"
-              target="_blank"
-              href=""
-            >
-              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-black dark:text-gray-400   dark:hover:text-white">
-                <span className="mb-1">Shibuya</span>
-                <span className=" mb-1">Shinjuku Station</span>
-                <span className="md:flex">Shibuya-ku, Tokyo, Japan</span>
-              </div>
-            </Link> */}
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
@@ -189,14 +180,14 @@ export function FooterWithSitemap() {
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
         <div className="flex flex-col-reverse items-center  sm:flex sm:items-center sm:justify-between md:flex md:flex-row md:items-start">
-          <span className="mb-5 text-sm text-gray-500 sm:text-center md:mb-0 dark:text-gray-400">
+          <span className="hover:text-red-600 mb-5 text-sm text-gray-500 sm:text-center md:mb-0 dark:text-gray-400">
             © {new Date().getFullYear()} {t("footer.element.copyrights")}
           </span>
-          <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center ">
+          <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center">
             <a
               href="https://www.facebook.com/albadawiamer"
               target="_blank"
-              className="text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
+              className="text-blue-900 duration-700 hover:text-blue-900 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
@@ -205,9 +196,20 @@ export function FooterWithSitemap() {
               <span className="sr-only">Facebook page</span>
             </a>
             <a
+              href="https://api.whatsapp.com/send/?00966554400968"
+              target="_blank"
+              className="text-green-600 duration-700 hover:text-blue-900 dark:hover:text-white"
+            >
+              <FontAwesomeIcon
+                className="ms-5 mb-10 size-12 md:mb-0 md:size-5"
+                icon={faWhatsapp}
+              />
+              <span className="sr-only">WhatsApp</span>
+            </a>
+            <a
               href="https://www.linkedin.com/in/albadawiamer/"
               target="_blank"
-              className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
+              className="ms-5 text-blue-600 duration-700 hover:text-blue-500 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
@@ -218,7 +220,7 @@ export function FooterWithSitemap() {
             <a
               href="https://x.com/albadawiamer"
               target="_blank"
-              className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
+              className="ms-5 text-black duration-700 hover:text-black dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
@@ -227,9 +229,20 @@ export function FooterWithSitemap() {
               <span className="sr-only">X Twitter</span>
             </a>
             <a
+              href="https://instagram.com/albadawi.amer"
+              target="_blank"
+              className="ms-5 text-brown-900 duration-700 hover:text-brown-600 dark:hover:text-white"
+            >
+              <FontAwesomeIcon
+                className="mb-10 size-12 md:mb-0 md:size-5"
+                icon={faInstagram}
+              />
+              <span className="sr-only">Instagram</span>
+            </a>
+            <a
               href="https://github.com/aalbadawi"
               target="_blank"
-              className="ms-5 text-gray-500 duration-700 hover:text-gray-900 dark:hover:text-white"
+              className="ms-5 text-red-900 duration-700 hover:text-red-800 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"

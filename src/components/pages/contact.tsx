@@ -14,7 +14,7 @@ export default function Contact() {
 
     emailRef.current?.setAttribute(
       "href",
-      `mailto:asem@qaffaf.com?subject=From: ${email}-${subject}&body=${message}`,
+      `mailto:badawii.ab@gmail.com?subject: ${email}-${subject}&body=${message}`,
     );
     emailRef.current?.click();
     // reset values
@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <div className="h-full w-screen bg-white pt-24 dark:bg-gray-900 overflow-scroll">
       <h1 className="hidden">Amer Albadawi</h1>
-      <h1 className="hidden">Full stack software engineer</h1>
+      <h1 className="hidden">Senior Software Engineer</h1>
       <section className="bg-white dark:bg-gray-900 h-full w-full overflow-scroll">
         <div className="px-[20%] pb-4 ">
           <h2 className="mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-green-400 to-blue-600 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-200 group-hover:from-green-400 group-hover:to-blue-600 dark:text-white dark:focus:ring-green-800"
+              className="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-orange-500 to-pink-600 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-orange-200 group-hover:from-red-500 group-hover:to-purple-600 dark:text-white dark:focus:ring-orange-800"
             >
               <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
                 {t("page.contact.send-message")}
@@ -93,6 +93,7 @@ export default function Contact() {
             href="mailto:badawii.ab@gmail.com?subject=Mail from My Site"
             className="hidden"
           >
+            {" "}
             mail to
           </a>
         </div>

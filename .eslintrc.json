@@ -1,42 +1,53 @@
 {
-  // Configuration for JavaScript files
   "extends": [
-    "next/core-web-vitals" // Needed to avoid warning in next.js build: 'The Next.js plugin was not detected in your ESLint configuration'
+    "next/core-web-vitals" // Needed to avoid warning in Next.js build: 'The Next.js plugin was not detected in your ESLint configuration'
   ],
-  "rules": {
-  },
+  "plugins": [
+    "prettier",
+    "simple-import-sort",
+    "unused-imports",
+    "@typescript-eslint",
+    "jest",
+    "jest-formatting",
+    "testing-library",
+    "jest-dom",
+    "playwright",
+    "storybook"
+  ],
+  "rules": {},
   "overrides": [
-    // Configuration for TypeScript files
     {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "plugins": [
-        "@typescript-eslint"
-      ],
-      "extends": [
-      ],
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "plugins": ["@typescript-eslint"],
+      "extends": [],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
       "rules": {
         "prettier/prettier": [
-        ], // Avoid conflict rule between Prettier and Airbnb Eslint
-        "import/extensions": "off", // Avoid missing file extension errors, TypeScript already provides a similar feature
-        "react/function-component-definition": "off", // Disable Airbnb's specific function type
-        "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
-        "react/require-default-props": "off", // Allow non-defined react props as undefined
-        "react/jsx-props-no-spreading": "off", // _app.tsx uses spread operator and also, react-hook-form
-        "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
-        "@typescript-eslint/consistent-type-imports": "error", // Ensure `import type` is used when it's necessary
+          "off",
+          {
+            "singleQuote": true,
+            "semi": false
+          }
+        ],
+        "import/extensions": "off",
+        "react/function-component-definition": "off",
+        "react/destructuring-assignment": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/consistent-type-imports": "error",
         "no-restricted-syntax": [
           "error",
           "ForInStatement",
           "LabeledStatement",
           "WithStatement"
-        ], // Overrides Airbnb configuration and enable no-restricted-syntax
-        "import/prefer-default-export": "off", // Named export is easier to refactor automatically
-        "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
-        "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
-        "import/order": "off", // Avoid conflict rule between `eslint-plugin-import` and `eslint-plugin-simple-import-sort`
+        ],
+        "import/prefer-default-export": "off",
+        "simple-import-sort/imports": 0,
+        "simple-import-sort/exports": "error",
+        "import/order": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
@@ -45,7 +56,6 @@
         ]
       }
     },
-    // Configuration for testing
     {
       "files": ["**/*.test.ts", "**/*.test.tsx"],
       "plugins": ["jest", "jest-formatting", "testing-library", "jest-dom"],
@@ -56,12 +66,10 @@
         "plugin:jest-dom/recommended"
       ]
     },
-    // Configuration for e2e testing (Playwright)
     {
       "files": ["**/*.spec.ts"],
       "extends": ["plugin:playwright/recommended"]
     },
-    // Configuration for Storybook
     {
       "files": ["*.stories.*"],
       "extends": ["plugin:storybook/recommended"],

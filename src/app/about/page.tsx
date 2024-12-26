@@ -1,13 +1,12 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
+import About from '@/components/pages/about'
 
-import About from "@/components/pages/about";
-
-export default function page() {
+export default function Page() {
   return (
     <div className="h-full w-screen">
       <About />
     </div>
-  );
+  )
 }

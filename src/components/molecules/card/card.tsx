@@ -49,16 +49,21 @@ export default function Card({
             />
           </div>
           <div className="card-contentBx">
-            <h2 className={`my-2 text-2xl ${hover ? "text-zinc-200" : ""} `}>
+            <h2
+              className={`my-2 text-2xl ${hover ? "text-orange-600" : "text-red-600"} `}
+            >
               {name}
             </h2>
+            {/* <h2 className={`my-2 text-1xl ${hover ? "text-orange-400" : ""} `}>Senior Software Engineer</h2> */}
             <div className="card-size">
-              <p className="text-sm font-medium text-gray-800 flex sm:flex md:hidden lg:flex ">
+              <p
+                className={`${hover ? "text-black" : "text-red-600"} text-sm font-medium text-gray-800 flex sm:flex md:flex lg:flex`}
+              >
                 {brief}
               </p>
             </div>
             <div className="card-color">
-              <p className="text-zinc-100">{lastWord}</p>
+              <p className="text-orange-200">{lastWord}</p>
             </div>
           </div>
         </div>

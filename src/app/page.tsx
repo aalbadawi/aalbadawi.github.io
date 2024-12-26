@@ -2,16 +2,14 @@
 
 import { useSearchParams } from "next/navigation";
 import type { RefObject } from "react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import ReactPageScroller from "react-page-scroller";
 
 import Footer from "../components/organisms/footer";
-// import Nav from "./components/organisms/nav";
 import About from "../components/pages/about";
 import Contact from "../components/pages/contact";
 import HomePage from "../components/pages/home-page";
 import Portfolio from "../components/pages/portfolio";
-import PortfolioSecondPage from "../components/pages/portfolio-second-page";
 
 export default function App(): React.JSX.Element {
   const searchParams = useSearchParams();
@@ -30,10 +28,10 @@ export default function App(): React.JSX.Element {
     });
   };
 
-  const getCustomPageNumber = () => {
+  const getCustomPageNumber = useCallback(() => {
     const navNumber: string = searchParams?.get("nav") || "0";
     return Number(navNumber > "2" ? 4 : navNumber) || 0;
-  };
+  }, [searchParams]); // Memoizing based on searchParams
 
   useEffect(() => {
     const pageNumber = getCustomPageNumber();
@@ -54,11 +52,10 @@ export default function App(): React.JSX.Element {
       case "3":
         scrollIntoView(contactRef);
         break;
-
       default:
         break;
     }
-  }, [searchParams]);
+  }, [searchParams, getCustomPageNumber]); // Adding getCustomPageNumber to the dependency array
 
   return (
     <>
@@ -79,7 +76,7 @@ export default function App(): React.JSX.Element {
 
         <div
           id="footer-main"
-          className="h-screen w-screen  bg-white dark:bg-zinc-800 sm:bg-transparent"
+          className="h-screen w-screen bg-white dark:bg-zinc-800 sm:bg-transparent"
         >
           <Footer />
         </div>
@@ -92,7 +89,7 @@ export default function App(): React.JSX.Element {
           <HomePage />
           <About />
           <Portfolio />
-          <PortfolioSecondPage />
+          {/* <PortfolioSecondPage /> */}
           <Contact />
           <Footer />
         </ReactPageScroller>
