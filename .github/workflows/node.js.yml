@@ -42,7 +42,7 @@
 #       - name: Run Tests
 #         run: yarn test:cov
 #       - name: Upload Coverage Report
-#         uses: actions/upload-artifact@v2
+#         uses: actions/upload-artifact@v3
 #         with:
 #           name: coverage-report
 #           path: coverage/ # adjust this to the path of your coverage report directory
@@ -80,7 +80,7 @@ jobs:
       - name: Run Tests
         run: yarn test:cov
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage/ # adjust this to the path of your coverage report directory
