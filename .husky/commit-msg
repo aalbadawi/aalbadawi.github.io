@@ -1,12 +1,11 @@
-# #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh" # If using Husky
 
-# npx --no -- commitlint --edit "$1"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+nvm use 20 # Or nvm use if you use .nvmrc
 
-# npx husky add .husky/commit-msg "npx --no-install commitlint --edit "$1""
-
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-npx --no -- commitlint --edit ${1}
+npm run test # Or yarn test, pnpm test
+# Or your test command directly
