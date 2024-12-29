@@ -2,25 +2,23 @@
 
 /**
  * @type {import('next').NextConfig}
- * */
+ */
 const nextConfig = {
-  /**
-   * Enable static exports for the App Router.
-   *
-   * @see https://nextjs.org/docs/pages/building-your-application/deploying/static-exports
-   */
+  // Enable static exports
   output: "export",
 
-  /**
-   * Disable server-based image optimization. Next.js does not support
-   * dynamic features with static exports.
-   *
-   * @see https://nextjs.org/docs/pages/api-reference/components/image#unoptimized
-   */
+  // Disable server-based image optimization
   images: {
     unoptimized: true,
-    domains: ["https://media.wired.com/"],
   },
+
+  // Base path for GitHub Pages
+  basePath: '/aalbadawi.github.io',
+  
+  // Add trailing slash to URLs
+  trailingSlash: true,
+
+  // Remove console logs from production builds
   compiler: {
     removeConsole: true,
   },
