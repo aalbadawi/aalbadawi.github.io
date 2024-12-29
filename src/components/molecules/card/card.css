@@ -38,7 +38,7 @@
 }
 
 .card-container .card-card:after {
-  /* content: 'Asem'; */
+  /* content: 'Amer'; */
   position: absolute;
   top: 30%;
   left: -10%;
@@ -106,7 +106,7 @@
   align-items: center;
   padding: 8px 20px;
   transition: 0 card-5s;
-  opacity: 0.4;
+  /* opacity: 0.4; */
   /* visibility: hidden; */
   padding-top: 0;
   padding-bottom: 0;

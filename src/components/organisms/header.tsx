@@ -7,17 +7,17 @@ const Header = () => {
       <link rel="canonical" href="http://aalbadawi.github.io" />
       <link href="http://aalbadawi.github.io" />
 
-      <link href="https://asemqaffaf.github.io/images/asem.png" />
+      <link href="https://aalbadawi.github.io/images/amer.png" />
       <meta
         property="image:alt_text"
         content="Amer Albadawi's logo in white background"
       />
       <meta property="og:site_name" content="Amer Albadawi" />
 
-      <meta property="og:url" content="https://asemqaffaf.github.io/" />
+      <meta property="og:url" content="https://aalbadawi.github.io/" />
       <meta
         property="og:title"
-        content="Tech Software &amp; Development | Asem"
+        content="Tech Software &amp; Development | Amer"
       />
       <meta
         property="og:title"
@@ -26,30 +26,30 @@ const Header = () => {
 
       <meta
         property="og:image"
-        content="https://asemqaffaf.github.io/images/asem.png"
+        content="https://aalbadawi.github.io/images/amer.png"
       />
       <meta
         property="og:image:url"
-        content="https://asemqaffaf.github.io/images/asem.png"
+        content="https://aalbadawi.github.io/images/amer.png"
       />
       <meta
         property="og:image:secure_url"
-        content="https://asemqaffaf.github.io/images/asem.png"
+        content="https://aalbadawi.github.io/images/amer.png"
       />
       <meta
         property="og:image:alt"
-        content="Asem logo in gray on white background"
+        content="Amer logo in gray on white background"
       />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@asemqaffaf" />
+      <meta name="twitter:site" content="@ameralbadawi" />
 
-      <meta name="twitter:creator" content="@asemqaffaf" />
-      <meta name="twitter:url" content="https://asemqaffaf.github.io/" />
+      <meta name="twitter:creator" content="@ameralbadawi" />
+      <meta name="twitter:url" content="https://aalbadawi.github.io/" />
       <meta name="twitter:image:alt" content="Amer Albadawi logo" />
       <meta
         name="twitter:image"
-        content="https://asemqaffaf.github.io/images/asem.png"
+        content="https://aalbadawi.github.io/images/amer.png"
       />
 
       <meta name="MobileOptimized" content="width" />
@@ -58,283 +58,283 @@ const Header = () => {
       <link
         rel="alternate"
         hrefLang="x-default"
-        href="https://asemqaffaf.github.io/"
+        href="https://aalbadawi.github.io/"
       />
       <link
         rel="alternate"
         hrefLang="en-au"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="de-at"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="nl-be"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="fr-be"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-ca"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="fr-ca"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="cs-cz"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="da-dk"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-us"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
-      <link rel="alternate" hrefLang="en" href="https://asemqaffaf.github.io" />
+      <link rel="alternate" hrefLang="en" href="https://aalbadawi.github.io" />
       <link
         rel="alternate"
         hrefLang="fi-fi"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="fr-fr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="de-de"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="el-gr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="zh-hk"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-hk"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="hu-hu"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="is-is"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-ie"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="it-it"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="ja-jp"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-jo"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="fr-lu"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="de-lu"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="zh-mo"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-mo"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="es-mx"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="nl-nl"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-nz"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="no-no"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-eu"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="pl-pl"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="pt-pt"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-pr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="es-pr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="ar-qa"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-qa"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="ro-ro"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-sg"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="sl-si"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="ko-kr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="es-es"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="sv-se"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="fr-ch"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="de-ch"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="it-ch"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="zh-tw"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-th"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="th-th"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="tr-tr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="ar-ae"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-ae"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-gb"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="he-il"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="hr-hr"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
       <link
         rel="alternate"
         hrefLang="en-my"
-        href="https://asemqaffaf.github.io"
+        href="https://aalbadawi.github.io"
       />
 
       <link
