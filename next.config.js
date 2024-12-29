@@ -13,7 +13,7 @@ const nextConfig = {
   },
 
   // Base path for GitHub Pages
-  basePath: '/aalbadawi.github.io',
+  // basePath: '/aalbadawi.github.io',
   
   // Add trailing slash to URLs
   trailingSlash: true,
