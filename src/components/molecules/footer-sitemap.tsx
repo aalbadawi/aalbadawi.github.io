@@ -1,6 +1,8 @@
 "use client";
 
 import { faEye } from "@fortawesome/free-solid-svg-icons"; // Correct import
+import Image from 'next/image';
+
 
 import {
   faFacebookF,
@@ -249,10 +251,17 @@ export function FooterWithSitemap() {
         {/* Updated Counter */}
         <div className="flex flex-col items-start mt-5">
           <FontAwesomeIcon icon={faEye} className="text-gray-500 mb-2" />
-          <a href="https://www.hitwebcounter.com" target="_blank">
-            <img
+          <a
+            href="https://www.hitwebcounter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
               src="https://hitwebcounter.com/counter/counter.php?page=18146595&style=0010&nbdigits=5&type=page&initCount=0"
+              alt="Web counter widget"
               title="Counter Widget"
+              width={500} // Add a reasonable width
+              height={100} // Add a reasonable height
               style={{ border: '2px solid #000' }}
             />
           </a>

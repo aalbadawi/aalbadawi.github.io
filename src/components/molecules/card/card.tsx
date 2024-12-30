@@ -1,7 +1,7 @@
 import './card.css'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React from 'react'
 
 interface ICardProps {
   name: string
@@ -16,16 +16,9 @@ export default function Card({
   profilePic,
   lastWord,
 }: ICardProps) {
-  const [hover, setHover] = useState<boolean>(false)
-
   return (
     <div className="card-body flex justify-center items-center p-4">
-      <div
-        className="card-container relative w-full max-w-md p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition-transform transform hover:scale-105"
-        onTouchCancel={() => setHover(false)}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+      <div className="card-container relative w-full max-w-md p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition-transform transform hover:scale-105">
         {/* Profile Image */}
         <div className="card-imgBx flex justify-center items-center mx-auto mt-8 mb-4">
           <Image
