@@ -21,9 +21,9 @@ export default function Card({
   const [hover, setHover] = useState<boolean>(false)
 
   return (
-    <div className="card-body h-full">
+    <div className="card-body h-[60vh]">
       <div
-        className="card-container h-3/4 w-[95svw] md:w-96"
+        className="card-container w-full h-full md:w-96"
         onTouchCancel={() => setHover(false)}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}

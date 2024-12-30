@@ -22,7 +22,7 @@ export default function About() {
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col">
+    <div className="flex h-screen w-screen flex-row">
       <div className="mt-5 flex h-full w-full flex-col items-center justify-center self-center md:w-2/4">
         <Card
           flagUrl={''}
@@ -34,7 +34,7 @@ export default function About() {
       <div className="hidden w-full flex-col items-center justify-center md:flex">
         <div className="w-[95%] rounded-lg border border-gray-200 bg-zinc-100 shadow dark:border-gray-700 dark:bg-gray-800">
           <div
-            className="flex h-[65vh] flex-col overflow-scroll rounded-lg bg-zinc-100 p-4 md:p-8 dark:bg-gray-800"
+            className="flex flex-col overflow-scroll rounded-lg bg-zinc-100 p-4 dark:bg-gray-800"
             id="about" role="tabpanel" aria-labelledby="about-tab">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white mt-10">
               {t('page.about.title')}

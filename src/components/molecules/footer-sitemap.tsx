@@ -1,5 +1,7 @@
 "use client";
 
+import { faEye } from "@fortawesome/free-solid-svg-icons"; // Correct import
+
 import {
   faFacebookF,
   faGithub,
@@ -15,25 +17,29 @@ import { useTranslation } from "react-i18next";
 
 export function FooterWithSitemap() {
   const { t } = useTranslation();
+
   return (
     <footer className="flex h-full w-full overflow-scroll bg-white lg:items-center dark:bg-zinc-800">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8  ">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="items-center md:flex md:justify-between">
           <div className="mb-6 flex flex-col md:mb-0">
             <Link href="/?nav=0">
               <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-500 duration-1000 hover:text-orange-600 dark:hover:text-white">
-                {t("footer.element.title")}
+                {t('footer.element.title')}
               </span>
             </Link>
 
             <a href="tel:+966554400968">
-              <div className="mt-4 mb-1 flex flex-col font-light  duration-700  hover:text-blue-500 dark:text-gray-400   dark:hover:text-white">
-                <span className="mb-1">Tel: +966 554400968</span>
+              <div className="mt-4 mb-1 flex items-center font-light duration-700 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white">
+                <i className="fas fa-phone-alt mr-2"></i>
+                <span>Tel: +966 554400968</span>
               </div>
             </a>
+
             <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
-              <div className="mb-2 flex flex-col font-light text-gray-500 duration-700  hover:text-red-900 dark:text-gray-400   dark:hover:text-white">
-                <span className=" mb-1">Email: badawii.ab@gmail.com</span>
+              <div className="mb-2 flex items-center font-light text-gray-500 duration-700 hover:text-red-900 dark:text-gray-400 dark:hover:text-white">
+                <i className="fas fa-envelope mr-2"></i>
+                <span>Email: badawii.ab@gmail.com</span>
               </div>
             </a>
 
@@ -42,100 +48,84 @@ export function FooterWithSitemap() {
               target="_blank"
               href="https://maps.app.goo.gl/kC9K6bN8YhawZdEU9"
             >
-              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700  hover:text-green-500 dark:text-gray-400   dark:hover:text-white">
-                {/* <span className="mb-1">Amer Albadawi</span> */}
-                <span className=" mb-1">{t("footer.element.address")}</span>
-                <span className=" md:flex">
-                  {t("footer.element.address-2")}
-                </span>
+              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700 hover:text-green-500 dark:text-gray-400 dark:hover:text-white">
+                <span className="mb-1">{t('footer.element.address')}</span>
+                <span className="md:flex">{t('footer.element.address-2')}</span>
               </div>
             </Link>
           </div>
+
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
               <h2 className="m-[-1px] mb-5 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t("footer.element.col-1-title")}
+                {t('footer.element.col-1-title')}
               </h2>
               <ul className="font-light text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <Link
                     href="/?nav=1"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-1-1")}
+                    {t('footer.element.col-1-1')}
                   </Link>
                 </li>
                 <li className="mb-4">
                   <Link
                     href="/?nav=2"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-1-2")}
+                    {t('footer.element.col-1-2')}
                   </Link>
                 </li>
-                {/* <li className="mb-4">
-                  <Link
-                    href="/?nav=4"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
-                  >
-                    {t("footer.element.col-1-3")}
-                  </Link>
-                </li> */}
-                {/* <li className="mb-4">
-                  <Link
-                    href="/?nav=4"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
-                  >
-                    {t("footer.element.col-1-4")}
-                  </Link>
-                </li> */}
                 <li>
                   <Link
                     href="/?nav=4"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-1-5")}
+                    {t('footer.element.col-1-5')}
                   </Link>
                 </li>
               </ul>
             </div>
+
             <div>
               <h2 className="m-[-1px] mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t("footer.element.col-2-title")}
+                {t('footer.element.col-2-title')}
               </h2>
               <ul className="font-light text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <a
                     href="https://github.com/aalbadawi"
                     target="_blank"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-2-1")}
+                    {t('footer.element.col-2-1')}
                   </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://linkedin.com/in/albadawiamer/"
                     target="_blank"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-2-2")}
+                    {t('footer.element.col-2-2')}
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://facebook.com/albadawiamer"
                     target="_blank"
-                    className="text-zinc-400 duration-700 hover:text-black   dark:hover:text-white"
+                    className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-2-3")}
+                    {t('footer.element.col-2-3')}
                   </a>
                 </li>
               </ul>
             </div>
+
             <div>
               <h2 className="m-[-1px] mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t("footer.element.col-3-title")}
+                {t('footer.element.col-3-title')}
               </h2>
               <ul className="font-light text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
@@ -144,7 +134,7 @@ export function FooterWithSitemap() {
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-3-1")}
+                    {t('footer.element.col-3-1')}
                   </a>
                 </li>
                 <li className="mb-4">
@@ -153,7 +143,7 @@ export function FooterWithSitemap() {
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-3-2")}
+                    {t('footer.element.col-3-2')}
                   </a>
                 </li>
                 <li>
@@ -162,7 +152,7 @@ export function FooterWithSitemap() {
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.col-3-3")}
+                    {t('footer.element.col-3-3')}
                   </a>
                 </li>
                 <li>
@@ -171,18 +161,21 @@ export function FooterWithSitemap() {
                     target="_blank"
                     className="text-zinc-400 duration-700 hover:text-black dark:hover:text-white"
                   >
-                    {t("footer.element.angularLink")}
+                    {t('footer.element.angularLink')}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
-        <div className="flex flex-col-reverse items-center  sm:flex sm:items-center sm:justify-between md:flex md:flex-row md:items-start">
+
+        <div className="flex flex-col-reverse items-center sm:flex sm:items-center sm:justify-between md:flex md:flex-row md:items-start">
           <span className="hover:text-red-600 mb-5 text-sm text-gray-500 sm:text-center md:mb-0 dark:text-gray-400">
-            © {new Date().getFullYear()} {t("footer.element.copyrights")}
+            © {new Date().getFullYear()} {t('footer.element.copyrights')}
           </span>
+
           <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center">
             <a
               href="https://www.facebook.com/albadawiamer"
@@ -252,7 +245,19 @@ export function FooterWithSitemap() {
             </a>
           </div>
         </div>
+
+        {/* Updated Counter */}
+        <div className="flex flex-col items-start mt-5">
+          <FontAwesomeIcon icon={faEye} className="text-gray-500 mb-2" />
+          <a href="https://www.hitwebcounter.com" target="_blank">
+            <img
+              src="https://hitwebcounter.com/counter/counter.php?page=18146595&style=0010&nbdigits=5&type=page&initCount=0"
+              title="Counter Widget"
+              style={{ border: '2px solid #000' }}
+            />
+          </a>
+        </div>
       </div>
     </footer>
-  );
+  )
 }

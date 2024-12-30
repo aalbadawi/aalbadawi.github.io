@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
-import Particles from "../atoms/particles";
+import Particles from '../atoms/particles'
 
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className="flex h-full w-screen flex-col items-center justify-center overflow-hidden">
@@ -17,23 +17,23 @@ export default function HomePage() {
       />
 
       <h1 className="text-edge-outline z-10 animate-title cursor-default text-white text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap">
-        {t("page.home.title")}
+        {t('page.home.title')}
       </h1>
 
       <div className="animate-glow hidden h-1 w-screen animate-fade-right bg-gradient-to-r from-[grey] via-[white] to-[grey] md:block" />
 
       <div className="absolute inset-x-0 bottom-0 my-16 animate-fade-in text-center">
         <h1 className="animate-bounce text-sm text-zinc-100 ">
-          {t("page.home.description")}{" "}
+          {t('page.home.description')}{' '}
           <Link
             href="/?nav=1"
             className="underline duration-500 hover:text-orange-600"
           >
-            {t("page.home.description-2")}
-          </Link>{" "}
-          {t("page.home.description-3")}
+            {t('page.home.description-2')}
+          </Link>{' '}
+          {t('page.home.description-3')}
         </h1>
       </div>
     </div>
-  );
+  )
 }
