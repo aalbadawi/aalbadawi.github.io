@@ -16,14 +16,14 @@ export default function HomePage() {
         quantity={200}
       />
 
-      <h1 className="text-edge-outline z-10 animate-title cursor-default text-white text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap">
+      <h1 className="text-edge-outline z-10 animate-title cursor-default text-white text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap dark:text-yellow-200">
         {t('page.home.title')}
       </h1>
 
       <div className="animate-glow hidden h-1 w-screen animate-fade-right bg-gradient-to-r from-[grey] via-[white] to-[grey] md:block" />
 
       <div className="absolute inset-x-0 bottom-0 my-16 animate-fade-in text-center">
-        <h1 className="animate-bounce text-sm text-zinc-100 ">
+        <h1 className="animate-bounce text-sm text-zinc-100  dark:text-yellow-200">
           {t('page.home.description')}{' '}
           <Link
             href="/?nav=1"

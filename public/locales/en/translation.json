@@ -8,7 +8,7 @@
   "page.home.head.title": "Amer Albadawi",
   "page.home.head.meta.description": "Senior Software Engineer",
   "page.home.title": "Senior Software Engineer Inspired by Creativity and Innovation.",
-  "page.home.description": " Hello, my name is",
+  "page.home.description": " Welcome, my name is",
   "page.home.description-2": "Amer Albadawi",
   "page.home.description-3": "I am dedicated to creating a substantial global impact through the design and implementation of highly streamlined and efficient systems.",
   "page.about.title": "Working Experience",
@@ -47,5 +47,5 @@
   "footer.element.col-3-2": "React",
   "footer.element.col-3-3": "Next.js 14",
   "footer.element.angularLink": "Angular",
-  "footer.element.copyrights": "© 2024 Amer Albadawi. Built with Next.js and carefully coded"
+  "footer.element.copyrights": "© Amer Albadawi. Built with Next.js and carefully coded"
 }

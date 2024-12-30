@@ -1,13 +1,13 @@
 const Header = () => {
   return (
     <>
-      <title>Amer Albadawi, Senior Software Engineer</title>
+      <title>Digital Resume; Amer Albadawi</title>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta charSet="utf-8" />
       <link rel="canonical" href="http://aalbadawi.github.io" />
       <link href="http://aalbadawi.github.io" />
 
-      <link href="https://aalbadawi.github.io/images/amer.png" />
+      <link href="https://aalbadawi.github.io/images/amer-pic.png" />
       <meta
         property="image:alt_text"
         content="Amer Albadawi's logo in white background"
@@ -26,7 +26,7 @@ const Header = () => {
 
       <meta
         property="og:image"
-        content="https://aalbadawi.github.io/images/amer.png"
+        content="https://aalbadawi.github.io/images/amer-pic.png"
       />
       <meta
         property="og:image:url"
@@ -339,7 +339,7 @@ const Header = () => {
 
       <link
         rel="icon"
-        href="/images/logo/favicon.ico"
+        href="/images/logo/ab-logo.png"
         type="image/vnd.microsoft.icon"
       />
 
@@ -359,17 +359,17 @@ const Header = () => {
       <link
         rel="apple-touch-icon"
         sizes="57x57"
-        href="/images/logo/favicon.ico"
+        href="/images/logo/ab-logo.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="60x60"
-        href="/images/logo/favicon.ico"
+        href="/images/logo/ab-logo.png"
       />
       <link
         rel="apple-touch-icon"
         sizes="72x72"
-        href="/images/logo/favicon.ico"
+        href="/images/logo/ab-logo.png"
       />
       <link
         rel="apple-touch-icon"
@@ -436,7 +436,7 @@ const Header = () => {
         content="Aob+++752GiUzm1RNSIkM9TINnQDxTlxz02v8hFJK/uGO2hmXnJqH8c/ZpI05b2nLsHDhGO3Ce2zXJUFQmO7jA4AAAB1eyJvcmlnaW4iOiJodHRwczovL25ldGZsaXguY29tOjQ0MyIsImZlYXR1cmUiOiJFbmNyeXB0ZWRNZWRpYUhkY3BQb2xpY3lDaGVjayIsImV4cGlyeSI6MTU0MzI0MzQyNCwiaXNTdWJkb21haW4iOnRydWV91"
       />
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

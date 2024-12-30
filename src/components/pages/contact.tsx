@@ -31,13 +31,13 @@ export default function Contact() {
           <h2 className="mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
             {t("page.contact.title")}
           </h2>
-          <p className="mb-8 text-center font-light text-gray-500 sm:text-xl lg:mb-16 dark:text-gray-400">
+          <p className="mb-8 text-center font-light text-gray-500 sm:text-xl lg:mb-16 dark:text-white">
             {t("page.contact.sub-title")}
           </p>
           <form onSubmit={submitContactForm} className="space-y-8">
             <div>
               <label
-                className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
                 htmlFor="email"
               >
                 {t("page.contact.email")}
@@ -53,7 +53,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="subject"
-                className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
               >
                 {t("page.contact.subject")}
               </label>
@@ -68,7 +68,7 @@ export default function Contact() {
             <div className="sm:col-span-2">
               <label
                 htmlFor="message"
-                className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
+                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
               >
                 {t("page.contact.your-message")}
               </label>

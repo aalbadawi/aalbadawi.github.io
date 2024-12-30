@@ -26,20 +26,20 @@ export function FooterWithSitemap() {
         <div className="items-center md:flex md:justify-between">
           <div className="mb-6 flex flex-col md:mb-0">
             <Link href="/?nav=0">
-              <span className="self-center whitespace-nowrap text-2xl font-semibold text-gray-500 duration-1000 hover:text-orange-600 dark:hover:text-white">
+              <span className="self-center whitespace-nowrap text-2xl font-semibold text-orange-600 duration-1000 hover:text-orange-600 dark:hover:text-white">
                 {t('footer.element.title')}
               </span>
             </Link>
 
             <a href="tel:+966554400968">
-              <div className="mt-4 mb-1 flex items-center font-light duration-700 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white">
+              <div className="mt-4 mb-1 flex items-center font-light duration-700 hover:text-blue-500 dark:text-sky-400 dark:hover:text-white">
                 <i className="fas fa-phone-alt mr-2"></i>
                 <span>Tel: +966 554400968</span>
               </div>
             </a>
 
             <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
-              <div className="mb-2 flex items-center font-light text-gray-500 duration-700 hover:text-red-900 dark:text-gray-400 dark:hover:text-white">
+              <div className="mb-2 flex items-center font-light text-gray-500 duration-700 hover:text-red-900 dark:text-red-400 dark:hover:text-white">
                 <i className="fas fa-envelope mr-2"></i>
                 <span>Email: badawii.ab@gmail.com</span>
               </div>
@@ -50,7 +50,7 @@ export function FooterWithSitemap() {
               target="_blank"
               href="https://maps.app.goo.gl/kC9K6bN8YhawZdEU9"
             >
-              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700 hover:text-green-500 dark:text-gray-400 dark:hover:text-white">
+              <div className="my-5 mb-1 flex flex-col font-light text-gray-500 duration-700 hover:text-green-500 dark:text-stone-100 dark:hover:text-white">
                 <span className="mb-1">{t('footer.element.address')}</span>
                 <span className="md:flex">{t('footer.element.address-2')}</span>
               </div>
@@ -174,8 +174,8 @@ export function FooterWithSitemap() {
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
 
         <div className="flex flex-col-reverse items-center sm:flex sm:items-center sm:justify-between md:flex md:flex-row md:items-start">
-          <span className="hover:text-red-600 mb-5 text-sm text-gray-500 sm:text-center md:mb-0 dark:text-gray-400">
-            © {new Date().getFullYear()} {t('footer.element.copyrights')}
+          <span className="hover:text-red-600 mb-4 text-sm text-gray-500 sm:text-center md:mb-0 dark:text-red-400 dark:hover:text-white">
+            {new Date().getFullYear()} {t('footer.element.copyrights')}
           </span>
 
           <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center">
@@ -226,7 +226,7 @@ export function FooterWithSitemap() {
             <a
               href="https://instagram.com/albadawi.amer"
               target="_blank"
-              className="ms-5 text-brown-900 duration-700 hover:text-brown-600 dark:hover:text-white"
+              className="ms-5 text-brown-900 duration-700 text-amber-800 hover:text-purple-600 dark:text-red-800 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
@@ -250,7 +250,7 @@ export function FooterWithSitemap() {
 
         {/* Updated Counter */}
         <div className="flex flex-col items-start mt-5">
-          <FontAwesomeIcon icon={faEye} className="text-gray-500 mb-2" />
+          <FontAwesomeIcon icon={faEye} className="text-gray-500 dark:text-sky-300 mb-2" />
           <a
             href="https://www.hitwebcounter.com"
             target="_blank"

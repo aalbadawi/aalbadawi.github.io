@@ -2,8 +2,6 @@ export const aboutMe = {
   name: "Amer Albadawi",
   brief: "",
   profilePic: "/images/amer-pic.png",
-  // flagUrl: "/images/jordan-flag.png",
-  // flagUrl: "/images/japan-flag.png",
   lastWord: "",
 } as const;
 

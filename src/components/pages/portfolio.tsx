@@ -1,49 +1,49 @@
-import Image from "next/image";
-import React from "react";
-import { useTranslation } from "react-i18next";
+import Image from 'next/image'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Portfolio = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const companies = [
     {
-      name: "STC",
-      link: "https://www.stc.com",
-      imageSrc: "/images/companies/stc-logo.png",
-      alt: "STC",
+      name: 'STC',
+      link: 'https://www.stc.com',
+      imageSrc: '/images/companies/stc-logo.png',
+      alt: 'STC',
     },
     {
-      name: "Tata Consultancy Services",
-      link: "https://www.tcs.com",
-      imageSrc: "/images/companies/tata-logo.png",
-      alt: "Tata Consultancy Services",
+      name: 'Tata Consultancy Services',
+      link: 'https://www.tcs.com',
+      imageSrc: '/images/companies/tata-logo.png',
+      alt: 'Tata Consultancy Services',
     },
     {
-      name: "Wipro Arabia Ltd",
-      link: "https://www.wipro.com",
-      imageSrc: "/images/companies/wipro-logo.png",
-      alt: "Wipro Arabia Ltd",
+      name: 'Wipro Arabia Ltd',
+      link: 'https://www.wipro.com',
+      imageSrc: '/images/companies/wipro-logo.png',
+      alt: 'Wipro Arabia Ltd',
     },
     {
-      name: "Zain KSA",
-      link: "https://www.sa.zain.com",
-      imageSrc: "/images/companies/zain-ksa-logo.jpeg",
-      alt: "Zain KSA",
+      name: 'Zain KSA',
+      link: 'https://www.sa.zain.com',
+      imageSrc: '/images/companies/zain-ksa-logo.jpeg',
+      alt: 'Zain KSA',
     },
     {
-      name: "Zain Jordan",
-      link: "https://www.jo.zain.com",
-      imageSrc: "/images/companies/zain-logo.png",
-      alt: "Zain Jordan",
+      name: 'Zain Jordan',
+      link: 'https://www.jo.zain.com',
+      imageSrc: '/images/companies/zain-logo.png',
+      alt: 'Zain Jordan',
     },
     // Add more companies here as needed
-  ];
+  ]
 
   return (
     <div className="flex h-full w-screen flex-col bg-zinc-50 pt-24">
       <div className="m-2 flex w-full justify-center">
         <h4 className="z-10 animate-title bg-white bg-clip-text py-4 font-display text-2xl text-zinc-700 duration-1000 sm:text-2xl md:text-4xl">
-          {t("page.Portfolio.title")}
+          {t('page.Portfolio.title')}
         </h4>
       </div>
 
@@ -70,7 +70,7 @@ const Portfolio = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Portfolio;
+export default Portfolio

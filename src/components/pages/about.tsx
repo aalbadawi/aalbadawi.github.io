@@ -33,10 +33,10 @@ export default function About() {
       </div>
 
       {/* Right Section - About Content */}
-      <div className="w-full md:w-2/3 flex flex-col items-center justify-center p-4">
-        <div className="w-full max-w-3xl mx-auto rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700">
+      <div className="w-full md:w-2/3 flex flex-col items-center justify-center p-4 ">
+        <div className="w-full max-w-3xl mx-auto rounded-lg border border-gray-200 bg-white shadow  dark:border-gray-700">
           <div
-            className="flex flex-col p-6 bg-white rounded-lg overflow-y-auto h-[40vh] md:h-[70vh] lg:h-auto"
+            className="flex flex-col p-6 bg-white rounded-lg overflow-y-auto h-[40vh] md:h-[70vh] lg:h-auto dark:bg-gray-900"
             id="about"
             role="tabpanel"
             aria-labelledby="about-tab"
@@ -45,17 +45,17 @@ export default function About() {
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">
               {t('page.about.title')}
             </h2>
-            <p className="mt-4 text-gray-500 dark:text-gray-400 text-center">
+            <p className="mt-4 text-gray-500  text-center dark:text-white">
               {t('page.about.paragraph')}
             </p>
 
             {/* Stats Section */}
-            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-gray-900 dark:text-white">
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-gray-900 dark:text-white ">
               <div className="flex flex-col items-center">
                 <dt className="mb-2 text-3xl font-extrabold text-red-600">
                   20K+
                 </dt>
-                <dd className="text-gray-500 dark:text-gray-400 text-center">
+                <dd className="text-gray-500 text-center dark:text-white">
                   {t('page.about.work-experience')}
                 </dd>
               </div>
@@ -63,7 +63,7 @@ export default function About() {
                 <dt className="mb-2 text-3xl font-extrabold text-red-600">
                   5+
                 </dt>
-                <dd className="text-gray-500 dark:text-gray-400 text-center">
+                <dd className="text-gray-500 dark:text-white text-center">
                   {t('page.about.projects-contributed')}
                 </dd>
               </div>
@@ -71,7 +71,7 @@ export default function About() {
                 <dt className="mb-2 text-3xl font-extrabold text-red-600">
                   10+
                 </dt>
-                <dd className="text-gray-500 dark:text-gray-400 text-center">
+                <dd className="text-gray-500 dark:text-white text-center">
                   {t('page.about.tech-frameworks')}
                 </dd>
               </div>

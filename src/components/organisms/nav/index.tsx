@@ -5,10 +5,11 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { languagesList } from "@/util/nav-items";
-
 import LanguageList from "./language";
+import { useDarkMode } from "../../../util/dark-mode"
 
 const Nav = (): React.JSX.Element => {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const router = useRouter();
   const { t, i18n } = useTranslation();
 
@@ -84,11 +85,18 @@ const Nav = (): React.JSX.Element => {
             className="flex w-36 cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 md:flex lg:flex dark:text-white dark:hover:bg-zinc-800 dark:hover:text-white"
           >
             {languagesList.find((lang) => lang.value === i18n.language)?.name ||
-              languagesList["0"].name}
+              languagesList['0'].name}
+          </button>
+
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+          >
+            {isDarkMode ? '🌙 ' : '☀️'}
           </button>
           {/* <!-- Dropdown --> */}
           <div
-            className={`${isLanguageMenuOpen ? "hidden md:flex" : "hidden"}  show absolute top-10 z-50 my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:bg-zinc-800`}
+            className={`${isLanguageMenuOpen ? 'hidden md:flex' : 'hidden'}  show absolute top-10 z-50 my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:bg-zinc-800`}
             id="language-dropdown-menu"
           >
             <LanguageList
@@ -124,22 +132,22 @@ const Nav = (): React.JSX.Element => {
         </div>
         {/* Drawer here! */}
         <div
-          className={`${isMobileMenuOpen ? "show" : "hidden"} w-full items-center justify-between self-center text-center md:order-1 md:flex md:w-auto`}
+          className={`${isMobileMenuOpen ? 'show' : 'hidden'} w-full items-center justify-between self-center text-center md:order-1 md:flex md:w-auto`}
           id="navbar-language"
         >
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:bg-zinc-800 md:dark:bg-zinc-800">
+          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:bg-zinc-800 md:dark:bg-zinc-800 dark:text-white">
             {navigationElements.map((item, i) => {
               return (
                 <li key={item.name}>
                   <button
-                    className={`${i < navigationElements.length - 1 ? "mb-5" : ""} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? "border-orange-500 text-orange-500" : "border-transparent"} hover:border-red-500 hover:text-red-500`}
+                    className={`${i < navigationElements.length - 1 ? 'mb-5' : ''} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? 'border-orange-500 text-orange-500' : 'border-transparent'} hover:border-red-500 hover:text-red-500`}
                     type="button"
                     onClick={() => handlePageChange(item.index)}
                   >
                     {t(`nav.element.${item.name}`)}
                   </button>
                 </li>
-              );
+              )
             })}
           </ul>
           <div className="flex items-center justify-center md:hidden">
@@ -151,6 +159,6 @@ const Nav = (): React.JSX.Element => {
         </div>
       </div>
     </nav>
-  );
+  )
 };
 export default Nav;
