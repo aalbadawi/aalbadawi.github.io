@@ -40,7 +40,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="flex h-full w-screen flex-col bg-zinc-50 pt-4">
+    <div className="flex h-full w-screen flex-col bg-zinc-50 pt-24">
       <div className="m-2 flex w-full justify-center">
         <h4 className="z-10 animate-title bg-white bg-clip-text py-4 font-display text-2xl text-zinc-700 duration-1000 sm:text-2xl md:text-4xl">
           {t("page.Portfolio.title")}

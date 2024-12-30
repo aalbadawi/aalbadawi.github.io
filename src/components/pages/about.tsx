@@ -36,7 +36,7 @@ export default function About() {
       <div className="w-full md:w-2/3 flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-3xl mx-auto rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700">
           <div
-            className="flex flex-col p-6 bg-white rounded-lg overflow-y-auto h-[50vh] md:h-[70vh] lg:h-auto"
+            className="flex flex-col p-6 bg-white rounded-lg overflow-y-auto h-[40vh] md:h-[70vh] lg:h-auto"
             id="about"
             role="tabpanel"
             aria-labelledby="about-tab"
