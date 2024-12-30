@@ -31,12 +31,12 @@ export default function Card({
         <div className="card-card flex items-center justify-center self-center bg-zinc-100  dark:border-gray-700 dark:bg-gray-800 ">
           <div
             className="flag"
-            // style={{
-            //   backgroundImage: `url("${flagUrl}")`,
-            //   clipPath: hover
-            //     ? 'circle(100% at 80%)'
-            //     : 'circle(150px at 80% 15%)',
-            // }}
+            style={{
+              backgroundImage: `url("${flagUrl}")`,
+              clipPath: hover
+                ? 'circle(100% at 80%)'
+                : 'circle(150px at 80% 15%)',
+            }}
           />
           <div className="card-imgBx h-[60vh] w-3/4 lg:w-full">
             <Image
