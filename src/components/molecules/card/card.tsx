@@ -7,7 +7,6 @@ interface ICardProps {
   name: string
   brief: string
   profilePic: string
-  flagUrl: string
   lastWord: string
 }
 
@@ -15,48 +14,41 @@ export default function Card({
   name,
   brief,
   profilePic,
-  flagUrl,
   lastWord,
 }: ICardProps) {
   const [hover, setHover] = useState<boolean>(false)
 
   return (
-    <div className="card-body h-[60vh]">
+    <div className="card-body flex justify-center items-center p-4">
       <div
-        className="card-container w-full h-full md:w-96"
+        className="card-container relative w-full max-w-md p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition-transform transform hover:scale-105"
         onTouchCancel={() => setHover(false)}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <div className="card-card flex items-center justify-center self-center bg-zinc-100  dark:border-gray-700 dark:bg-gray-800 ">
-          <div
-            className="flag"
-            style={{
-              backgroundImage: `url("${flagUrl}")`,
-              clipPath: hover
-                ? 'circle(100% at 80%)'
-                : 'circle(150px at 80% 15%)',
-            }}
+        {/* Profile Image */}
+        <div className="card-imgBx flex justify-center items-center mx-auto mt-8 mb-4">
+          <Image
+            width={250}
+            height={250}
+            className="rounded-full border-4 border-orange-600"
+            src={profilePic}
+            alt={name}
+            priority
           />
-          <div className="card-imgBx h-[60vh] w-3/4 lg:w-full">
-            <Image
-              width={50}
-              height={50}
-              className="rounded-full"
-              src={`${profilePic}`}
-              alt={name}
-              priority
-            />
+        </div>
+
+        {/* Card Content */}
+        <div className="card-contentBx text-center">
+          <h2 className="text-xl font-semibold text-orange-600 mb-2">{name}</h2>
+          {/* Brief Description */}
+          <div className="card-size overflow-auto max-h-36 mb-4">
+            <p className="text-gray-700 dark:text-gray-300 text-sm">{brief}</p>
           </div>
-          <div className="card-contentBx">
-            <h2 className={`my-2 text-2xl text-orange-600 `}>{name}</h2>
-            {/* <h2 className={`my-2 text-1xl ${hover ? "text-orange-400" : ""} `}>Senior Software Engineer</h2> */}
-            <div className="card-size">
-              <p className={`text-black text-sm font-medium flex`}>{brief}</p>
-            </div>
-            <div className="card-color">
-              <p className="text-orange-200">{lastWord}</p>
-            </div>
+
+          {/* Last Word */}
+          <div className="card-color">
+            <p className="text-orange-300 text-xs">{lastWord}</p>
           </div>
         </div>
       </div>
