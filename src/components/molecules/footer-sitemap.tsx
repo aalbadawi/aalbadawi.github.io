@@ -182,7 +182,7 @@ export function FooterWithSitemap() {
             <a
               href="https://www.facebook.com/albadawiamer"
               target="_blank"
-              className="text-blue-900 duration-700 hover:text-blue-900 dark:hover:text-white"
+              className="text-blue-600 duration-700 hover:text-blue-900 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
@@ -215,7 +215,7 @@ export function FooterWithSitemap() {
             <a
               href="https://x.com/albadawiamer"
               target="_blank"
-              className="ms-5 text-black duration-700 hover:text-black dark:hover:text-white"
+              className="ms-5 text-black duration-700 hover:text-black dark:text-zinc-400 dark:hover:text-white"
             >
               <FontAwesomeIcon
                 className="mb-10 size-12 md:mb-0 md:size-5"
