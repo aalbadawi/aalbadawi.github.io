@@ -32,14 +32,14 @@ export function FooterWithSitemap() {
             </Link>
 
             <a href="tel:+966554400968">
-              <div className="mt-4 mb-1 flex items-center font-light duration-700 hover:text-blue-500 dark:text-sky-400 dark:hover:text-white">
+              <div className="mt-4 mb-1 flex items-center font-light duration-700 text-sky-400 hover:text-blue-500 dark:text-sky-400 dark:hover:text-white">
                 <i className="fas fa-phone-alt mr-2"></i>
                 <span>Tel: +966 554400968</span>
               </div>
             </a>
 
             <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
-              <div className="mb-2 flex items-center font-light text-gray-500 duration-700 hover:text-red-900 dark:text-red-400 dark:hover:text-white">
+              <div className="mb-2 flex items-center font-light duration-700 text-amber-950 hover:text-red-900 dark:text-red-400 dark:hover:text-white">
                 <i className="fas fa-envelope mr-2"></i>
                 <span>Email: badawii.ab@gmail.com</span>
               </div>

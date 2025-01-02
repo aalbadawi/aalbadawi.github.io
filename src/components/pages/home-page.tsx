@@ -16,7 +16,7 @@ export default function HomePage() {
         quantity={200}
       />
 
-      <h1 className="text-edge-outline z-10 animate-title cursor-default text-white text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap dark:text-yellow-200">
+      <h1 className="text-edge-outline z-10 animate-title cursor-default text-black text-center bg-white bg-clip-text text-transparent duration-1000 text-3xl md:text-4xl lg:whitespace-nowrap dark:text-yellow-200">
         {t('page.home.title')}
       </h1>
 
