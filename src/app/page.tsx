@@ -63,7 +63,7 @@ export default function App(): React.JSX.Element {
         <div ref={bannerRef} className="h-screen w-screen">
           <HomePage />
         </div>
-        <div ref={aboutRef} className="h-screen w-screen">
+        <div ref={aboutRef} className="w-screen">
           <About />
         </div>
 

@@ -191,7 +191,7 @@ export function FooterWithSitemap() {
               <span className="sr-only">Facebook page</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send/?00966554400968"
+              href="https://wa.me/966554400968"
               target="_blank"
               className="text-green-600 duration-700 hover:text-blue-900 dark:hover:text-white"
             >
