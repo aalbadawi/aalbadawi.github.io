@@ -76,12 +76,12 @@ export default function App(): React.JSX.Element {
 
         <div
           id="footer-main"
-          className="h-screen w-screen bg-white dark:bg-zinc-800 sm:bg-transparent"
+          ref={contactRef}
+          className="h-screen w-screen bg-transparent"
         >
           <Footer />
         </div>
       </div>
-      {/* React Page Scroller Container */}
       <div className="hidden w-screen lg:flex">
         <ReactPageScroller
           renderAllPagesOnFirstRender={false}
