@@ -66,7 +66,12 @@ const Nav = (): React.JSX.Element => {
           href="/?nav=0"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <Image
+          <span className="dark:flex items-center dark:text-white text-black text-3xl font-semibold font-sans">
+            AB
+            <i className="fas fa-code ml-2 text-orange-600"></i>
+          </span>
+          <Image hidden
+            className="dark:hidden"
             src="/images/logo/ab-logo.png"
             alt="Logo"
             width={80}
@@ -140,7 +145,7 @@ const Nav = (): React.JSX.Element => {
               return (
                 <li key={item.name}>
                   <button
-                    className={`${i < navigationElements.length - 1 ? 'mb-5' : ''} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? 'border-orange-500 text-orange-500' : 'border-transparent'} hover:border-red-500 hover:text-red-500`}
+                    className={`${i < navigationElements.length - 1 ? 'mb-5' : ''} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? 'border-orange-600 text-orange-600' : 'border-transparent'} hover:border-orange-600 hover:text-orange-600`}
                     type="button"
                     onClick={() => handlePageChange(item.index)}
                   >
