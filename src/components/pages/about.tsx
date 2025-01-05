@@ -22,7 +22,7 @@ export default function About() {
   }
 
   return (
-    <div className="flex flex-col h-auto w-full md:flex-row">
+    <div className="flex flex-col h-full w-full md:flex-row">
       {/* Left Section - Card */}
       <div className="mt-5 flex flex-col items-center justify-center w-full md:w-1/3 px-4">
         <Card
