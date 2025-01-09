@@ -66,7 +66,6 @@ export default function App(): React.JSX.Element {
         <div ref={aboutRef} className="w-screen">
           <About />
         </div>
-
         <div ref={portfolioRef} id="portfolio-main" className="h-full w-screen">
           <Portfolio />
         </div>

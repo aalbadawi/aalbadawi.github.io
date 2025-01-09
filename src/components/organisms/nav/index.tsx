@@ -82,6 +82,12 @@ const Nav = (): React.JSX.Element => {
           </span>
         </Link>
         <div className="flex items-center space-x-1 md:order-2 md:space-x-0 rtl:space-x-reverse">
+        <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+          >
+            {isDarkMode ? '🌙 ' : '☀️'}
+          </button>
           {/* selected Language */}
           <button
             type="button"
@@ -93,12 +99,7 @@ const Nav = (): React.JSX.Element => {
               languagesList['0'].name}
           </button>
 
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200"
-          >
-            {isDarkMode ? '🌙 ' : '☀️'}
-          </button>
+       
           {/* <!-- Dropdown --> */}
           <div
             className={`${isLanguageMenuOpen ? 'hidden md:flex' : 'hidden'}  show absolute top-10 z-50 my-4 list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:bg-zinc-800`}
