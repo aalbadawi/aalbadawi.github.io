@@ -141,12 +141,12 @@ const Nav = (): React.JSX.Element => {
           className={`${isMobileMenuOpen ? 'show' : 'hidden'} w-full items-center justify-between self-center text-center md:order-1 md:flex md:w-auto`}
           id="navbar-language"
         >
-          <ul className="mt-4 flex flex-col rounded-lg text-black border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:bg-zinc-800 md:dark:bg-zinc-800 dark:text-white">
+          <ul className="mt-2 flex flex-col rounded-lg text-black border-gray-50 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:bg-zinc-800 md:dark:bg-zinc-800 dark:text-white">
             {navigationElements.map((item, i) => {
               return (
                 <li key={item.name}>
                   <button
-                    className={`${i < navigationElements.length - 1 ? 'mb-5' : ''} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? 'border-orange-600 text-orange-600' : 'border-transparent'} hover:border-orange-600 hover:text-orange-600`}
+                    className={`${i < navigationElements.length - 1 ? 'mb-4' : ''} md:mb-0 relative pb-1 border-b-2 ${activePage === item.index ? 'border-orange-600 text-orange-600' : 'border-transparent'} hover:border-orange-600 hover:text-orange-600`}
                     type="button"
                     onClick={() => handlePageChange(item.index)}
                   >
@@ -156,7 +156,7 @@ const Nav = (): React.JSX.Element => {
               )
             })}
           </ul>
-          <div className="flex items-center justify-center md:hidden">
+          <div className="flex items-center justify-center md:hidden bg-gray-50">
             <LanguageList
               setIsLanguageMenuOpen={setIsLanguageMenuOpen}
               setIsMobileMenuOpen={setIsMobileMenuOpen}

@@ -41,14 +41,14 @@ const Portfolio = () => {
   ]
 
   return (
-    <div className="flex h-full w-screen flex-col bg-gray-50 pt-24">
+    <div className="flex h-full w-screen flex-col bg-gray-50 md:pt-24 pt-8">
       <div className="m-2 flex w-full justify-center">
-        <h4 className="z-10 animate-title bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-indigo-600 hover:from-indigo-600 hover:to-orange-600 py-2 text-2xl duration-1000 sm:text-2xl md:text-4xl font-sans font-medium hover:underline underline-offset-8">
+        <h4 className="z-10 animate-title bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-indigo-600 hover:from-indigo-600 hover:to-orange-600 py-2 text-3xl duration-1000 md:text-4xl font-sans font-medium hover:underline underline-offset-6">
           {t('page.Portfolio.title')}
         </h4>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8 divide-x-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8">
         {companies.map((company, index) => (
           <div key={index} className="p-4">
             <a

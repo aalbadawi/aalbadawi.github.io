@@ -20,7 +20,7 @@ export default function LanguageList({
   };
 
   return (
-    <ul className="py-2 font-medium" role="none">
+    <ul className="py-2 font-medium divide-y" role="none">
       {languagesList.map((lang) => (
         <li key={lang.value}>
           <button
