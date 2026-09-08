@@ -62,46 +62,6 @@ const Header = () => {
       />
       <link
         rel="alternate"
-        hrefLang="en-au"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="de-at"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="nl-be"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="fr-be"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-ca"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="fr-ca"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="cs-cz"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="da-dk"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
         hrefLang="en-us"
         href="https://aalbadawi.github.io"
       />

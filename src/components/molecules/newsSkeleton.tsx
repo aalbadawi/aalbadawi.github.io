@@ -31,7 +31,7 @@ const NewsSkeleton = () => {
         <span className="sr-only">Loading...</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewsSkeleton;
+export default NewsSkeleton

@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import React from "react";
-import Typewriter from "typewriter-effect";
+import React from 'react'
+import Typewriter from 'typewriter-effect'
 
-import { FooterWithSitemap } from "@/components/molecules/footer-sitemap";
-import { typeWriteList } from "@/constants";
-const randomTypeWriteList = typeWriteList.sort(() => 0.5 - Math.random());
+import { FooterWithSitemap } from '@/components/molecules/footer-sitemap'
+import { typeWriteList } from '@/constants'
+const randomTypeWriteList = typeWriteList.sort(() => 0.5 - Math.random())
 
 export default function Footer() {
   return (
@@ -25,5 +25,5 @@ export default function Footer() {
         <FooterWithSitemap />
       </div>
     </div>
-  );
+  )
 }

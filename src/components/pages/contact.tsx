@@ -1,52 +1,71 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { type FormEvent, useRef } from "react";
-import { useTranslation } from "react-i18next";
+'use client'
+
+import { type FormEvent, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function Contact() {
-  const { t } = useTranslation();
-  const emailRef = useRef<HTMLAnchorElement>(null);
+  const { t } = useTranslation()
+  const [formData, setFormData] = useState({
+    email: '',
+    subject: '',
+    message: '',
+  })
 
   const submitContactForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const email = (e.currentTarget.elements[0] as HTMLInputElement).value;
-    const subject = (e.currentTarget.elements[1] as HTMLInputElement).value;
-    const message = (e.currentTarget.elements[2] as HTMLInputElement).value;
+    e.preventDefault()
 
-    emailRef.current?.setAttribute(
-      "href",
-      `mailto:badawii.ab@gmail.com?subject: ${email}-${subject}&body=${message}`,
-    );
-    emailRef.current?.click();
-    // reset values
-    (e.currentTarget.elements[0] as HTMLInputElement).value = "";
-    (e.currentTarget.elements[1] as HTMLInputElement).value = "";
-    (e.currentTarget.elements[2] as HTMLInputElement).value = "";
-  };
+    const { email, subject, message } = formData
+
+    // Create mailto link with properly encoded parameters
+    const mailtoLink = `mailto:badawii.ab@gmail.com?subject=${encodeURIComponent(`${email} - ${subject}`)}&body=${encodeURIComponent(message)}`
+    
+    // Open mailto link
+    window.location.href = mailtoLink
+
+    // Reset form
+    setFormData({
+      email: '',
+      subject: '',
+      message: '',
+    })
+  }
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
+
   return (
-    <div className="h-full w-screen bg-white pt-24 dark:bg-gray-900 overflow-scroll">
-      <h1 className="hidden">Amer Albadawi</h1>
-      <h1 className="hidden">Senior Software Engineer</h1>
-      <section className="bg-white dark:bg-gray-900 h-full w-full overflow-scroll">
-        <div className="px-[20%] pb-4 ">
+    <div className="h-full w-screen overflow-scroll bg-white pt-24 dark:bg-gray-900">
+      <h1 className="sr-only">Amer Albadawi - Contact Page</h1>
+      <section className="h-full w-full bg-white dark:bg-gray-900">
+        <div className="px-4 pb-8 sm:px-8 md:px-[15%] lg:px-[20%]">
           <h2 className="mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            {t("page.contact.title")}
+            {t('page.contact.title')}
           </h2>
           <p className="mb-8 text-center font-light text-gray-500 sm:text-xl lg:mb-16 dark:text-white">
-            {t("page.contact.sub-title")}
+            {t('page.contact.sub-title')}
           </p>
           <form onSubmit={submitContactForm} className="space-y-8">
             <div>
               <label
-                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
                 htmlFor="email"
+                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
               >
-                {t("page.contact.email")}
+                {t('page.contact.email')}
               </label>
               <input
                 type="email"
                 id="email"
-                className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                placeholder={t("page.contact.email-placeholder")}
+                value={formData.email}
+                onChange={handleInputChange}
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:shadow-sm-light dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                placeholder={t('page.contact.email-placeholder')}
                 required
               />
             </div>
@@ -55,13 +74,15 @@ export default function Contact() {
                 htmlFor="subject"
                 className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
               >
-                {t("page.contact.subject")}
+                {t('page.contact.subject')}
               </label>
               <input
                 type="text"
                 id="subject"
-                className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                placeholder={t("page.contact.subject-placeholder")}
+                value={formData.subject}
+                onChange={handleInputChange}
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:shadow-sm-light dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                placeholder={t('page.contact.subject-placeholder')}
                 required
               />
             </div>
@@ -70,13 +91,15 @@ export default function Contact() {
                 htmlFor="message"
                 className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
               >
-                {t("page.contact.your-message")}
+                {t('page.contact.your-message')}
               </label>
               <textarea
                 id="message"
                 rows={6}
-                className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400"
-                placeholder={t("page.contact.your-message-placeholder")}
+                value={formData.message}
+                onChange={handleInputChange}
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                placeholder={t('page.contact.your-message-placeholder')}
               />
             </div>
             <button
@@ -84,20 +107,12 @@ export default function Contact() {
               className="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-orange-500 to-pink-600 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-orange-200 group-hover:from-red-500 group-hover:to-purple-600 dark:text-white dark:focus:ring-orange-800"
             >
               <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
-                {t("page.contact.send-message")}
+                {t('page.contact.send-message')}
               </span>
             </button>
           </form>
-          <a
-            ref={emailRef}
-            href="mailto:badawii.ab@gmail.com?subject=Mail from My Site"
-            className="hidden"
-          >
-            {" "}
-            mail to
-          </a>
         </div>
       </section>
     </div>
-  );
+  )
 }
