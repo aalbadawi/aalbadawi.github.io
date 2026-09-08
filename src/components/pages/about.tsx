@@ -255,9 +255,9 @@ export default function About() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col py-6 md:flex-row md:py-10">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 pt-20 pb-10 sm:px-6 sm:pt-24 md:flex-row md:items-start md:py-16 md:pt-24 lg:px-8 lg:pt-28">
       {/* Left Section - Profile Card */}
-      <aside className="flex w-full flex-col items-center justify-start px-4 md:w-1/3">
+      <aside className="flex w-full flex-col items-center justify-start pb-6 md:w-1/3 md:pb-0">
         <Card
           {...aboutMe}
           name={t('component.element.name')}
@@ -265,11 +265,11 @@ export default function About() {
         />
       </aside>
 
-      <main className="flex w-full flex-col items-center justify-start p-3 sm:p-4 md:w-2/3">
+      <main className="flex w-full flex-col items-center justify-start p-2 sm:p-4 md:w-2/3">
         <article
           onWheel={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
-          className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-xl backdrop-blur-md dark:border-gray-700/80 dark:bg-gray-900/95 sm:p-8"
+          className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200/90 bg-white/95 p-5 shadow-xl backdrop-blur-md dark:border-gray-700/80 dark:bg-gray-900/95 sm:p-8"
         >
           {/* Navigation Tab Header */}
           <div className="mb-6 flex border-b border-gray-200 pb-2 dark:border-gray-700">
