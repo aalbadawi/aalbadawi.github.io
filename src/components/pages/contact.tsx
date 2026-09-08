@@ -17,7 +17,7 @@ export default function Contact() {
     const { email, subject, message } = formData
 
     // Create mailto link with properly encoded parameters
-    const mailtoLink = `mailto:badawii.ab@gmail.com?subject=${encodeURIComponent(`${email} - ${subject}`)}&body=${encodeURIComponent(message)}`
+    const mailtoLink = `mailto:albadawiamer5@gmail.com?subject=${encodeURIComponent(`${email} - ${subject}`)}&body=${encodeURIComponent(message)}`
     
     // Open mailto link
     window.location.href = mailtoLink

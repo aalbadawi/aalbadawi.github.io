@@ -38,10 +38,10 @@ export function FooterWithSitemap() {
               </div>
             </a>
 
-            <a href="mailto:badawii.ab@gmail.com?subject=Mail from My Site">
+            <a href="mailto:albadawiamer5.ab@gmail.com?subject=Mail from My Site">
               <div className="mb-2 flex items-center font-light duration-700 text-red-600 hover:text-orange-600 dark:text-red-400 dark:hover:text-white">
                 <i className="fas fa-envelope mr-2"></i>
-                <span>Email: badawii.ab@gmail.com</span>
+                <span>Email: albadawiamer5@gmail.com</span>
               </div>
             </a>
 
