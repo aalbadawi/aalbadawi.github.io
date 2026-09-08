@@ -82,8 +82,8 @@ export default function About() {
 
   const skillsList: Skill[] = [
     { name: 'TypeScript', category: 'frontend', level: 'Expert', icon: 'fas fa-file-code' },
-    { name: 'React.js & Next.js 14', category: 'frontend', level: 'Expert', icon: 'fab fa-react' },
-    { name: 'Angular (2-17)', category: 'frontend', level: 'Advanced', icon: 'fab fa-angular' },
+    { name: 'Angular (2-17)', category: 'frontend', level: 'Expert', icon: 'fab fa-angular' },
+    { name: 'React.js', category: 'frontend', level: 'Advanced', icon: 'fab fa-react' },
     { name: 'React Native', category: 'mobile', level: 'Advanced', icon: 'fas fa-mobile-alt' },
     { name: 'Tailwind CSS', category: 'frontend', level: 'Expert', icon: 'fab fa-css3-alt' },
     { name: 'Node.js & Express', category: 'backend', level: 'Advanced', icon: 'fab fa-node-js' },
@@ -110,18 +110,6 @@ export default function About() {
       skills: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Micro-Frontends'],
     },
     {
-      company: 'Wipro Arabia Limited',
-      role: 'Senior Software Engineer',
-      period: '2020 — 2022',
-      location: 'Riyadh, Saudi Arabia',
-      badgeColor: 'from-orange-500 to-red-500',
-      description: [
-        'Developed robust enterprise dashboards and automated customer operations for enterprise clients.',
-        'Engineered responsive, accessible front-end interfaces aligned with strict design systems.',
-      ],
-      skills: ['Angular', 'TypeScript', 'Node.js', 'RxJS', 'CI/CD'],
-    },
-    {
       company: 'Tata Consultancy Services (TCS)',
       role: 'Software Engineer / Frontend Lead',
       period: '2018 — 2020',
@@ -134,22 +122,84 @@ export default function About() {
       skills: ['React', 'JavaScript (ES6+)', 'Bootstrap 5', 'Jest'],
     },
     {
-      company: 'Zain Group (KSA & Jordan)',
-      role: 'Software Development Engineer',
-      period: '2015 — 2018',
-      location: 'Amman, Jordan & KSA',
+      company: 'Wipro Arabia Limited',
+      role: 'Senior Software Engineer',
+      period: '2020 — 2022',
+      location: 'Riyadh, Saudi Arabia',
+      badgeColor: 'from-orange-500 to-red-500',
+      description: [
+        'Developed robust enterprise dashboards and automated customer operations for enterprise clients.',
+        'Engineered responsive, accessible front-end interfaces aligned with strict design systems.',
+      ],
+      skills: ['Angular', 'TypeScript', 'Node.js', 'RxJS', 'CI/CD'],
+    },
+    {
+      company: 'Zain KSA',
+      role: 'Trainee Drive Test Engineer',
+      period: '2017 — 2018',
+      location: 'Riyadh, Saudi Arabia',
       badgeColor: 'from-emerald-500 to-teal-600',
       description: [
-        'Developed self-service customer portals, billing integration modules, and internal support tools.',
-        'Optimized SQL database query performance and streamlined data retrieval workflows.',
+        'Conducted cellular network drive tests and RF field measurements across designated clusters to evaluate network quality and signal coverage.',
+        'Collected and analyzed key RF performance indicators (RSRP, RSRQ, SINR, handover rates, and call drops) using specialized drive-testing tools.',
+        'Collaborated with RF engineering and network optimization teams to identify coverage holes and optimize overall Quality of Service (QoS).',
       ],
-      skills: ['JavaScript', 'Web Services', 'SQL', 'UI/UX Design'],
+      skills: ['Drive Testing', 'RF Optimization', 'Cellular Networks (2G/3G/4G)', 'KPI Analysis', 'Quality of Service (QoS)'],
+    },
+    {
+      company: 'Zain Jordan',
+      role: 'Direct Sales & Youth Segment Representative',
+      period: '2015 — 2017',
+      location: 'Amman, Jordan',
+      badgeColor: 'from-green-500 to-emerald-600',
+      description: [
+        'Spearheaded direct sales and marketing campaigns across Jordanian universities targeting youth demographics for specialized student telecom packages.',
+        'Organized on-campus promotional activations and drove high package subscription and customer acquisition rates.',
+      ],
+      skills: ['Direct Sales', 'Youth Packages', 'Customer Outreach', 'Campus Campaigns'],
     },
   ]
 
   const filteredSkills = selectedCategory === 'all'
     ? skillsList
     : skillsList.filter((s) => s.category === selectedCategory)
+
+  // Refs for scroll isolation from ReactPageScroller
+  const timelineScrollRef = useRef<HTMLDivElement>(null)
+  const skillsScrollRef = useRef<HTMLDivElement>(null)
+
+  // Prevent scroll propagation to ReactPageScroller
+  useEffect(() => {
+    const handleNativeWheel = (e: WheelEvent) => {
+      e.stopPropagation()
+    }
+    const handleNativeTouch = (e: TouchEvent) => {
+      e.stopPropagation()
+    }
+
+    const tEl = timelineScrollRef.current
+    const sEl = skillsScrollRef.current
+
+    if (tEl) {
+      tEl.addEventListener('wheel', handleNativeWheel, { passive: true })
+      tEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
+    }
+    if (sEl) {
+      sEl.addEventListener('wheel', handleNativeWheel, { passive: true })
+      sEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
+    }
+
+    return () => {
+      if (tEl) {
+        tEl.removeEventListener('wheel', handleNativeWheel)
+        tEl.removeEventListener('touchmove', handleNativeTouch)
+      }
+      if (sEl) {
+        sEl.removeEventListener('wheel', handleNativeWheel)
+        sEl.removeEventListener('touchmove', handleNativeTouch)
+      }
+    }
+  }, [activeTab])
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -215,46 +265,49 @@ export default function About() {
         />
       </aside>
 
-      {/* Right Section - Main Interactive Digital CV Content */}
       <main className="flex w-full flex-col items-center justify-start p-3 sm:p-4 md:w-2/3">
-        <article className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-xl backdrop-blur-md dark:border-gray-700/80 dark:bg-gray-900/95 sm:p-8">
+        <article
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+          className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200 bg-white/95 p-5 shadow-xl backdrop-blur-md dark:border-gray-700/80 dark:bg-gray-900/95 sm:p-8"
+        >
           {/* Navigation Tab Header */}
           <div className="mb-6 flex border-b border-gray-200 pb-2 dark:border-gray-700">
             <nav className="flex space-x-2 sm:space-x-4" aria-label="Tabs">
               <button
                 onClick={() => setActiveTab('overview')}
-                className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-all sm:text-sm ${
+                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
                   activeTab === 'overview'
-                    ? 'bg-orange-500 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
                 }`}
               >
                 <i className="fas fa-user" />
-                <span>Overview</span>
+                <span>{t('page.about.tab.overview') || 'Overview'}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('skills')}
-                className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-all sm:text-sm ${
+                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
                   activeTab === 'skills'
-                    ? 'bg-orange-500 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
                 }`}
               >
                 <i className="fas fa-laptop-code" />
-                <span>Skills Matrix</span>
+                <span>{t('page.about.tab.skills') || 'Skills Matrix'}</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('experience')}
-                className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-all sm:text-sm ${
+                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
                   activeTab === 'experience'
-                    ? 'bg-orange-500 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
                 }`}
               >
                 <i className="fas fa-briefcase" />
-                <span>Experience</span>
+                <span>{t('page.about.tab.experience') || 'Experience'}</span>
               </button>
             </nav>
           </div>
@@ -311,7 +364,7 @@ export default function About() {
               {/* Core Competency Highlights */}
               <div className="mt-6 rounded-xl border border-orange-100 bg-gradient-to-r from-orange-50/60 to-pink-50/40 p-4 dark:border-gray-800 dark:from-gray-800/40 dark:to-gray-800/20">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                  Core Competencies
+                  {t('page.about.coreCompetencies') || 'Core Competencies'}
                 </h3>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {[
@@ -381,22 +434,22 @@ export default function About() {
             <section className="animate-fade-in space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                  Technical Expertise & Stack
+                  {t('page.about.tab.skills') || 'Technical Expertise & Stack'}
                 </h2>
                 <div className="flex flex-wrap gap-1.5">
                   {[
-                    { id: 'all', label: 'All' },
-                    { id: 'frontend', label: 'Frontend' },
-                    { id: 'mobile', label: 'Mobile' },
-                    { id: 'backend', label: 'Backend' },
-                    { id: 'devops', label: 'Architecture & DevOps' },
+                    { id: 'all', label: t('page.about.skills.all') || 'All' },
+                    { id: 'frontend', label: t('page.about.skills.frontend') || 'Frontend' },
+                    { id: 'mobile', label: t('page.about.skills.mobile') || 'Mobile' },
+                    { id: 'backend', label: t('page.about.skills.backend') || 'Backend' },
+                    { id: 'devops', label: t('page.about.skills.devops') || 'Architecture & DevOps' },
                   ].map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
+                      className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
                         selectedCategory === cat.id
-                          ? 'bg-orange-600 text-white shadow-sm'
+                          ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-sm'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
                       }`}
                     >
@@ -406,86 +459,112 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredSkills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center justify-between rounded-xl border border-gray-200/80 bg-gray-50/60 p-3 shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50/30 hover:shadow dark:border-gray-700/60 dark:bg-gray-800/50 dark:hover:bg-gray-800"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-950/40 dark:text-orange-400">
-                        <i className={skill.icon} />
+              <div
+                ref={skillsScrollRef}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                className="custom-scrollbar max-h-[360px] overflow-y-auto pr-2 sm:max-h-[420px]"
+              >
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {filteredSkills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="flex items-center justify-between rounded-xl border border-gray-200/80 bg-gray-50/60 p-3 shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50/30 hover:shadow dark:border-gray-700/60 dark:bg-gray-800/50 dark:hover:bg-gray-800"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-950/40 dark:text-orange-400">
+                          <i className={skill.icon} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold text-gray-900 dark:text-white">
+                            {skill.name}
+                          </p>
+                          <p className="text-[11px] capitalize text-gray-500 dark:text-gray-400">
+                            {skill.category}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-900 dark:text-white">
-                          {skill.name}
-                        </p>
-                        <p className="text-[11px] capitalize text-gray-500 dark:text-gray-400">
-                          {skill.category}
-                        </p>
-                      </div>
+                      <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
+                        {skill.level}
+                      </span>
                     </div>
-                    <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
-                      {skill.level}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
           )}
 
           {/* TAB 3: CAREER EXPERIENCE TIMELINE */}
           {activeTab === 'experience' && (
-            <section className="animate-fade-in space-y-6">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                Career History & Impact
-              </h2>
+            <section className="animate-fade-in space-y-4">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-2 dark:border-gray-800">
+                <div>
+                  <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+                    {t('page.about.tab.experience') || 'Career History & Impact'}
+                  </h2>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    5 Progressive Roles • Scrollable Timeline
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1 text-xs font-semibold text-orange-600 dark:text-orange-400">
+                  <i className="fas fa-arrows-alt-v text-[10px]" />
+                  <span>Scrollable</span>
+                </span>
+              </div>
 
-              <div className="relative border-l-2 border-orange-200 pl-4 sm:pl-6 dark:border-orange-900/50">
-                {experienceList.map((exp) => (
-                  <div key={exp.company} className="relative mb-8 last:mb-2">
-                    {/* Pulsing indicator node */}
-                    <span className="absolute -left-[25px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100 sm:-left-[33px] dark:ring-gray-900">
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                    </span>
+              {/* Scrollable Timeline Container */}
+              <div
+                ref={timelineScrollRef}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                className="custom-scrollbar max-h-[360px] overflow-y-auto px-1 py-1 pr-3 sm:max-h-[420px]"
+              >
+                <div className="relative ml-2 border-l-2 border-orange-200 pl-4 sm:ml-3 sm:pl-6 dark:border-orange-900/50">
+                  {experienceList.map((exp) => (
+                    <div key={exp.company} className="relative mb-6 last:mb-2">
+                      {/* Pulsing indicator node */}
+                      <span className="absolute -left-[25px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100 sm:-left-[33px] dark:ring-gray-900">
+                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      </span>
 
-                    <div className="rounded-xl border border-gray-200/80 bg-gray-50/60 p-4 shadow-sm dark:border-gray-700/60 dark:bg-gray-800/40">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div>
-                          <h3 className="text-sm font-bold text-gray-900 dark:text-white sm:text-base">
-                            {exp.role}
-                          </h3>
-                          <p className="text-xs font-semibold text-orange-600 dark:text-orange-400">
-                            {exp.company}
-                          </p>
+                      <div className="rounded-xl border border-gray-200/80 bg-gray-50/60 p-4 shadow-sm transition-all hover:border-orange-200 hover:shadow-md dark:border-gray-700/60 dark:bg-gray-800/40 dark:hover:border-gray-600">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div>
+                            <h3 className="text-sm font-bold text-gray-900 dark:text-white sm:text-base">
+                              {exp.role}
+                            </h3>
+                            <p className="text-xs font-semibold text-orange-600 dark:text-orange-400">
+                              {exp.company}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <span className="inline-block rounded-full bg-gray-200/80 px-2.5 py-0.5 text-[11px] font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+                              {exp.period}
+                            </span>
+                            <p className="text-[11px] text-gray-400">{exp.location}</p>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <span className="inline-block rounded-full bg-gray-200/80 px-2.5 py-0.5 text-[11px] font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-300">
-                            {exp.period}
-                          </span>
-                          <p className="text-[11px] text-gray-400">{exp.location}</p>
+
+                        <ul className="mt-3 list-inside list-disc space-y-1 text-xs text-gray-600 dark:text-gray-300">
+                          {exp.description.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {exp.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded bg-orange-100/70 px-2 py-0.5 text-[10px] font-medium text-orange-800 dark:bg-orange-950/40 dark:text-orange-300"
+                            >
+                              {skill}
+                            </span>
+                          ))}
                         </div>
-                      </div>
-
-                      <ul className="mt-3 list-inside list-disc space-y-1 text-xs text-gray-600 dark:text-gray-300">
-                        {exp.description.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-
-                      <div className="mt-3 flex flex-wrap gap-1.5">
-                        {exp.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="rounded bg-orange-100/70 px-2 py-0.5 text-[10px] font-medium text-orange-800 dark:bg-orange-950/40 dark:text-orange-300"
-                          >
-                            {skill}
-                          </span>
-                        ))}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
           )}
