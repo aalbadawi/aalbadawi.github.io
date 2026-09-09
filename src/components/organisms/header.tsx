@@ -1,402 +1,132 @@
 const Header = () => {
+  const keywords = [
+    // Primary Identity & Roles
+    'Amer Albadawi',
+    'عامر البدوي',
+    'Senior Software Engineer',
+    'مهندس برمجيات أول',
+    'Full Stack Engineer',
+    'Full-Stack Developer',
+    'Frontend Lead',
+    'Mobile Application Developer',
+    'Software Architect',
+    // Core Tech Stack
+    'React',
+    'React Native',
+    'Next.js',
+    'Angular',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'Tailwind CSS',
+    'RxJS',
+    'Redux',
+    'Signals',
+    'Micro-Frontends',
+    'REST APIs',
+    'GraphQL',
+    'SQL',
+    'PostgreSQL',
+    'Git',
+    'CI/CD',
+    'Jest',
+    // Domains & Companies
+    'Telecom Software Development',
+    'STC',
+    'Saudi Telecom Company',
+    'Jawwy',
+    'WFMS ALMONJEZ',
+    'Wipro',
+    'Tata Consultancy Services',
+    'Zain',
+    // Location & Portfolio
+    'Riyadh Saudi Arabia',
+    'الرياض المملكة العربية السعودية',
+    'Portfolio',
+    'Software Engineer Resume',
+    'Digital Resume',
+    'CV',
+    'Web Development Saudi Arabia',
+  ].join(', ')
+
   return (
     <>
-      <title>Digital Resume; Amer Albadawi</title>
+      <title>Amer Albadawi | Senior Software Engineer</title>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta charSet="utf-8" />
-      <link rel="canonical" href="http://aalbadawi.github.io" />
-      <link href="http://aalbadawi.github.io" />
-
-      <link href="https://aalbadawi.github.io/images/amer-pic.png" />
       <meta
-        property="image:alt_text"
-        content="Amer Albadawi's logo in white background"
+        name="description"
+        content="Amer Albadawi — Senior Software Engineer specializing in scalable full-stack architectures, modern frontend systems (React, Next.js, Angular, React Native), and high-performance digital solutions in Riyadh, Saudi Arabia."
       />
-      <meta property="og:site_name" content="Amer Albadawi" />
-
-      <meta property="og:url" content="https://aalbadawi.github.io/" />
-      <meta
-        property="og:title"
-        content="Tech Software &amp; Development | Amer"
-      />
-      <meta
-        property="og:title"
-        content="Engineer  Software &amp; Development | Amer Albadawi"
-      />
-
-      <meta
-        property="og:image"
-        content="https://aalbadawi.github.io/images/amer-pic.png"
-      />
-      <meta
-        property="og:image:url"
-        content="https://aalbadawi.github.io/images/amer.png"
-      />
-      <meta
-        property="og:image:secure_url"
-        content="https://aalbadawi.github.io/images/amer.png"
-      />
-      <meta
-        property="og:image:alt"
-        content="Amer logo in gray on white background"
-      />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@ameralbadawi" />
-
-      <meta name="twitter:creator" content="@ameralbadawi" />
-      <meta name="twitter:url" content="https://aalbadawi.github.io/" />
-      <meta name="twitter:image:alt" content="Amer Albadawi logo" />
-      <meta
-        name="twitter:image"
-        content="https://aalbadawi.github.io/images/amer.png"
-      />
-
-      <meta name="MobileOptimized" content="width" />
-      <meta name="HandheldFriendly" content="true" />
-
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href="https://aalbadawi.github.io/"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-us"
-        href="https://aalbadawi.github.io"
-      />
-      <link rel="alternate" hrefLang="en" href="https://aalbadawi.github.io" />
-      <link
-        rel="alternate"
-        hrefLang="fi-fi"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="fr-fr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="de-de"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="el-gr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="zh-hk"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-hk"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="hu-hu"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="is-is"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-ie"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="it-it"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="ja-jp"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-jo"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="fr-lu"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="de-lu"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="zh-mo"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-mo"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="es-mx"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="nl-nl"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-nz"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="no-no"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-eu"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="pl-pl"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="pt-pt"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-pr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="es-pr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="ar-qa"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-qa"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="ro-ro"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-sg"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="sl-si"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="ko-kr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="es-es"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="sv-se"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="fr-ch"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="de-ch"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="it-ch"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="zh-tw"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-th"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="th-th"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="tr-tr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="ar-ae"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-ae"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-gb"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="he-il"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="hr-hr"
-        href="https://aalbadawi.github.io"
-      />
-      <link
-        rel="alternate"
-        hrefLang="en-my"
-        href="https://aalbadawi.github.io"
-      />
-
-      <link
-        rel="icon"
-        href="/images/logo/ab-logo.png"
-        type="image/vnd.microsoft.icon"
-      />
-
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      {/* <!-- Lets get mobile --> */}
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-      <meta content="True" name="HandheldFriendly" />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content="Amer Albadawi" />
+      <meta name="robots" content="index, follow" />
+      <meta name="theme-color" content="#000000" />
       <meta
         name="viewport"
         content="width=device-width, minimum-scale=1.0, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover"
       />
 
-      {/* <!-- Favicons and Apple Touch Icons --> */}
-      <meta name="theme-color" content="#000000" />
+      <link rel="canonical" href="https://aalbadawi.github.io" />
 
-      <link
-        rel="apple-touch-icon"
-        sizes="57x57"
-        href="/images/logo/ab-logo.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="60x60"
-        href="/images/logo/ab-logo.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="72x72"
-        href="/images/logo/ab-logo.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="76x76"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="114x114"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="120x120"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="144x144"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="152x152"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="196x196"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="160x160"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="96x96"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/images/logo/favicon.ico"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/images/logo/favicon.ico"
-      />
-      <link rel="icon" type="image/x-icon" href="/images/logo/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#5635fa" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Amer Albadawi" />
+      <meta property="og:url" content="https://aalbadawi.github.io/" />
       <meta
-        httpEquiv="origin-trial"
-        data-feature="EME Extension - Policy Check"
-        data-expires="2018-11-26"
-        content="Aob+++752GiUzm1RNSIkM9TINnQDxTlxz02v8hFJK/uGO2hmXnJqH8c/ZpI05b2nLsHDhGO3Ce2zXJUFQmO7jA4AAAB1eyJvcmlnaW4iOiJodHRwczovL25ldGZsaXguY29tOjQ0MyIsImZlYXR1cmUiOiJFbmNyeXB0ZWRNZWRpYUhkY3BQb2xpY3lDaGVjayIsImV4cGlyeSI6MTU0MzI0MzQyNCwiaXNTdWJkb21haW4iOnRydWV91"
+        property="og:title"
+        content="Amer Albadawi | Senior Software Engineer"
       />
+      <meta
+        property="og:description"
+        content="Senior Software Engineer with 9+ years experience in Full-Stack, React, Next.js, Angular, and React Native architectures."
+      />
+      <meta
+        property="og:image"
+        content="https://aalbadawi.github.io/images/amer-pic.png"
+      />
+      <meta
+        property="og:image:alt"
+        content="Amer Albadawi — Senior Software Engineer"
+      />
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@ameralbadawi" />
+      <meta name="twitter:creator" content="@ameralbadawi" />
+      <meta name="twitter:url" content="https://aalbadawi.github.io/" />
+      <meta
+        name="twitter:title"
+        content="Amer Albadawi | Senior Software Engineer"
+      />
+      <meta
+        name="twitter:description"
+        content="Senior Software Engineer with 9+ years experience in Full-Stack, React, Next.js, Angular, and React Native architectures."
+      />
+      <meta
+        name="twitter:image"
+        content="https://aalbadawi.github.io/images/amer-pic.png"
+      />
+      <meta name="twitter:image:alt" content="Amer Albadawi Logo" />
+
+      {/* Mobile & Compatibility */}
+      <meta name="MobileOptimized" content="width" />
+      <meta name="HandheldFriendly" content="true" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+      {/* Language alternates */}
+      <link rel="alternate" hrefLang="x-default" href="https://aalbadawi.github.io/" />
+      <link rel="alternate" hrefLang="en" href="https://aalbadawi.github.io" />
+      <link rel="alternate" hrefLang="ar" href="https://aalbadawi.github.io" />
+
+      {/* Favicons and Apple Touch Icons */}
+      <link rel="icon" href="/images/logo/ab-logo.png" type="image/png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/ab-logo.png" />
+      <meta name="msapplication-TileColor" content="#f97316" />
     </>
   )
 }
 
 export default Header
+

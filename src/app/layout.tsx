@@ -1,58 +1,62 @@
 "use client";
-/* eslint-disable import/no-extraneous-dependencies */
 
 import "./globals.css";
 import "../config/i18next";
 
 import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
-import { usePathname } from "next/navigation";
-import { appWithTranslation, useTranslation } from "next-i18next";
+import { useEffect } from "react";
 import { Client, HydrationProvider } from "react-hydration-provider";
+import { useTranslation } from "react-i18next";
 
-import Footer from "../components/organisms/footer";
 import Nav from "../components/organisms/nav";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 const calSans = LocalFont({
   src: "../../public/fonts/CalSans-SemiBold.ttf",
   variable: "--font-calsans",
+  display: "swap",
 });
 
 const DynamicHeader = dynamic(() => import("../components/organisms/header"));
 
-function RootLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const { i18n } = useTranslation();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const { i18n, t } = useTranslation();
 
-  if (typeof window !== "undefined") {
-    document.body.dir = i18n.dir();
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isArabic = i18n.language?.startsWith("ar");
+      const dir = isArabic ? "rtl" : "ltr";
+      const lang = i18n.language || "en";
+      
+      document.documentElement.dir = dir;
+      document.documentElement.lang = lang;
+      document.body.dir = dir;
+
+      const title = t("page.home.head.title");
+      if (title && title !== "page.home.head.title") {
+        document.title = title;
+      }
+    }
+  }, [i18n.language, t]);
 
   return (
     <html
       lang={i18n.language || "en"}
-      className={[inter.variable, calSans.variable].join(" ")}
+      dir={i18n.language?.startsWith("ar") ? "rtl" : "ltr"}
+      className={calSans.variable}
     >
       <head>
         <DynamicHeader />
       </head>
 
-      <body className="bg-custom-gradient">
-        <h1 className="hidden">Amer Albadawi</h1>
-        <h1 className="hidden">Full stack software engineer</h1>
+      <body className="min-h-screen transition-colors duration-300 antialiased selection:bg-orange-500/20 selection:text-orange-500 font-sans">
+        <h1 className="sr-only">Amer Albadawi — Senior Software Engineer</h1>
         <HydrationProvider>
           <Client>
             <Nav />
-            <div className="flex flex-col ">
+            <main className="flex flex-col">
               {children}
-              {pathname === "/" ? <div /> : <Footer />}
-            </div>
+            </main>
           </Client>
         </HydrationProvider>
       </body>
@@ -60,4 +64,3 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default appWithTranslation<never>(RootLayout);

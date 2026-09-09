@@ -2,23 +2,22 @@
 
 import { useSearchParams } from 'next/navigation'
 import type { RefObject } from 'react'
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import ReactPageScroller from 'react-page-scroller'
 
 import Footer from '../components/organisms/footer'
 import About from '../components/pages/about'
-import Contact from '../components/pages/contact'
 import HomePage from '../components/pages/home-page'
 import Portfolio from '../components/pages/portfolio'
 
 export default function App(): React.JSX.Element {
   const searchParams = useSearchParams()
-  const [currentScroll, setCurrentScroll] = useState<number>(0)
+  const [customPageNumber, setCustomPageNumber] = useState<number | undefined>(undefined)
 
   const bannerRef = useRef<HTMLDivElement>(null)
   const aboutRef = useRef<HTMLDivElement>(null)
   const portfolioRef = useRef<HTMLDivElement>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
+  const footerRef = useRef<HTMLDivElement>(null)
 
   const scrollIntoView = (ref: RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({
@@ -30,12 +29,13 @@ export default function App(): React.JSX.Element {
 
   const getCustomPageNumber = useCallback(() => {
     const navNumber: string = searchParams?.get('nav') || '0'
-    return Number(navNumber > '2' ? 4 : navNumber) || 0
-  }, [searchParams]) // Memoizing based on searchParams
+    const parsed = parseInt(navNumber, 10)
+    return isNaN(parsed) ? 0 : Math.min(Math.max(parsed, 0), 3)
+  }, [searchParams])
 
   useEffect(() => {
     const pageNumber = getCustomPageNumber()
-    setCurrentScroll(pageNumber)
+    setCustomPageNumber(pageNumber)
 
     const navNumber = searchParams?.get('nav')
 
@@ -50,12 +50,38 @@ export default function App(): React.JSX.Element {
         scrollIntoView(portfolioRef)
         break
       case '3':
-        scrollIntoView(contactRef)
+        scrollIntoView(footerRef)
         break
       default:
         break
     }
-  }, [searchParams, getCustomPageNumber]) // Adding getCustomPageNumber to the dependency array
+  }, [searchParams, getCustomPageNumber])
+
+  useEffect(() => {
+    const handleNavEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<number>
+      if (typeof customEvent.detail === 'number') {
+        const page = Math.min(Math.max(customEvent.detail, 0), 3)
+        setCustomPageNumber(page)
+      }
+    }
+
+    window.addEventListener('pageNavClicked', handleNavEvent)
+    return () => {
+      window.removeEventListener('pageNavClicked', handleNavEvent)
+    }
+  }, [])
+
+  const handlePageChange = (page: number) => {
+    // Clear customPageNumber so natural scroll gestures are handled smoothly without fighting scroller state
+    setCustomPageNumber(undefined)
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', `/?nav=${page}`)
+      window.dispatchEvent(
+        new CustomEvent('pageScrolled', { detail: page })
+      )
+    }
+  }
 
   return (
     <>
@@ -69,31 +95,30 @@ export default function App(): React.JSX.Element {
         <div ref={portfolioRef} id="portfolio-main" className="h-full w-screen">
           <Portfolio />
         </div>
-        <div ref={contactRef} id="contact-main" className="h-full w-screen">
-          <Contact />
-        </div>
-
         <div
           id="footer-main"
-          ref={contactRef}
-          className="h-screen w-screen bg-transparent"
+          ref={footerRef}
+          className="w-screen bg-transparent"
         >
           <Footer />
         </div>
       </div>
       <div className="hidden w-screen lg:flex">
         <ReactPageScroller
-          renderAllPagesOnFirstRender={false}
-          customPageNumber={currentScroll}
+          renderAllPagesOnFirstRender={true}
+          animationTimer={750}
+          animationTimerBuffer={350}
+          customPageNumber={customPageNumber}
+          pageOnChange={handlePageChange}
         >
           <HomePage />
           <About />
           <Portfolio />
-          {/* <PortfolioSecondPage /> */}
-          <Contact />
           <Footer />
         </ReactPageScroller>
       </div>
     </>
   )
 }
+
+

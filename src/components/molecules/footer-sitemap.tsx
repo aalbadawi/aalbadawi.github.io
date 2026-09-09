@@ -1,270 +1,188 @@
-"use client";
+'use client'
 
-import { faEye } from "@fortawesome/free-solid-svg-icons"; // Correct import
-import Image from 'next/image';
-
-
-import {
-  faFacebookF,
-  faGithub,
-  faInstagram,
-  faLinkedinIn,
-  faWhatsapp,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import React from "react";
-import { useTranslation } from "react-i18next";
+import Link from 'next/link'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function FooterWithSitemap() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
+
+  const techLinks = [
+    {
+      name: 'TypeScript',
+      url: 'https://www.typescriptlang.org',
+      icon: 'fas fa-file-code',
+      iconColor: 'text-blue-500',
+      hoverColor: 'hover:border-blue-400 hover:text-blue-500',
+    },
+    {
+      name: 'React.js',
+      url: 'https://react.dev',
+      icon: 'fab fa-react',
+      iconColor: 'text-cyan-500',
+      hoverColor: 'hover:border-cyan-400 hover:text-cyan-500',
+    },
+    {
+      name: 'React Native',
+      url: 'https://reactnative.dev',
+      icon: 'fas fa-mobile-alt',
+      iconColor: 'text-sky-500',
+      hoverColor: 'hover:border-sky-400 hover:text-sky-500',
+    },
+    {
+      name: 'Next.js 14',
+      url: 'https://nextjs.org',
+      icon: 'fas fa-cube',
+      iconColor: 'text-gray-900 dark:text-white',
+      hoverColor:
+        'hover:border-gray-400 hover:text-black dark:hover:text-white',
+    },
+    {
+      name: 'Angular',
+      url: 'https://angular.dev',
+      icon: 'fab fa-angular',
+      iconColor: 'text-red-500',
+      hoverColor: 'hover:border-red-400 hover:text-red-500',
+    },
+    {
+      name: 'Node.js',
+      url: 'https://nodejs.org',
+      icon: 'fab fa-node-js',
+      iconColor: 'text-green-500',
+      hoverColor: 'hover:border-green-400 hover:text-green-500',
+    },
+    {
+      name: 'Tailwind CSS',
+      url: 'https://tailwindcss.com',
+      icon: 'fab fa-css3-alt',
+      iconColor: 'text-teal-500',
+      hoverColor: 'hover:border-teal-400 hover:text-teal-500',
+    },
+  ]
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      url: 'https://github.com/aalbadawi',
+      icon: 'fab fa-github',
+      hoverColor: 'hover:border-orange-400 hover:text-orange-500',
+      iconColor: 'text-gray-800 dark:text-gray-200',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/albadawiamer/',
+      icon: 'fab fa-linkedin-in',
+      hoverColor: 'hover:border-blue-400 hover:text-blue-500',
+      iconColor: 'text-blue-500',
+    },
+    {
+      name: 'X (Twitter)',
+      url: 'https://x.com/albadawiamer',
+      icon: 'fab fa-x-twitter',
+      hoverColor:
+        'hover:border-gray-400 hover:text-gray-900 dark:hover:text-white',
+      iconColor: 'text-gray-700 dark:text-gray-300',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://instagram.com/albadawi.amer',
+      icon: 'fab fa-instagram',
+      hoverColor: 'hover:border-pink-400 hover:text-pink-500',
+      iconColor: 'text-pink-500',
+    },
+    {
+      name: 'Facebook',
+      url: 'https://facebook.com/albadawiamer',
+      icon: 'fab fa-facebook-f',
+      hoverColor: 'hover:border-blue-500 hover:text-blue-600',
+      iconColor: 'text-blue-600',
+    },
+  ]
 
   return (
-    <footer className="flex h-full w-full overflow-scroll bg-white lg:items-center dark:bg-zinc-800">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="items-center md:flex md:justify-between">
-          <div className="mb-6 flex flex-col md:mb-0">
-            <Link href="/?nav=0">
-              <span className="self-center whitespace-nowrap text-2xl font-semibold text-orange-600 duration-1000 hover:text-orange-600 dark:hover:text-white">
-                {t('footer.element.title')}
+    <footer className="w-full border-t border-slate-200/60 bg-white/60 py-5 backdrop-blur-xl dark:border-white/5 dark:bg-[#0b0f19]/70 sm:py-6">
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-10 items-start">
+          {/* Col 1: Brand & Direct Contact */}
+          <div className="space-y-2">
+            <Link href="/?nav=0" className="inline-block group">
+              <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
+                {t('footer.element.title') || 'Amer Albadawi'}
               </span>
             </Link>
+            <p className="text-[11px] font-semibold text-orange-600 dark:text-orange-400">
+              {t('footer.element.role') || 'Senior Software Engineer'}
+            </p>
 
-            <a href="tel:+966554400968">
-              <div className="mt-4 mb-1 flex items-center font-light duration-700 text-sky-400 hover:text-orange-600 dark:text-sky-400 dark:hover:text-white">
-                <i className="fas fa-phone-alt mr-2"></i>
-                <span>Tel: +966 554400968</span>
-              </div>
-            </a>
+            <div className="space-y-1.5 pt-1 text-[11px]">
+              <a
+                href="mailto:albadawiamer5@gmail.com"
+                className="flex items-center gap-2 text-slate-600 transition-colors hover:text-orange-500 dark:text-slate-400 dark:hover:text-orange-400"
+              >
+                <div className="flex h-5 w-5 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 dark:bg-orange-500/15">
+                  <i className="fas fa-envelope text-[10px]" />
+                </div>
+                <span>albadawiamer5@gmail.com</span>
+              </a>
 
-            <a href="mailto:albadawiamer5.ab@gmail.com?subject=Mail from My Site">
-              <div className="mb-2 flex items-center font-light duration-700 text-red-600 hover:text-orange-600 dark:text-red-400 dark:hover:text-white">
-                <i className="fas fa-envelope mr-2"></i>
-                <span>Email: albadawiamer5@gmail.com</span>
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                <div className="flex h-5 w-5 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 dark:bg-orange-500/15">
+                  <i className="fas fa-map-marker-alt text-[10px]" />
+                </div>
+                <span>
+                  {t('footer.element.address')}, {t('footer.element.address-2')}
+                </span>
               </div>
-            </a>
-
-            <Link
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://maps.app.goo.gl/kC9K6bN8YhawZdEU9"
-            >
-              <div className="my-5 mb-1 flex flex-col font-light text-gray-900 duration-700 hover:text-orange-600 dark:text-stone-100 dark:hover:text-white">
-                <span className="mb-1">{t('footer.element.address')}</span>
-                <span className="md:flex">{t('footer.element.address-2')}</span>
-              </div>
-            </Link>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
-            <div>
-              <h2 className="m-[-1px] mb-5 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t('footer.element.col-1-title')}
-              </h2>
-              <ul className="font-light text-gray-500 dark:text-gray-400">
-                <li className="mb-4">
-                  <Link
-                    href="/?nav=1"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-1-1')}
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    href="/?nav=2"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-1-2')}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/?nav=4"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-1-5')}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="m-[-1px] mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t('footer.element.col-2-title')}
-              </h2>
-              <ul className="font-light text-gray-500 dark:text-gray-400">
-                <li className="mb-4">
-                  <a
-                    href="https://github.com/aalbadawi"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-2-1')}
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="https://linkedin.com/in/albadawiamer/"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-2-2')}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://facebook.com/albadawiamer"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-2-3')}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="m-[-1px] mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                {t('footer.element.col-3-title')}
-              </h2>
-              <ul className="font-light text-gray-500 dark:text-gray-400">
-                <li className="mb-4">
-                  <a
-                    href="https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-3-1')}
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a
-                    href="https://react.dev/learn"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-3-2')}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://nextjs.org/blog/next-14"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.col-3-3')}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://angular.dev"
-                    target="_blank"
-                    className="text-gray-500 duration-700 hover:text-orange-600 dark:hover:text-orange-600"
-                  >
-                    {t('footer.element.angularLink')}
-                  </a>
-                </li>
-              </ul>
+          {/* Col 2: Key Technologies as Icon Badges */}
+          <div className="sm:text-right">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+              {t('footer.element.col-3-title') || 'Key Technologies'}
+            </h3>
+            <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+              {t('footer.element.col-3-subtitle') || 'Core frameworks & technical stack'}
+            </p>
+            <div className="mt-2.5 flex flex-wrap gap-2 sm:justify-end">
+              {techLinks.map((tech) => (
+                <a
+                  key={tech.name}
+                  href={tech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex h-8 w-8 items-center justify-center rounded-xl border border-slate-200/80 bg-white/90 text-sm shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${tech.hoverColor} dark:border-slate-800 dark:bg-slate-900/90`}
+                  aria-label={tech.name}
+                  title={tech.name}
+                >
+                  <i className={`${tech.icon} ${tech.iconColor}`} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
+        {/* Bottom Bar: Copyright & Social Media Icons */}
+        <div className="mt-5 flex flex-col-reverse items-center justify-between gap-3 border-t border-slate-200/50 pt-4 sm:flex-row dark:border-white/5">
+          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            © {new Date().getFullYear()} {t('footer.element.copyrights')}
+          </p>
 
-        <div className="flex flex-col-reverse items-center sm:flex sm:items-center sm:justify-between md:flex md:flex-row md:items-start">
-          <span className="hover:text-orange-600 mb-4 text-sm text-stone-400 sm:text-center md:mb-0 dark:text-orange-600 dark:hover:text-white">
-            {new Date().getFullYear()} {t('footer.element.copyrights')}
-          </span>
-
-          <div className="mt-8 flex flex-row items-center sm:mt-0 sm:flex-row sm:items-start sm:justify-center">
-            <a
-              href="https://www.facebook.com/albadawiamer"
-              target="_blank"
-              className="text-blue-800 duration-700 hover:text-orange-600 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="mb-10 size-12 md:mb-0 md:size-5"
-                icon={faFacebookF}
-              />
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a
-              href="https://wa.me/966554400968"
-              target="_blank"
-              className="text-green-600 duration-700 hover:text-orange-600 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="ms-5 mb-10 size-12 md:mb-0 md:size-5"
-                icon={faWhatsapp}
-              />
-              <span className="sr-only">WhatsApp</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/albadawiamer/"
-              target="_blank"
-              className="ms-5 text-blue-600 duration-700 hover:text-orange-600 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="mb-10 size-12 md:mb-0 md:size-5"
-                icon={faLinkedinIn}
-              />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            <a
-              href="https://x.com/albadawiamer"
-              target="_blank"
-              className="ms-5 text-black duration-700 hover:text-orange-600 dark:text-zinc-400 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="mb-10 size-12 md:mb-0 md:size-5"
-                icon={faXTwitter}
-              />
-              <span className="sr-only">X Twitter</span>
-            </a>
-            <a
-              href="https://instagram.com/albadawi.amer"
-              target="_blank"
-              className="ms-5 text-brown-900 duration-700 text-purple-500 hover:text-orange-600 dark:text-red-800 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="mb-10 size-12 md:mb-0 md:size-5"
-                icon={faInstagram}
-              />
-              <span className="sr-only">Instagram</span>
-            </a>
-            <a
-              href="https://github.com/aalbadawi"
-              target="_blank"
-              className="ms-5 text-black duration-700 hover:text-orange-600 dark:hover:text-white"
-            >
-              <FontAwesomeIcon
-                className="mb-10 size-12 md:mb-0 md:size-5"
-                icon={faGithub}
-              />
-              <span className="sr-only">GitHub</span>
-            </a>
+          <div className="flex flex-wrap items-center gap-2">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex h-8 w-8 items-center justify-center rounded-xl border border-slate-200/80 bg-white/90 text-xs shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${social.hoverColor} dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-200`}
+                aria-label={social.name}
+                title={social.name}
+              >
+                <i className={`${social.icon} ${social.iconColor}`} />
+              </a>
+            ))}
           </div>
-        </div>
-
-        {/* Updated Counter */}
-        <div className="flex flex-col items-start mt-5">
-          <FontAwesomeIcon icon={faEye} className="text-sky-600 dark:text-sky-300 mb-2" />
-          <a
-            href="https://www.hitwebcounter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="https://hitwebcounter.com/counter/counter.php?page=18146595&style=0010&nbdigits=5&type=page&initCount=0"
-              alt="Web counter widget"
-              title="Counter Widget"
-              width={500} // Add a reasonable width
-              height={100} // Add a reasonable height
-              style={{ border: '2px solid #000' }}
-            />
-          </a>
         </div>
       </div>
     </footer>

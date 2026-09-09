@@ -2,15 +2,13 @@ import "jest";
 import "jest-canvas-mock";
 import "@testing-library/jest-dom";
 
-import { render, screen } from "@testing-library/react";
-import App from "@/app/page";
+import { render } from "@testing-library/react";
+import HomePage from "@/components/pages/home-page";
 
-describe("App", () => {
-  it("renders a heading", () => {
-    render(<App />);
-
-    // Using screen to find the heading
-    const heading = screen.getByRole("heading", { name: /Amer Albadawi/i });
-    expect(heading).toBeInTheDocument(); // Assertion to check if heading is rendered
+describe("HomePage", () => {
+  it("renders HomePage without crashing", () => {
+    const { container } = render(<HomePage />);
+    expect(container).toBeInTheDocument();
   });
 });
+

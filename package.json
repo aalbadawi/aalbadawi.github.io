@@ -9,7 +9,7 @@
     "lint:fix": "next lint --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",

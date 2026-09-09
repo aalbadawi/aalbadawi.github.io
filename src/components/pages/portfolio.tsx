@@ -17,18 +17,24 @@ interface Company {
 }
 
 const Portfolio = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const companies: Company[] = [
     {
       id: 'stc',
-      name: 'STC (Saudi Telecom Company)',
+      name: 'STC',
       role: 'Senior Software Engineer',
       period: '2022 — Present',
       link: 'https://www.stc.com.sa',
       imageSrc: '/images/companies/stc-logo.png',
       alt: 'STC Logo',
-      tech: ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS', 'Micro-Frontends'],
+      tech: [
+        'Next.js 14',
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'Micro-Frontends',
+      ],
       highlights: [
         'Architected and delivered high-performance web platforms and digital services for millions of telecom subscribers.',
         'Championed micro-frontends and state management optimization, enhancing load speed by over 40%.',
@@ -66,12 +72,18 @@ const Portfolio = () => {
     {
       id: 'zain-ksa',
       name: 'Zain KSA',
-      role: 'Trainee Drive Test Engineer',
-      period: '2017 — 2018',
+      role: 'Engineering Trainee (Graduation Project)',
+      period: '2015',
       link: 'https://www.sa.zain.com',
       imageSrc: '/images/companies/zain-ksa-logo.jpeg',
       alt: 'Zain KSA Logo',
-      tech: ['Drive Testing', 'RF Field Measurements', 'Cellular Networks (2G/3G/4G)', 'KPI Analysis', 'QoS Optimization'],
+      tech: [
+        'Drive Testing',
+        'RF Field Measurements',
+        'Cellular Networks (2G/3G/4G)',
+        'KPI Analysis',
+        'QoS Optimization',
+      ],
       highlights: [
         'Conducted cellular network drive tests and RF field measurements across Riyadh clusters to assess coverage, handover, and signal quality.',
         'Logged and analyzed cellular KPIs (RSRP, RSRQ, SINR, Call Drops) using specialized test equipment and analysis software.',
@@ -82,11 +94,16 @@ const Portfolio = () => {
       id: 'zain-jordan',
       name: 'Zain Jordan',
       role: 'Direct Sales & Youth Segment Representative',
-      period: '2015 — 2017',
+      period: '2010 — 2011',
       link: 'https://www.jo.zain.com',
       imageSrc: '/images/companies/zain-logo.png',
       alt: 'Zain Jordan Logo',
-      tech: ['Youth Telecom Packages', 'Direct Sales', 'University Campaigns', 'Customer Acquisition'],
+      tech: [
+        'Youth Telecom Packages',
+        'Direct Sales',
+        'University Campaigns',
+        'Customer Acquisition',
+      ],
       highlights: [
         'Spearheaded direct sales campaigns across Jordanian universities targeting the youth demographic with specialized student packages.',
         'Conducted on-campus promotional drives and student community outreach to drive youth package adoption.',
@@ -97,44 +114,48 @@ const Portfolio = () => {
 
   const handleCompanyClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    company: Company
+    company: Company,
   ) => {
     e.preventDefault()
+
+    const isArabic = Boolean(i18n.language?.startsWith('ar'))
+    const textAlign = isArabic ? 'right' : 'left'
+    const paddingStyle = isArabic ? 'padding-right:18px;padding-left:0;' : 'padding-left:18px;padding-right:0;'
 
     const techChipsHtml = company.tech
       .map(
         (tech) =>
-          `<span style="display:inline-block;background-color:#fff7ed;color:#c2410c;border:1px solid #ffedd5;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;margin:2px;">${tech}</span>`
+          `<span style="display:inline-block;background-color:#fff7ed;color:#c2410c;border:1px solid #ffedd5;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;margin:2px;">${tech}</span>`,
       )
       .join('')
 
     const highlightsHtml = company.highlights
       .map(
         (h) =>
-          `<li style="text-align:left;font-size:12px;color:#4b5563;margin-bottom:6px;line-height:1.5;">${h}</li>`
+          `<li style="text-align:${textAlign};font-size:12px;color:#4b5563;margin-bottom:6px;line-height:1.5;">${h}</li>`,
       )
       .join('')
 
     Swal.fire({
       title: `<span class="text-xl font-bold text-gray-900">${company.name}</span>`,
       html: `
-        <div style="padding: 4px 8px;">
-          <p style="font-size:13px;font-weight:600;color:#ea580c;margin-bottom:4px;">${company.role} <span style="font-weight:400;color:#9ca3af;">(${company.period})</span></p>
-          <div style="margin:12px 0 16px 0;">
+        <div style="padding: 4px 8px; text-align:${textAlign}; direction:${isArabic ? 'rtl' : 'ltr'};">
+          <p style="font-size:13px;font-weight:600;color:#ea580c;margin-bottom:4px;text-align:${textAlign};">${company.role} <span style="font-weight:400;color:#9ca3af;">(${company.period})</span></p>
+          <div style="margin:12px 0 16px 0; text-align:${textAlign};">
             ${techChipsHtml}
           </div>
-          <ul style="margin:0;padding-left:18px;list-style-type:disc;">
+          <ul style="margin:0;${paddingStyle}list-style-type:disc;text-align:${textAlign};">
             ${highlightsHtml}
           </ul>
         </div>
       `,
       showCancelButton: true,
-      confirmButtonText: 'Visit Website ↗',
-      cancelButtonText: 'Close',
+      confirmButtonText: t('page.portfolio.visit') || 'Visit Website ↗',
+      cancelButtonText: t('page.portfolio.close') || 'Close',
       customClass: {
         popup: 'rounded-2xl',
         confirmButton:
-          'bg-gradient-to-r from-orange-500 to-pink-600 text-white px-6 py-2.5 rounded-xl font-medium shadow hover:shadow-lg transition-all',
+          'bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium shadow hover:shadow-lg transition-all',
         cancelButton:
           'bg-gray-100 text-gray-700 px-6 py-2.5 rounded-xl font-medium hover:bg-gray-200 transition-all',
         actions: 'flex justify-center gap-3 mt-6',
@@ -150,15 +171,15 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50 px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950">
+    <div className="flex min-h-screen w-full flex-col justify-center px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8">
       {/* Header */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="inline-block bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
             {t('page.Portfolio.title')}
           </h2>
-          <div className="mx-auto mt-3 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-pink-500" />
-          <p className="mx-auto mt-3 max-w-2xl text-xs text-gray-500 sm:text-sm dark:text-gray-400">
+          <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-orange-500" />
+          <p className="mx-auto mt-3 max-w-2xl text-xs text-slate-600 sm:text-sm dark:text-slate-300">
             {t('page.Portfolio.subtitle') ||
               'Leading enterprises and telecommunication giants I have contributed to and delivered key software solutions for.'}
           </p>
@@ -166,27 +187,20 @@ const Portfolio = () => {
 
         {/* Companies Grid */}
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 lg:grid-cols-5">
-          {companies.map((company, index) => (
-            <div
-              key={company.id}
-              className="group animate-fade-in"
-              style={{ animationDelay: `${index * 80}ms` }}
-            >
+          {companies.map((company) => (
+            <div key={company.id}>
               <a
                 href={company.link}
                 onClick={(e) => handleCompanyClick(e, company)}
                 aria-label={`View contributions for ${company.name}`}
-                className="relative flex h-full flex-col items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:border-gray-800 dark:bg-gray-800/80 dark:hover:border-orange-500/50"
+                className="group relative flex h-full flex-col items-center justify-between rounded-3xl border border-slate-200/90 bg-white/85 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-orange-400 hover:shadow-xl dark:border-white/10 dark:bg-[#0f1422]/85 dark:hover:border-orange-400"
               >
-                {/* Gradient Accent on Hover */}
-                <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-orange-50/80 via-pink-50/40 to-purple-50/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-orange-950/20 dark:via-pink-950/10 dark:to-purple-950/20" />
-
                 {/* Logo Container with Fixed Aspect Ratio & Contain */}
-                <div className="relative flex h-28 w-full items-center justify-center p-2 sm:h-32">
+                <div className="relative flex h-24 w-full items-center justify-center rounded-2xl bg-slate-50/80 p-2 sm:h-28 dark:bg-zinc-800/40">
                   <Image
                     width={180}
                     height={100}
-                    className="max-h-20 w-auto max-w-[85%] object-contain filter transition-all duration-300 group-hover:scale-105"
+                    className="max-h-16 w-auto max-w-[85%] object-contain filter transition-transform duration-200 group-hover:scale-105"
                     src={company.imageSrc}
                     alt={company.alt}
                     loading="lazy"
@@ -194,13 +208,13 @@ const Portfolio = () => {
                 </div>
 
                 {/* Company Name & Details Indicator */}
-                <div className="mt-3 w-full text-center">
-                  <h3 className="line-clamp-1 text-xs font-semibold text-gray-800 transition-colors group-hover:text-orange-600 dark:text-gray-200 dark:group-hover:text-orange-400 sm:text-sm">
+                <div className="mt-4 w-full text-center">
+                  <h3 className="line-clamp-1 text-xs font-bold text-slate-900 transition-colors group-hover:text-orange-600 dark:text-slate-100 dark:group-hover:text-orange-400 sm:text-sm">
                     {company.name}
                   </h3>
-                  <div className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-orange-600 opacity-0 transition-all duration-300 group-hover:opacity-100 dark:text-orange-400">
-                    <span>View Role</span>
-                    <i className="fas fa-info-circle text-[10px]" />
+                  <div className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-orange-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-orange-400">
+                    <span>{t('page.Portfolio.viewRole') || 'View Role'}</span>
+                    <i className="fas fa-chevron-right text-[9px]" />
                   </div>
                 </div>
               </a>

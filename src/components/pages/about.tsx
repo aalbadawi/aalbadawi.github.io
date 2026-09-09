@@ -34,20 +34,10 @@ interface Experience {
 
 export default function About() {
   const { t } = useTranslation()
-  const [activeTab, setActiveTab] = useState<'overview' | 'skills' | 'experience'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'skills' | 'experience' | 'education'>('overview')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [isDownloading, setIsDownloading] = useState(false)
   const [downloaded, setDownloaded] = useState(false)
-
-  // Refs for scroll animations
-  const headerRef = useRef<HTMLElement>(null)
-  const statsRef = useRef<HTMLDListElement>(null)
-  const buttonRef = useRef<HTMLElement>(null)
-
-  // Visibility states
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
-  const [isStatsVisible, setIsStatsVisible] = useState(false)
-  const [isButtonVisible, setIsButtonVisible] = useState(false)
 
   const stats: StatItem[] = [
     {
@@ -60,15 +50,15 @@ export default function About() {
     {
       id: 'experience-years',
       value: '9+ Yrs',
-      label: t('page.about.countries') || 'Experience',
-      color: 'text-pink-500',
+      label: t('page.about.experience-years') || 'Years of Experience',
+      color: 'text-blue-500',
       icon: 'fas fa-calendar-alt',
     },
     {
       id: 'projects',
       value: '15+',
       label: t('page.about.projects-contributed'),
-      color: 'text-purple-500',
+      color: 'text-orange-500',
       icon: 'fas fa-project-diagram',
     },
     {
@@ -82,81 +72,105 @@ export default function About() {
 
   const skillsList: Skill[] = [
     { name: 'TypeScript', category: 'frontend', level: 'Expert', icon: 'fas fa-file-code' },
-    { name: 'Angular (2-17)', category: 'frontend', level: 'Expert', icon: 'fab fa-angular' },
-    { name: 'React.js', category: 'frontend', level: 'Advanced', icon: 'fab fa-react' },
+    { name: 'React & Next.js', category: 'frontend', level: 'Expert', icon: 'fab fa-react' },
+    { name: 'Angular', category: 'frontend', level: 'Expert', icon: 'fab fa-angular' },
     { name: 'React Native', category: 'mobile', level: 'Advanced', icon: 'fas fa-mobile-alt' },
-    { name: 'Tailwind CSS', category: 'frontend', level: 'Expert', icon: 'fab fa-css3-alt' },
+    { name: 'Tailwind CSS & UI', category: 'frontend', level: 'Expert', icon: 'fab fa-css3-alt' },
+    { name: 'State Management (Signals/RxJS/Redux)', category: 'frontend', level: 'Expert', icon: 'fas fa-sitemap' },
     { name: 'Node.js & Express', category: 'backend', level: 'Advanced', icon: 'fab fa-node-js' },
     { name: 'REST & GraphQL APIs', category: 'backend', level: 'Advanced', icon: 'fas fa-network-wired' },
     { name: 'SQL & PostgreSQL', category: 'backend', level: 'Proficient', icon: 'fas fa-database' },
-    { name: 'State Management (Signals/Redux)', category: 'frontend', level: 'Expert', icon: 'fas fa-sitemap' },
-    { name: 'Jest & Unit Testing', category: 'devops', level: 'Advanced', icon: 'fas fa-vial' },
-    { name: 'Git & CI/CD Pipelines', category: 'devops', level: 'Advanced', icon: 'fab fa-git-alt' },
-    { name: 'Micro-Frontends & Architecture', category: 'devops', level: 'Expert', icon: 'fas fa-cubes' },
+    { name: 'Micro-Frontends & Systems', category: 'devops', level: 'Expert', icon: 'fas fa-cubes' },
+    { name: 'CI/CD Pipelines & Git', category: 'devops', level: 'Advanced', icon: 'fab fa-git-alt' },
+    { name: 'Testing (Jest/E2E)', category: 'devops', level: 'Advanced', icon: 'fas fa-vial' },
   ]
 
   const experienceList: Experience[] = [
     {
-      company: 'STC (Saudi Telecom Company)',
-      role: 'Senior Software Engineer',
-      period: '2022 — Present',
-      location: 'Riyadh, Saudi Arabia',
-      badgeColor: 'from-purple-500 to-indigo-600',
+      company: 'STC',
+      role: 'Senior Software Engineer — Jawwy Digital Transformation',
+      period: 'Aug 2026 — Present · 2 mos',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-orange-500 to-blue-600',
       description: [
-        'Architected and delivered high-performance web platforms and digital services for millions of telecom subscribers.',
-        'Championed micro-frontends and state management optimization, enhancing load speed by over 40%.',
-        'Led cross-functional sprint planning and mentored junior engineers on TypeScript best practices.',
+        "Spearhead the design and development of core application features and change requests (CRs) for STC's digital brand (Jawwy), delivering high-conversion subscriber flows and resilient architectures.",
+        'Engineer responsive, performance-tuned web and mobile interfaces using React Native, React.js, and TypeScript to ensure flawless cross-platform user journeys.',
+        'Champion modular micro-frontend components, clean code standards, and seamless REST/GraphQL API integrations across multidisciplinary engineering pods.',
       ],
-      skills: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Micro-Frontends'],
+      skills: ['React Native', 'React.js', 'TypeScript', 'Micro-Frontends', 'REST APIs', 'Telecom Systems'],
     },
     {
-      company: 'Tata Consultancy Services (TCS)',
-      role: 'Software Engineer / Frontend Lead',
-      period: '2018 — 2020',
-      location: 'Saudi Arabia',
-      badgeColor: 'from-blue-500 to-cyan-500',
+      company: 'stc',
+      role: 'Senior Software Engineer — WFMS | ALMONJEZ',
+      period: 'May 2018 — Jul 2026 · 8 yrs 3 mos',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-orange-500 to-blue-600',
       description: [
-        'Spearheaded modern SPA frontend migrations and component library standardization.',
-        'Integrated RESTful microservices with automated testing pipelines.',
+        'Directed end-to-end frontend architecture and platform enhancements for the ALMONJEZ enterprise Workforce Management System (WFMS) utilizing Angular and TypeScript.',
+        'Governed release lifecycle execution through rigorous SIT, E2E, and BAT testing suites, ensuring complete system stability and zero-downtime production deployments.',
+        'Led Level 3 (L3) technical incident response, diagnosing complex edge cases and driving continuous platform optimization to maintain 99.9%+ operational reliability.',
       ],
-      skills: ['React', 'JavaScript (ES6+)', 'Bootstrap 5', 'Jest'],
+      skills: ['Angular', 'TypeScript', 'RxJS', 'Enterprise WFMS', 'L3 Support', 'E2E/BAT Testing'],
     },
     {
-      company: 'Wipro Arabia Limited',
-      role: 'Senior Software Engineer',
-      period: '2020 — 2022',
-      location: 'Riyadh, Saudi Arabia',
-      badgeColor: 'from-orange-500 to-red-500',
+      company: 'Tata Consultancy Services',
+      role: 'Information Technology Analyst',
+      period: 'Aug 2024 — Present · 2 yrs 2 mos',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-blue-600 to-orange-500',
       description: [
-        'Developed robust enterprise dashboards and automated customer operations for enterprise clients.',
-        'Engineered responsive, accessible front-end interfaces aligned with strict design systems.',
+        'Provide senior technical leadership across strategic enterprise client initiatives, transforming intricate business requirements into high-performance web and mobile software.',
+        'Oversee frontend code governance, architectural standardization, and cross-platform UI/UX consistency across on-site development teams in Riyadh.',
       ],
-      skills: ['Angular', 'TypeScript', 'Node.js', 'RxJS', 'CI/CD'],
+      skills: ['React.js', 'React Native', 'Angular', 'TypeScript', 'Technical Leadership', 'UI/UX Architecture'],
+    },
+    {
+      company: 'Tata Consultancy Services',
+      role: 'Senior Software Engineer',
+      period: 'Aug 2019 — Jul 2024 · 5 yrs',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-blue-600 to-orange-500',
+      description: [
+        'Led core enterprise web portal development for ALMONJEZ, driving a comprehensive Angular framework migration and modern interface revamp.',
+        'Designed and published standardized reusable component libraries, accelerating sprint velocity and substantially reducing defect turnaround times.',
+      ],
+      skills: ['Angular', 'TypeScript', 'Component Libraries', 'API Integration', 'Performance Tuning'],
+    },
+    {
+      company: 'Wipro',
+      role: 'Project Engineer',
+      period: 'Mar 2017 — Jul 2019 · 2 yrs 5 mos',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-orange-500 to-blue-600',
+      description: [
+        'Built and maintained performant enterprise dashboards and operational interfaces using Angular, interfacing directly with key stakeholders to align technical deliverables.',
+        'Monitored critical batch workflows and collection operations, executing proactive triage and root-cause analysis to ensure high platform availability.',
+      ],
+      skills: ['Angular', 'Enterprise Dashboards', 'Process Automation', 'Incident Management', 'Client Engagement'],
+    },
+    {
+      company: 'stc',
+      role: 'IT Business Support Applications & Operations',
+      period: 'Mar 2017 — Mar 2018 · 1 yr 1 mo',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-orange-500 to-blue-600',
+      description: [
+        'Defined and centralized application requirements while providing specialized operational support for enterprise billing and collection management platforms.',
+        'Monitored real-time system performance, diagnosing operational anomalies and coordinating rapid resolutions across cross-functional engineering teams.',
+      ],
+      skills: ['Requirements Architecture', 'Operations Support', 'Application Monitoring', 'System Troubleshooting'],
     },
     {
       company: 'Zain KSA',
-      role: 'Trainee Drive Test Engineer',
-      period: '2017 — 2018',
-      location: 'Riyadh, Saudi Arabia',
-      badgeColor: 'from-emerald-500 to-teal-600',
+      role: 'Cellular Network & Drive Test Engineer (Graduation Project)',
+      period: 'Aug 2015 — Oct 2015 · 3 mos',
+      location: 'Riyadh, Saudi Arabia · On-site',
+      badgeColor: 'from-blue-600 to-orange-500',
       description: [
-        'Conducted cellular network drive tests and RF field measurements across designated clusters to evaluate network quality and signal coverage.',
-        'Collected and analyzed key RF performance indicators (RSRP, RSRQ, SINR, handover rates, and call drops) using specialized drive-testing tools.',
-        'Collaborated with RF engineering and network optimization teams to identify coverage holes and optimize overall Quality of Service (QoS).',
+        'Conducted mobile network drive tests and cellular RF signal measurements across major Riyadh clusters as part of an engineering graduation project.',
+        'Analyzed coverage KPIs and signal diagnostics (RSRP, SINR, handover rates) to assist optimization teams in enhancing wireless network reliability.',
       ],
-      skills: ['Drive Testing', 'RF Optimization', 'Cellular Networks (2G/3G/4G)', 'KPI Analysis', 'Quality of Service (QoS)'],
-    },
-    {
-      company: 'Zain Jordan',
-      role: 'Direct Sales & Youth Segment Representative',
-      period: '2015 — 2017',
-      location: 'Amman, Jordan',
-      badgeColor: 'from-green-500 to-emerald-600',
-      description: [
-        'Spearheaded direct sales and marketing campaigns across Jordanian universities targeting youth demographics for specialized student telecom packages.',
-        'Organized on-campus promotional activations and drove high package subscription and customer acquisition rates.',
-      ],
-      skills: ['Direct Sales', 'Youth Packages', 'Customer Outreach', 'Campus Campaigns'],
+      skills: ['Drive Testing', 'Cellular Networks', 'RF Diagnostics', 'QoS Optimization'],
     },
   ]
 
@@ -201,40 +215,6 @@ export default function About() {
     }
   }, [activeTab])
 
-  // Intersection Observer for scroll animations
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px',
-    }
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target === headerRef.current) {
-            setIsHeaderVisible(true)
-          } else if (entry.target === statsRef.current) {
-            setIsStatsVisible(true)
-          } else if (entry.target === buttonRef.current) {
-            setIsButtonVisible(true)
-          }
-        }
-      })
-    }
-
-    let observer: IntersectionObserver | null = null
-    if (typeof IntersectionObserver !== 'undefined') {
-      observer = new IntersectionObserver(observerCallback, observerOptions)
-      if (headerRef.current) observer.observe(headerRef.current)
-      if (statsRef.current) observer.observe(statsRef.current)
-      if (buttonRef.current) observer.observe(buttonRef.current)
-    }
-
-    return () => {
-      if (observer) observer.disconnect()
-    }
-  }, [])
-
   const handleDownloadCV = () => {
     setIsDownloading(true)
 
@@ -266,49 +246,32 @@ export default function About() {
       </aside>
 
       <main className="flex w-full flex-col items-center justify-start p-2 sm:p-4 md:w-2/3">
-        <article
-          onWheel={(e) => e.stopPropagation()}
-          onTouchMove={(e) => e.stopPropagation()}
-          className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200/90 bg-white/95 p-5 shadow-xl backdrop-blur-md dark:border-gray-700/80 dark:bg-gray-900/95 sm:p-8"
-        >
+        <article className="mx-auto w-full max-w-4xl rounded-3xl border border-slate-200/90 bg-white/85 p-6 shadow-xl shadow-slate-200/50 backdrop-blur-xl dark:border-white/10 dark:bg-[#0f1422]/85 dark:shadow-black/40 sm:p-8">
           {/* Navigation Tab Header */}
-          <div className="mb-6 flex border-b border-gray-200 pb-2 dark:border-gray-700">
-            <nav className="flex space-x-2 sm:space-x-4" aria-label="Tabs">
-              <button
-                onClick={() => setActiveTab('overview')}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
-                  activeTab === 'overview'
-                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
-                }`}
-              >
-                <i className="fas fa-user" />
-                <span>{t('page.about.tab.overview') || 'Overview'}</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('skills')}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
-                  activeTab === 'skills'
-                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
-                }`}
-              >
-                <i className="fas fa-laptop-code" />
-                <span>{t('page.about.tab.skills') || 'Skills Matrix'}</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab('experience')}
-                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
-                  activeTab === 'experience'
-                    ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400'
-                }`}
-              >
-                <i className="fas fa-briefcase" />
-                <span>{t('page.about.tab.experience') || 'Experience'}</span>
-              </button>
+          <div className="mb-6 flex border-b border-slate-200/80 pb-3 dark:border-white/10">
+            <nav className="flex flex-wrap gap-2 sm:gap-3" aria-label="Tabs">
+              {[
+                { id: 'overview', label: t('page.about.tab.overview') || 'Overview', icon: 'fas fa-user' },
+                { id: 'skills', label: t('page.about.tab.skills') || 'Skills Matrix', icon: 'fas fa-laptop-code' },
+                { id: 'experience', label: t('page.about.tab.experience') || 'Experience', icon: 'fas fa-briefcase' },
+                { id: 'education', label: t('page.about.tab.education') || 'Education', icon: 'fas fa-graduation-cap' },
+              ].map((tab) => {
+                const isActive = activeTab === tab.id
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                    className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
+                      isActive
+                        ? 'bg-orange-500 text-white shadow-md shadow-orange-500/25'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white'
+                    }`}
+                  >
+                    <i className={`${tab.icon} text-xs`} />
+                    <span>{tab.label}</span>
+                  </button>
+                )
+              })}
             </nav>
           </div>
 
@@ -318,43 +281,32 @@ export default function About() {
               id="about"
               role="tabpanel"
               aria-labelledby="about-tab"
-              className="animate-fade-in"
+              className="space-y-6"
             >
               {/* Title and Description */}
-              <header
-                ref={headerRef}
-                className={`transition-all duration-700 ${
-                  isHeaderVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-              >
-                <h1 className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+              <header>
+                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
                   {t('page.about.title')}
                 </h1>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base dark:text-gray-300">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
                   {t('page.about.paragraph')}
                 </p>
               </header>
 
               {/* Stats Section */}
-              <dl
-                ref={statsRef}
-                className={`mt-6 grid grid-cols-2 gap-4 transition-all duration-700 sm:grid-cols-4 ${
-                  isStatsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-              >
+              <dl className="grid grid-cols-2 gap-3.5 sm:grid-cols-4">
                 {stats.map((stat) => (
                   <div
                     key={stat.id}
-                    className="group flex flex-col items-center rounded-xl border border-gray-100 bg-gray-50/80 p-3 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md dark:border-gray-800 dark:bg-gray-800/60 dark:hover:bg-gray-800"
+                    className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/40 dark:hover:border-orange-500/40"
                   >
-                    <i
-                      className={`${stat.icon} mb-2 text-xl ${stat.color} transition-transform duration-300 group-hover:scale-125`}
-                      aria-hidden="true"
-                    />
-                    <dt className="text-xl font-black text-gray-900 dark:text-white sm:text-2xl">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 transition-transform duration-200 group-hover:scale-110 dark:bg-orange-500/20 dark:text-orange-400">
+                      <i className={`${stat.icon} text-base`} aria-hidden="true" />
+                    </div>
+                    <dt className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
                       {stat.value}
                     </dt>
-                    <dd className="mt-1 text-xs font-medium text-gray-500 dark:text-gray-400">
+                    <dd className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
                       {stat.label}
                     </dd>
                   </div>
@@ -362,24 +314,24 @@ export default function About() {
               </dl>
 
               {/* Core Competency Highlights */}
-              <div className="mt-6 rounded-xl border border-orange-100 bg-gradient-to-r from-orange-50/60 to-pink-50/40 p-4 dark:border-gray-800 dark:from-gray-800/40 dark:to-gray-800/20">
+              <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 dark:border-white/5 dark:bg-zinc-800/40">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                  {t('page.about.coreCompetencies') || 'Core Competencies'}
+                  {t('page.about.coreCompetencies') || 'Core Software Engineering Competencies'}
                 </h3>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-2">
                   {[
-                    'Full-Stack Architecture',
-                    'High-Concurrency Web Systems',
-                    'Micro-Frontends & Design Systems',
-                    'Mobile & Cross-Platform (React Native)',
-                    'Performance & Core Web Vitals',
-                    'Engineering Mentorship & Agile Leadership',
+                    'Enterprise Full-Stack Architecture',
+                    'Web & Mobile Application Engineering',
+                    'React, Next.js, Angular & React Native',
+                    'Micro-Frontends & Reusable Design Systems',
+                    'REST & GraphQL API Integrations',
+                    'Agile Software Leadership & Code Quality',
                   ].map((competency) => (
                     <span
                       key={competency}
-                      className="inline-flex items-center rounded-md bg-white px-2.5 py-1 text-xs font-medium text-gray-800 shadow-sm dark:bg-gray-800 dark:text-gray-200"
+                      className="inline-flex items-center rounded-xl border border-slate-200/80 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-zinc-800 dark:text-slate-200"
                     >
-                      <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-orange-500" />
+                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-orange-500" />
                       {competency}
                     </span>
                   ))}
@@ -387,43 +339,32 @@ export default function About() {
               </div>
 
               {/* Download CV CTA */}
-              <footer
-                ref={buttonRef}
-                className={`mt-6 flex items-center justify-end transition-all duration-700 ${
-                  isButtonVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-              >
+              <footer className="flex items-center justify-end pt-2">
                 <button
                   onClick={handleDownloadCV}
                   type="button"
                   disabled={isDownloading || downloaded}
                   aria-label="Download CV as PDF"
-                  className={`group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r ${
-                    downloaded
-                      ? 'from-emerald-500 to-green-600'
-                      : 'from-orange-500 via-red-500 to-pink-600'
-                  } p-0.5 text-xs font-medium shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-4 ${
-                    isDownloading || downloaded ? 'cursor-not-allowed' : 'cursor-pointer'
+                  className={`inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${
+                    isDownloading || downloaded ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'
                   }`}
                 >
-                  <span className="relative flex items-center gap-2 rounded-[10px] bg-white px-5 py-2.5 text-gray-900 transition-all duration-75 group-hover:bg-opacity-0 group-hover:text-white dark:bg-gray-900 dark:text-white">
-                    {isDownloading ? (
-                      <>
-                        <i className="fas fa-spinner fa-spin text-sm" />
-                        Downloading...
-                      </>
-                    ) : downloaded ? (
-                      <>
-                        <i className="fas fa-check text-sm text-green-500 group-hover:text-white" />
-                        Downloaded!
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-file-pdf text-sm text-red-500 group-hover:text-white" />
-                        {t('page.about.downloadCV')}
-                      </>
-                    )}
-                  </span>
+                  {isDownloading ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin text-sm" />
+                      <span>{t('page.about.downloading') || 'Downloading...'}</span>
+                    </>
+                  ) : downloaded ? (
+                    <>
+                      <i className="fas fa-check text-sm" />
+                      <span>{t('page.about.downloaded') || 'Downloaded!'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-file-pdf text-sm" />
+                      <span>{t('page.about.downloadCV')}</span>
+                    </>
+                  )}
                 </button>
               </footer>
             </section>
@@ -431,26 +372,26 @@ export default function About() {
 
           {/* TAB 2: TECHNICAL SKILLS MATRIX */}
           {activeTab === 'skills' && (
-            <section className="animate-fade-in space-y-4">
+            <section className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                  {t('page.about.tab.skills') || 'Technical Expertise & Stack'}
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                  {t('page.about.tab.skills') || 'Technical Competencies & Matrix'}
                 </h2>
                 <div className="flex flex-wrap gap-1.5">
                   {[
-                    { id: 'all', label: t('page.about.skills.all') || 'All' },
-                    { id: 'frontend', label: t('page.about.skills.frontend') || 'Frontend' },
+                    { id: 'all', label: t('page.about.skills.all') || 'All Domains' },
+                    { id: 'frontend', label: t('page.about.skills.frontend') || 'Frontend & UI' },
                     { id: 'mobile', label: t('page.about.skills.mobile') || 'Mobile' },
-                    { id: 'backend', label: t('page.about.skills.backend') || 'Backend' },
+                    { id: 'backend', label: t('page.about.skills.backend') || 'Backend & APIs' },
                     { id: 'devops', label: t('page.about.skills.devops') || 'Architecture & DevOps' },
                   ].map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
+                      className={`rounded-xl px-3 py-1 text-xs font-semibold transition-all ${
                         selectedCategory === cat.id
-                          ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white shadow-sm'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+                          ? 'bg-orange-500 text-white shadow-sm'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-zinc-800 dark:text-slate-300'
                       }`}
                     >
                       {cat.label}
@@ -469,22 +410,22 @@ export default function About() {
                   {filteredSkills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="flex items-center justify-between rounded-xl border border-gray-200/80 bg-gray-50/60 p-3 shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50/30 hover:shadow dark:border-gray-700/60 dark:bg-gray-800/50 dark:hover:bg-gray-800"
+                      className="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-50/40 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/50 dark:hover:border-blue-500/40 dark:hover:bg-zinc-800"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-950/40 dark:text-orange-400">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
                           <i className={skill.icon} />
                         </div>
                         <div>
-                          <p className="text-xs font-semibold text-gray-900 dark:text-white">
+                          <p className="text-xs font-bold text-slate-900 dark:text-white">
                             {skill.name}
                           </p>
-                          <p className="text-[11px] capitalize text-gray-500 dark:text-gray-400">
+                          <p className="text-[11px] capitalize text-slate-500 dark:text-slate-400">
                             {skill.category}
                           </p>
                         </div>
                       </div>
-                      <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
+                      <span className="rounded-full bg-orange-100/90 px-2.5 py-0.5 text-[10px] font-bold text-orange-700 dark:bg-orange-950/50 dark:text-orange-300">
                         {skill.level}
                       </span>
                     </div>
@@ -496,41 +437,41 @@ export default function About() {
 
           {/* TAB 3: CAREER EXPERIENCE TIMELINE */}
           {activeTab === 'experience' && (
-            <section className="animate-fade-in space-y-4">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-2 dark:border-gray-800">
+            <section className="space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2 dark:border-white/10">
                 <div>
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-                    {t('page.about.tab.experience') || 'Career History & Impact'}
+                  <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                    {t('page.about.tab.experience') || 'Career History & Leadership'}
                   </h2>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    5 Progressive Roles • Scrollable Timeline
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {t('page.about.experience.subtitle') || 'Enterprise Engineering & Telecommunication Impact • Scrollable Timeline'}
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-orange-600 dark:text-orange-400">
                   <i className="fas fa-arrows-alt-v text-[10px]" />
-                  <span>Scrollable</span>
+                  <span>{t('page.about.experience.scrollable') || 'Scrollable'}</span>
                 </span>
               </div>
 
-              {/* Scrollable Timeline Container */}
+              {/* Scrollable Experience Timeline */}
               <div
                 ref={timelineScrollRef}
                 onWheel={(e) => e.stopPropagation()}
                 onTouchMove={(e) => e.stopPropagation()}
-                className="custom-scrollbar max-h-[360px] overflow-y-auto px-1 py-1 pr-3 sm:max-h-[420px]"
+                className="custom-scrollbar max-h-[380px] overflow-y-auto px-1 py-1 pr-3 sm:max-h-[420px]"
               >
                 <div className="relative ml-2 border-l-2 border-orange-200 pl-4 sm:ml-3 sm:pl-6 dark:border-orange-900/50">
                   {experienceList.map((exp) => (
-                    <div key={exp.company} className="relative mb-6 last:mb-2">
+                    <div key={`${exp.company}-${exp.role}-${exp.period}`} className="relative mb-5 last:mb-1">
                       {/* Pulsing indicator node */}
-                      <span className="absolute -left-[25px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100 sm:-left-[33px] dark:ring-gray-900">
+                      <span className="absolute -left-[25px] top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100 sm:-left-[33px] dark:ring-zinc-900">
                         <span className="h-1.5 w-1.5 rounded-full bg-white" />
                       </span>
 
-                      <div className="rounded-xl border border-gray-200/80 bg-gray-50/60 p-4 shadow-sm transition-all hover:border-orange-200 hover:shadow-md dark:border-gray-700/60 dark:bg-gray-800/40 dark:hover:border-gray-600">
+                      <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 shadow-sm transition-all hover:border-orange-300 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/40 dark:hover:border-orange-500/30">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div>
-                            <h3 className="text-sm font-bold text-gray-900 dark:text-white sm:text-base">
+                            <h3 className="text-sm font-bold text-slate-900 dark:text-white sm:text-base">
                               {exp.role}
                             </h3>
                             <p className="text-xs font-semibold text-orange-600 dark:text-orange-400">
@@ -538,14 +479,14 @@ export default function About() {
                             </p>
                           </div>
                           <div className="text-right">
-                            <span className="inline-block rounded-full bg-gray-200/80 px-2.5 py-0.5 text-[11px] font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+                            <span className="inline-block rounded-full bg-slate-200/80 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 dark:bg-zinc-700 dark:text-slate-300">
                               {exp.period}
                             </span>
-                            <p className="text-[11px] text-gray-400">{exp.location}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400">{exp.location}</p>
                           </div>
                         </div>
 
-                        <ul className="mt-3 list-inside list-disc space-y-1 text-xs text-gray-600 dark:text-gray-300">
+                        <ul className="mt-3 list-inside list-disc space-y-1.5 text-xs leading-relaxed text-slate-700 dark:text-slate-300">
                           {exp.description.map((item) => (
                             <li key={item}>{item}</li>
                           ))}
@@ -555,7 +496,7 @@ export default function About() {
                           {exp.skills.map((skill) => (
                             <span
                               key={skill}
-                              className="rounded bg-orange-100/70 px-2 py-0.5 text-[10px] font-medium text-orange-800 dark:bg-orange-950/40 dark:text-orange-300"
+                              className="rounded-lg border border-blue-100 bg-blue-50/90 px-2.5 py-0.5 text-[10px] font-semibold text-blue-700 dark:border-blue-900/40 dark:bg-blue-950/40 dark:text-blue-300"
                             >
                               {skill}
                             </span>
@@ -564,6 +505,131 @@ export default function About() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* TAB 4: EDUCATION & ACADEMIC CREDENTIALS */}
+          {activeTab === 'education' && (
+            <section className="space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2 dark:border-white/10">
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                    {t('page.about.tab.education') || 'Education & Credentials'}
+                  </h2>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {t('page.about.education.subtitle') || 'Academic Background • Specialized Masterclasses'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                {/* Bachelor's Degree Card */}
+                <div className="rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 shadow-sm dark:border-white/5 dark:bg-zinc-800/40">
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400">
+                      <i className="fas fa-graduation-cap text-xl" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
+                            {t('page.about.education.higherEducation') || 'Higher Education'}
+                          </span>
+                          <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                            {t('page.about.education.degree') || 'Bachelor of Science in Engineering (B.Sc.)'}
+                          </h3>
+                        </div>
+                        <span className="rounded-full bg-orange-100/90 px-3 py-0.5 text-xs font-semibold text-orange-800 dark:bg-orange-950/40 dark:text-orange-300">
+                          2010 — 2015
+                        </span>
+                      </div>
+
+                      <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                        {t('page.about.education.major') || 'Major in Telecommunication & Electronics Engineering'}
+                      </p>
+                      {t('page.about.education.note') && (
+                        <p className="mt-2 text-xs italic text-orange-600 dark:text-orange-400">
+                          {t('page.about.education.note')}
+                        </p>
+                      )}
+                      <div className="mt-4 border-t border-slate-200/80 pt-3 dark:border-white/5">
+                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                          {t('page.about.education.modules') || 'Engineering Foundations & Core Disciplines:'}
+                        </p>
+                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                          {[
+                            'Software Engineering & Algorithms',
+                            'Data Structures & Object-Oriented Design',
+                            'Computer Networks & Distributed Protocols',
+                            'Digital Signal Processing & Microprocessors',
+                            'Database Systems & IT Architecture',
+                            'Embedded Computing & Systems',
+                          ].map((area) => (
+                            <span
+                              key={area}
+                              className="rounded-xl border border-slate-200/80 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-zinc-800 dark:text-slate-200"
+                            >
+                              <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-orange-500" />
+                              {area}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Professional Certifications Card */}
+                <div className="rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 shadow-sm dark:border-white/5 dark:bg-zinc-800/40">
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-600 dark:bg-orange-500/20 dark:text-orange-400">
+                      <i className="fas fa-certificate text-xl" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
+                            {t('page.about.education.certificationsCategory') || 'Professional Certifications'}
+                          </span>
+                          <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                            {t('page.about.education.certificationsTitle') || 'Specialized Engineering & Development Masterclasses'}
+                          </h3>
+                        </div>
+                        <span className="rounded-full bg-blue-100/90 px-3 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-950/40 dark:text-blue-300">
+                          {t('page.about.education.verified') || 'Verified'}
+                        </span>
+                      </div>
+
+                      <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                        {t('page.about.education.certificationsSubtitle') || 'Full-Stack, Mobile & Modern Architecture Certifications'}
+                      </p>
+                      <div className="mt-4 border-t border-slate-200/80 pt-3 dark:border-white/5">
+                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                          {t('page.about.education.certificationsList') || 'Key Certifications & Courses:'}
+                        </p>
+                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                          {[
+                            { name: 'Angular Enterprise Architecture Masterclass', icon: 'fab fa-angular text-red-500' },
+                            { name: 'React & Next.js Full-Stack Engineering', icon: 'fab fa-react text-blue-500' },
+                            { name: 'React Native & Mobile Development', icon: 'fas fa-mobile-alt text-cyan-500' },
+                            { name: 'TypeScript Advanced Design Patterns', icon: 'fas fa-file-code text-blue-600' },
+                            { name: 'Modern JavaScript (ES6+ / ESNext)', icon: 'fab fa-js text-yellow-500' },
+                            { name: 'Micro-Frontends & Scalable Web Systems', icon: 'fas fa-cubes text-orange-500' },
+                          ].map((cert) => (
+                            <span
+                              key={cert.name}
+                              className="inline-flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-zinc-800 dark:text-slate-200"
+                            >
+                              <i className={`${cert.icon} text-xs`} />
+                              {cert.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
