@@ -85,20 +85,20 @@ function AppContent(): React.JSX.Element {
 
   return (
     <>
-      <div className="flex w-screen flex-col lg:hidden">
-        <div ref={bannerRef} className="h-screen w-screen">
+      <div className="flex w-full max-w-full overflow-x-hidden flex-col lg:hidden">
+        <div ref={bannerRef} className="min-h-screen w-full">
           <HomePage />
         </div>
-        <div ref={aboutRef} className="w-screen">
+        <div ref={aboutRef} className="w-full">
           <About />
         </div>
-        <div ref={portfolioRef} id="portfolio-main" className="h-full w-screen">
+        <div ref={portfolioRef} id="portfolio-main" className="min-h-screen w-full">
           <Portfolio />
         </div>
         <div
           id="footer-main"
           ref={footerRef}
-          className="w-screen bg-transparent"
+          className="w-full bg-transparent"
         >
           <Footer />
         </div>

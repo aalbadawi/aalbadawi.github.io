@@ -308,7 +308,10 @@ const Nav = (): React.JSX.Element => {
                           : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10'
                       }`}
                       type="button"
-                      onClick={() => handlePageChange(item.index)}
+                      onClick={() => {
+                        handlePageChange(item.index)
+                        setIsMobileMenuOpen(false)
+                      }}
                     >
                       <i className={`${item.icon} text-xs`} />
                       <span>{t(`nav.element.${item.name}`)}</span>

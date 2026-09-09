@@ -94,7 +94,7 @@ export default function ShortcutsModal({
       aria-labelledby="shortcuts-modal-title"
     >
       <div
-        className="relative w-full max-w-lg rounded-3xl border border-slate-200/90 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0f1422]/95 dark:shadow-2xl sm:p-7"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar rounded-3xl border border-slate-200/90 bg-white/95 p-5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0f1422]/95 dark:shadow-2xl sm:p-7"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

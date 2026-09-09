@@ -167,12 +167,12 @@ export default function Card({
           </div>
 
           {/* Profile Image with subtle ring */}
-          <div className="relative mx-auto my-5 flex h-32 w-32 items-center justify-center">
+          <div className="relative mx-auto my-5 flex h-36 w-36 items-center justify-center">
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-500 to-blue-500 opacity-20 blur-md" />
             <Image
-              width={120}
-              height={120}
-              className="relative h-28 w-28 rounded-full object-cover ring-2 ring-orange-500 ring-offset-4 ring-offset-white dark:ring-offset-[#0f1422] shadow-md"
+              width={140}
+              height={140}
+              className="relative h-32 w-32 rounded-full object-cover ring-2 ring-orange-500 ring-offset-4 ring-offset-white dark:ring-offset-[#0f1422] shadow-lg"
               src={profilePic || '/images/amer-pic.png'}
               alt={name}
               priority
@@ -317,7 +317,7 @@ export default function Card({
               aria-labelledby="card-bio-modal-title"
             >
               <div
-                className="relative w-full max-w-lg rounded-3xl border border-slate-200/90 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0f1422]/95 dark:shadow-2xl sm:p-7"
+                className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto custom-scrollbar rounded-3xl border border-slate-200/90 bg-white/95 p-5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0f1422]/95 dark:shadow-2xl sm:p-7"
                 onClick={(e) => e.stopPropagation()}
                 style={{ direction: isArabic ? 'rtl' : 'ltr' }}
               >
