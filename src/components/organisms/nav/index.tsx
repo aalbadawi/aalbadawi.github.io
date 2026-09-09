@@ -251,10 +251,11 @@ const Nav = (): React.JSX.Element => {
                 title="Select Language (T)"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-slate-100/80 px-2.5 py-1.5 text-xs font-medium text-slate-700 backdrop-blur-sm transition-all hover:border-orange-400 hover:text-orange-500 dark:border-white/10 dark:bg-zinc-800/80 dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
               >
-                <i className="fas fa-globe text-orange-500 text-xs dark:text-orange-400" />
+                {/* <i className="fas fa-globe text-orange-500 text-xs dark:text-orange-400" /> */}
                 <span>
-                  {languagesList.find((lang) => i18n.language?.startsWith(lang.value))
-                    ?.name || languagesList[0].name}
+                  {languagesList.find((lang) =>
+                    i18n.language?.startsWith(lang.value),
+                  )?.name || languagesList[0].name}
                 </span>
                 <i className="fas fa-chevron-down text-[9px] opacity-75" />
               </button>
