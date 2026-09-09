@@ -181,7 +181,6 @@ export default function About() {
   // Refs for scroll isolation from ReactPageScroller
   const timelineScrollRef = useRef<HTMLDivElement>(null)
   const skillsScrollRef = useRef<HTMLDivElement>(null)
-  const overviewScrollRef = useRef<HTMLDivElement>(null)
 
   // Prevent scroll propagation to ReactPageScroller
   useEffect(() => {
@@ -194,7 +193,6 @@ export default function About() {
 
     const tEl = timelineScrollRef.current
     const sEl = skillsScrollRef.current
-    const oEl = overviewScrollRef.current
 
     if (tEl) {
       tEl.addEventListener('wheel', handleNativeWheel, { passive: true })
@@ -203,10 +201,6 @@ export default function About() {
     if (sEl) {
       sEl.addEventListener('wheel', handleNativeWheel, { passive: true })
       sEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
-    }
-    if (oEl) {
-      oEl.addEventListener('wheel', handleNativeWheel, { passive: true })
-      oEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
     }
 
     return () => {
@@ -217,10 +211,6 @@ export default function About() {
       if (sEl) {
         sEl.removeEventListener('wheel', handleNativeWheel)
         sEl.removeEventListener('touchmove', handleNativeTouch)
-      }
-      if (oEl) {
-        oEl.removeEventListener('wheel', handleNativeWheel)
-        oEl.removeEventListener('touchmove', handleNativeTouch)
       }
     }
   }, [activeTab])
@@ -291,99 +281,67 @@ export default function About() {
               id="about"
               role="tabpanel"
               aria-labelledby="about-tab"
-              className="space-y-4"
+              className="space-y-6"
             >
-              <div
-                ref={overviewScrollRef}
-                onWheel={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
-                className="custom-scrollbar max-h-[380px] overflow-y-auto px-1 py-1 pr-3 sm:max-h-[420px] space-y-5"
-              >
-                {/* Title and Description */}
-                <header>
-                  <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-                    {t('page.about.title')}
-                  </h1>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
-                    {t('page.about.paragraph')}
-                  </p>
-                </header>
+              {/* Title and Description */}
+              <header>
+                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+                  {t('page.about.title')}
+                </h1>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
+                  {t('page.about.paragraph')}
+                </p>
+              </header>
 
-                {/* Stats Section */}
-                <dl className="grid grid-cols-2 gap-3.5 sm:grid-cols-4">
-                  {stats.map((stat) => (
-                    <div
-                      key={stat.id}
-                      className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/40 dark:hover:border-orange-500/40"
-                    >
-                      <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 transition-transform duration-200 group-hover:scale-110 dark:bg-orange-500/20 dark:text-orange-400">
-                        <i className={`${stat.icon} text-base`} aria-hidden="true" />
-                      </div>
-                      <dt className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
-                        {stat.value}
-                      </dt>
-                      <dd className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                        {stat.label}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                {/* Core Competency Highlights */}
-                <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5 dark:border-white/5 dark:bg-zinc-800/40">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                    {t('page.about.coreCompetencies') || 'Core Software Engineering Competencies'}
-                  </h3>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {[
-                      'Enterprise Full-Stack Architecture',
-                      'Web & Mobile Application Engineering',
-                      'React, Next.js, Angular & React Native',
-                      'Micro-Frontends & Reusable Design Systems',
-                      'REST & GraphQL API Integrations',
-                      'Agile Software Leadership & Code Quality',
-                    ].map((competency) => (
-                      <span
-                        key={competency}
-                        className="inline-flex items-center rounded-xl border border-slate-200/80 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-zinc-800 dark:text-slate-200"
-                      >
-                        <span className="mr-2 h-1.5 w-1.5 rounded-full bg-orange-500" />
-                        {competency}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Download CV CTA */}
-                <footer className="flex items-center justify-end pt-2">
-                  <button
-                    onClick={handleDownloadCV}
-                    type="button"
-                    disabled={isDownloading || downloaded}
-                    aria-label="Download CV as PDF"
-                    className={`inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${
-                      isDownloading || downloaded ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'
-                    }`}
+              {/* Stats Section */}
+              <dl className="grid grid-cols-2 gap-3.5 sm:grid-cols-4">
+                {stats.map((stat) => (
+                  <div
+                    key={stat.id}
+                    className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/40 dark:hover:border-orange-500/40"
                   >
-                    {isDownloading ? (
-                      <>
-                        <i className="fas fa-spinner fa-spin text-sm" />
-                        <span>{t('page.about.downloading') || 'Downloading...'}</span>
-                      </>
-                    ) : downloaded ? (
-                      <>
-                        <i className="fas fa-check text-sm" />
-                        <span>{t('page.about.downloaded') || 'Downloaded!'}</span>
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-file-pdf text-sm" />
-                        <span>{t('page.about.downloadCV')}</span>
-                      </>
-                    )}
-                  </button>
-                </footer>
-              </div>
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 transition-transform duration-200 group-hover:scale-110 dark:bg-orange-500/20 dark:text-orange-400">
+                      <i className={`${stat.icon} text-base`} aria-hidden="true" />
+                    </div>
+                    <dt className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
+                      {stat.value}
+                    </dt>
+                    <dd className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
+                      {stat.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              {/* Download CV CTA */}
+              <footer className="flex items-center justify-end pt-2">
+                <button
+                  onClick={handleDownloadCV}
+                  type="button"
+                  disabled={isDownloading || downloaded}
+                  aria-label="Download CV as PDF"
+                  className={`inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${
+                    isDownloading || downloaded ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'
+                  }`}
+                >
+                  {isDownloading ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin text-sm" />
+                      <span>{t('page.about.downloading') || 'Downloading...'}</span>
+                    </>
+                  ) : downloaded ? (
+                    <>
+                      <i className="fas fa-check text-sm" />
+                      <span>{t('page.about.downloaded') || 'Downloaded!'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-file-pdf text-sm" />
+                      <span>{t('page.about.downloadCV')}</span>
+                    </>
+                  )}
+                </button>
+              </footer>
             </section>
           )}
 
