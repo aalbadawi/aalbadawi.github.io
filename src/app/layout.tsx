@@ -5,8 +5,7 @@ import "../config/i18next";
 
 import dynamic from "next/dynamic";
 import LocalFont from "next/font/local";
-import { useEffect } from "react";
-import { Client, HydrationProvider } from "react-hydration-provider";
+import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import Nav from "../components/organisms/nav";
@@ -51,14 +50,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="min-h-screen transition-colors duration-300 antialiased selection:bg-orange-500/20 selection:text-orange-500 font-sans">
         <h1 className="sr-only">Amer Albadawi — Senior Software Engineer</h1>
-        <HydrationProvider>
-          <Client>
-            <Nav />
-            <main className="flex flex-col">
-              {children}
-            </main>
-          </Client>
-        </HydrationProvider>
+        <Suspense fallback={null}>
+          <Nav />
+        </Suspense>
+        <main className="flex flex-col">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import type { RefObject } from 'react'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import ReactPageScroller from 'react-page-scroller'
 
 import Footer from '../components/organisms/footer'
@@ -10,7 +10,7 @@ import About from '../components/pages/about'
 import HomePage from '../components/pages/home-page'
 import Portfolio from '../components/pages/portfolio'
 
-export default function App(): React.JSX.Element {
+function AppContent(): React.JSX.Element {
   const searchParams = useSearchParams()
   const [customPageNumber, setCustomPageNumber] = useState<number | undefined>(undefined)
 
@@ -118,6 +118,14 @@ export default function App(): React.JSX.Element {
         </ReactPageScroller>
       </div>
     </>
+  )
+}
+
+export default function App(): React.JSX.Element {
+  return (
+    <Suspense fallback={<div className="h-screen w-screen bg-[#0d1117]" />}>
+      <AppContent />
+    </Suspense>
   )
 }
 
