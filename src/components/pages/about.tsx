@@ -13,6 +13,8 @@ interface StatItem {
   label: string
   color?: string
   icon: string
+  competencyTitle: string
+  competencies: string[]
 }
 
 interface Skill {
@@ -33,56 +35,189 @@ interface Experience {
 }
 
 export default function About() {
-  const { t } = useTranslation()
-  const [activeTab, setActiveTab] = useState<'overview' | 'skills' | 'experience' | 'education'>('overview')
+  const { t, i18n } = useTranslation()
+  const isArabic = Boolean(i18n.language?.startsWith('ar'))
+  const [activeTab, setActiveTab] = useState<
+    'overview' | 'skills' | 'experience' | 'education'
+  >('overview')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [isDownloading, setIsDownloading] = useState(false)
   const [downloaded, setDownloaded] = useState(false)
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({})
+
+  const toggleCardFlip = (id: string) => {
+    setFlippedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+  }
 
   const stats: StatItem[] = [
     {
       id: 'work-hours',
       value: '20K+',
-      label: t('page.about.work-experience'),
+      label:
+        t('page.about.work-experience') ||
+        (isArabic ? 'ساعات التطوير البرمجي' : 'Software Development Hours'),
       color: 'text-orange-500',
       icon: 'fas fa-code-branch',
+      competencyTitle: isArabic
+        ? 'كفاءات التطوير البرمجي'
+        : 'Software Engineering',
+      competencies: isArabic
+        ? [
+            'هندسة الأنظمة وتطوير Full-Stack',
+            'بناء أنظمة التصميم وMicro-Frontends',
+            'جودة الأكواد وتحسين أداء التطبيقات',
+          ]
+        : [
+            'Enterprise Full-Stack Architecture',
+            'Micro-Frontends & Reusable UI Systems',
+            'Clean Code & Performance Profiling',
+          ],
     },
     {
       id: 'experience-years',
       value: '9+ Yrs',
-      label: t('page.about.experience-years') || 'Years of Experience',
+      label:
+        t('page.about.experience-years') ||
+        (isArabic ? 'سنوات الخبرة التقنية' : 'Years of IT Experience'),
       color: 'text-blue-500',
       icon: 'fas fa-calendar-alt',
+      competencyTitle: isArabic
+        ? 'الخبرة والقيادة التقنية'
+        : 'Leadership & Experience',
+      competencies: isArabic
+        ? [
+            'قيادة هندسية وإدارة بمنهجية Agile',
+            'منظومات الاتصالات الكبرى (STC / Jawwy)',
+            'إطلاقات إنتاجية آمنة (Zero-Downtime)',
+          ]
+        : [
+            'Enterprise Agile Technical Leadership',
+            'Mission-Critical Telecom Platforms',
+            'Zero-Downtime Production Deliveries',
+          ],
     },
     {
       id: 'projects',
       value: '15+',
-      label: t('page.about.projects-contributed'),
+      label:
+        t('page.about.projects-contributed') ||
+        (isArabic ? 'المشاريع والمنظومات' : 'Key Software Deliveries'),
       color: 'text-orange-500',
       icon: 'fas fa-project-diagram',
+      competencyTitle: isArabic
+        ? 'المنظومات والحلول الرقمية'
+        : 'Solutions & Deliveries',
+      competencies: isArabic
+        ? [
+            'تطبيقات الويب والموبايل (React Native / Next.js)',
+            'منصات رقمية عالية التحويل والنمو',
+            'تكامل واجهات REST & GraphQL',
+          ]
+        : [
+            'Web & Mobile (React Native / Next.js / Angular)',
+            'High-Conversion Digital Platforms',
+            'REST & GraphQL Gateway Integrations',
+          ],
     },
     {
       id: 'tech-stack',
       value: '12+',
-      label: t('page.about.tech-frameworks'),
+      label:
+        t('page.about.tech-frameworks') ||
+        (isArabic ? 'التقنيات والأطر البرمجية' : 'Technologies & Frameworks'),
       color: 'text-blue-500',
       icon: 'fas fa-layer-group',
+      competencyTitle: isArabic ? 'أبرز التقنيات والأطر' : 'Core Technologies',
+      competencies: isArabic
+        ? [
+            'TypeScript, React, Next.js, Angular',
+            'React Native, Node.js, Express',
+            'Tailwind CSS, RxJS, PostgreSQL, SQL',
+          ]
+        : [
+            'TypeScript, React, Next.js, Angular',
+            'React Native, Node.js, Express',
+            'Tailwind CSS, RxJS, SQL & PostgreSQL',
+          ],
     },
   ]
 
   const skillsList: Skill[] = [
-    { name: 'TypeScript', category: 'frontend', level: 'Expert', icon: 'fas fa-file-code' },
-    { name: 'React & Next.js', category: 'frontend', level: 'Expert', icon: 'fab fa-react' },
-    { name: 'Angular', category: 'frontend', level: 'Expert', icon: 'fab fa-angular' },
-    { name: 'React Native', category: 'mobile', level: 'Advanced', icon: 'fas fa-mobile-alt' },
-    { name: 'Tailwind CSS & UI', category: 'frontend', level: 'Expert', icon: 'fab fa-css3-alt' },
-    { name: 'State Management (Signals/RxJS/Redux)', category: 'frontend', level: 'Expert', icon: 'fas fa-sitemap' },
-    { name: 'Node.js & Express', category: 'backend', level: 'Advanced', icon: 'fab fa-node-js' },
-    { name: 'REST & GraphQL APIs', category: 'backend', level: 'Advanced', icon: 'fas fa-network-wired' },
-    { name: 'SQL & PostgreSQL', category: 'backend', level: 'Proficient', icon: 'fas fa-database' },
-    { name: 'Micro-Frontends & Systems', category: 'devops', level: 'Expert', icon: 'fas fa-cubes' },
-    { name: 'CI/CD Pipelines & Git', category: 'devops', level: 'Advanced', icon: 'fab fa-git-alt' },
-    { name: 'Testing (Jest/E2E)', category: 'devops', level: 'Advanced', icon: 'fas fa-vial' },
+    {
+      name: 'TypeScript',
+      category: 'frontend',
+      level: 'Expert',
+      icon: 'fas fa-file-code',
+    },
+    {
+      name: 'React & Next.js',
+      category: 'frontend',
+      level: 'Expert',
+      icon: 'fab fa-react',
+    },
+    {
+      name: 'Angular',
+      category: 'frontend',
+      level: 'Expert',
+      icon: 'fab fa-angular',
+    },
+    {
+      name: 'React Native',
+      category: 'mobile',
+      level: 'Advanced',
+      icon: 'fas fa-mobile-alt',
+    },
+    {
+      name: 'Tailwind CSS & UI',
+      category: 'frontend',
+      level: 'Expert',
+      icon: 'fab fa-css3-alt',
+    },
+    {
+      name: 'State Management (Signals/RxJS/Redux)',
+      category: 'frontend',
+      level: 'Expert',
+      icon: 'fas fa-sitemap',
+    },
+    {
+      name: 'Node.js & Express',
+      category: 'backend',
+      level: 'Advanced',
+      icon: 'fab fa-node-js',
+    },
+    {
+      name: 'REST & GraphQL APIs',
+      category: 'backend',
+      level: 'Advanced',
+      icon: 'fas fa-network-wired',
+    },
+    {
+      name: 'SQL & PostgreSQL',
+      category: 'backend',
+      level: 'Proficient',
+      icon: 'fas fa-database',
+    },
+    {
+      name: 'Micro-Frontends & Systems',
+      category: 'devops',
+      level: 'Advanced',
+      icon: 'fas fa-cubes',
+    },
+    {
+      name: 'CI/CD Pipelines & Git',
+      category: 'devops',
+      level: 'Advanced',
+      icon: 'fab fa-git-alt',
+    },
+    {
+      name: 'Testing (Jest/E2E)',
+      category: 'devops',
+      level: 'Advanced',
+      icon: 'fas fa-vial',
+    },
   ]
 
   const experienceList: Experience[] = [
@@ -97,7 +232,14 @@ export default function About() {
         'Engineer responsive, performance-tuned web and mobile interfaces using React Native, React.js, and TypeScript to ensure flawless cross-platform user journeys.',
         'Champion modular micro-frontend components, clean code standards, and seamless REST/GraphQL API integrations across multidisciplinary engineering pods.',
       ],
-      skills: ['React Native', 'React.js', 'TypeScript', 'Micro-Frontends', 'REST APIs', 'Telecom Systems'],
+      skills: [
+        'React Native',
+        'React.js',
+        'TypeScript',
+        'Micro-Frontends',
+        'REST APIs',
+        'Telecom Systems',
+      ],
     },
     {
       company: 'stc',
@@ -110,7 +252,14 @@ export default function About() {
         'Governed release lifecycle execution through rigorous SIT, E2E, and BAT testing suites, ensuring complete system stability and zero-downtime production deployments.',
         'Led Level 3 (L3) technical incident response, diagnosing complex edge cases and driving continuous platform optimization to maintain 99.9%+ operational reliability.',
       ],
-      skills: ['Angular', 'TypeScript', 'RxJS', 'Enterprise WFMS', 'L3 Support', 'E2E/BAT Testing'],
+      skills: [
+        'Angular',
+        'TypeScript',
+        'RxJS',
+        'Enterprise WFMS',
+        'L3 Support',
+        'E2E/BAT Testing',
+      ],
     },
     {
       company: 'Tata Consultancy Services',
@@ -122,7 +271,14 @@ export default function About() {
         'Provide senior technical leadership across strategic enterprise client initiatives, transforming intricate business requirements into high-performance web and mobile software.',
         'Oversee frontend code governance, architectural standardization, and cross-platform UI/UX consistency across on-site development teams in Riyadh.',
       ],
-      skills: ['React.js', 'React Native', 'Angular', 'TypeScript', 'Technical Leadership', 'UI/UX Architecture'],
+      skills: [
+        'React.js',
+        'React Native',
+        'Angular',
+        'TypeScript',
+        'Technical Leadership',
+        'UI/UX Architecture',
+      ],
     },
     {
       company: 'Tata Consultancy Services',
@@ -134,7 +290,13 @@ export default function About() {
         'Led core enterprise web portal development for ALMONJEZ, driving a comprehensive Angular framework migration and modern interface revamp.',
         'Designed and published standardized reusable component libraries, accelerating sprint velocity and substantially reducing defect turnaround times.',
       ],
-      skills: ['Angular', 'TypeScript', 'Component Libraries', 'API Integration', 'Performance Tuning'],
+      skills: [
+        'Angular',
+        'TypeScript',
+        'Component Libraries',
+        'API Integration',
+        'Performance Tuning',
+      ],
     },
     {
       company: 'Wipro',
@@ -146,7 +308,13 @@ export default function About() {
         'Built and maintained performant enterprise dashboards and operational interfaces using Angular, interfacing directly with key stakeholders to align technical deliverables.',
         'Monitored critical batch workflows and collection operations, executing proactive triage and root-cause analysis to ensure high platform availability.',
       ],
-      skills: ['Angular', 'Enterprise Dashboards', 'Process Automation', 'Incident Management', 'Client Engagement'],
+      skills: [
+        'Angular',
+        'Enterprise Dashboards',
+        'Process Automation',
+        'Incident Management',
+        'Client Engagement',
+      ],
     },
     {
       company: 'stc',
@@ -158,7 +326,12 @@ export default function About() {
         'Defined and centralized application requirements while providing specialized operational support for enterprise billing and collection management platforms.',
         'Monitored real-time system performance, diagnosing operational anomalies and coordinating rapid resolutions across cross-functional engineering teams.',
       ],
-      skills: ['Requirements Architecture', 'Operations Support', 'Application Monitoring', 'System Troubleshooting'],
+      skills: [
+        'Requirements Architecture',
+        'Operations Support',
+        'Application Monitoring',
+        'System Troubleshooting',
+      ],
     },
     {
       company: 'Zain KSA',
@@ -170,17 +343,24 @@ export default function About() {
         'Conducted mobile network drive tests and cellular RF signal measurements across major Riyadh clusters as part of an engineering graduation project.',
         'Analyzed coverage KPIs and signal diagnostics (RSRP, SINR, handover rates) to assist optimization teams in enhancing wireless network reliability.',
       ],
-      skills: ['Drive Testing', 'Cellular Networks', 'RF Diagnostics', 'QoS Optimization'],
+      skills: [
+        'Drive Testing',
+        'Cellular Networks',
+        'RF Diagnostics',
+        'QoS Optimization',
+      ],
     },
   ]
 
-  const filteredSkills = selectedCategory === 'all'
-    ? skillsList
-    : skillsList.filter((s) => s.category === selectedCategory)
+  const filteredSkills =
+    selectedCategory === 'all'
+      ? skillsList
+      : skillsList.filter((s) => s.category === selectedCategory)
 
   // Refs for scroll isolation from ReactPageScroller
   const timelineScrollRef = useRef<HTMLDivElement>(null)
   const skillsScrollRef = useRef<HTMLDivElement>(null)
+  const overviewScrollRef = useRef<HTMLDivElement>(null)
 
   // Prevent scroll propagation to ReactPageScroller
   useEffect(() => {
@@ -193,6 +373,7 @@ export default function About() {
 
     const tEl = timelineScrollRef.current
     const sEl = skillsScrollRef.current
+    const oEl = overviewScrollRef.current
 
     if (tEl) {
       tEl.addEventListener('wheel', handleNativeWheel, { passive: true })
@@ -201,6 +382,10 @@ export default function About() {
     if (sEl) {
       sEl.addEventListener('wheel', handleNativeWheel, { passive: true })
       sEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
+    }
+    if (oEl) {
+      oEl.addEventListener('wheel', handleNativeWheel, { passive: true })
+      oEl.addEventListener('touchmove', handleNativeTouch, { passive: true })
     }
 
     return () => {
@@ -211,6 +396,10 @@ export default function About() {
       if (sEl) {
         sEl.removeEventListener('wheel', handleNativeWheel)
         sEl.removeEventListener('touchmove', handleNativeTouch)
+      }
+      if (oEl) {
+        oEl.removeEventListener('wheel', handleNativeWheel)
+        oEl.removeEventListener('touchmove', handleNativeTouch)
       }
     }
   }, [activeTab])
@@ -251,10 +440,26 @@ export default function About() {
           <div className="mb-6 flex border-b border-slate-200/80 pb-3 dark:border-white/10">
             <nav className="flex flex-wrap gap-2 sm:gap-3" aria-label="Tabs">
               {[
-                { id: 'overview', label: t('page.about.tab.overview') || 'Overview', icon: 'fas fa-user' },
-                { id: 'skills', label: t('page.about.tab.skills') || 'Skills Matrix', icon: 'fas fa-laptop-code' },
-                { id: 'experience', label: t('page.about.tab.experience') || 'Experience', icon: 'fas fa-briefcase' },
-                { id: 'education', label: t('page.about.tab.education') || 'Education', icon: 'fas fa-graduation-cap' },
+                {
+                  id: 'overview',
+                  label: t('page.about.tab.overview') || 'Overview',
+                  icon: 'fas fa-user',
+                },
+                {
+                  id: 'skills',
+                  label: t('page.about.tab.skills') || 'Skills Matrix',
+                  icon: 'fas fa-laptop-code',
+                },
+                {
+                  id: 'experience',
+                  label: t('page.about.tab.experience') || 'Experience',
+                  icon: 'fas fa-briefcase',
+                },
+                {
+                  id: 'education',
+                  label: t('page.about.tab.education') || 'Education',
+                  icon: 'fas fa-graduation-cap',
+                },
               ].map((tab) => {
                 const isActive = activeTab === tab.id
                 return (
@@ -267,7 +472,9 @@ export default function About() {
                         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white'
                     }`}
                   >
-                    <i className={`${tab.icon} text-xs`} />
+                    <i
+                      className={`${tab.icon} text-xs ${isActive ? 'text-white' : 'text-orange-500'}`}
+                    />
                     <span>{tab.label}</span>
                   </button>
                 )
@@ -281,67 +488,140 @@ export default function About() {
               id="about"
               role="tabpanel"
               aria-labelledby="about-tab"
-              className="space-y-6"
+              className="space-y-4"
             >
-              {/* Title and Description */}
-              <header>
-                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-                  {t('page.about.title')}
-                </h1>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
-                  {t('page.about.paragraph')}
-                </p>
-              </header>
+              <div
+                ref={overviewScrollRef}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                className="custom-scrollbar max-h-[380px] overflow-y-auto px-1 py-1 pr-3 sm:max-h-[420px] space-y-5"
+              >
+                {/* Title and Description */}
+                <header>
+                  <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+                    {t('page.about.title')}
+                  </h1>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
+                    {t('page.about.paragraph')}
+                  </p>
+                </header>
 
-              {/* Stats Section */}
-              <dl className="grid grid-cols-2 gap-3.5 sm:grid-cols-4">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.id}
-                    className="group flex flex-col items-center rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-300 hover:shadow-md dark:border-white/5 dark:bg-zinc-800/40 dark:hover:border-orange-500/40"
+                {/* Stats Section with 3D Flip Cards */}
+                <dl className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+                  {stats.map((stat) => {
+                    const isFlipped = Boolean(flippedCards[stat.id])
+                    return (
+                      <div
+                        key={stat.id}
+                        className="perspective-1000 h-[175px] sm:h-[180px] w-full cursor-pointer select-none"
+                        onClick={() => toggleCardFlip(stat.id)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            toggleCardFlip(stat.id)
+                          }
+                        }}
+                        tabIndex={0}
+                        role="button"
+                        aria-pressed={isFlipped}
+                        aria-label={stat.label}
+                      >
+                        <div
+                          className={`relative h-full w-full rounded-2xl transition-transform duration-500 transform-style-preserve-3d ${
+                            isFlipped ? 'rotate-y-180' : ''
+                          }`}
+                        >
+                          {/* FRONT FACE */}
+                          <div className="backface-hidden group absolute inset-0 flex flex-col items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4 text-center shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-orange-400 hover:shadow-md dark:border-white/10 dark:bg-zinc-800/40 dark:hover:border-orange-500/50">
+                            {/* Flippable Icon Indicator */}
+                            <div className="absolute top-2.5 right-2.5 flex h-6 w-6 items-center justify-center rounded-full border border-orange-500/25 bg-orange-50/80 text-orange-500 transition-all duration-300 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white dark:border-orange-500/30 dark:bg-orange-950/40 dark:text-orange-400 dark:group-hover:bg-orange-500 dark:group-hover:text-white shadow-2xs">
+                              <i className="fas fa-repeat text-[10px] transition-transform duration-300 group-hover:rotate-180" />
+                            </div>
+
+                            <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 transition-transform duration-200 group-hover:scale-110 dark:bg-orange-500/20 dark:text-orange-400">
+                              <i
+                                className={`${stat.icon} text-lg`}
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <dt className="text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+                              {stat.value}
+                            </dt>
+                            <dd className="mt-1 text-xs font-semibold leading-snug text-slate-600 dark:text-slate-300">
+                              {stat.label}
+                            </dd>
+                          </div>
+
+                          {/* BACK FACE */}
+                          <div
+                            className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-start rounded-2xl border border-orange-500/40 bg-white/95 p-3.5 text-left shadow-lg backdrop-blur-xl dark:border-orange-500/40 dark:bg-[#0f1422]/95"
+                            style={{ direction: isArabic ? 'rtl' : 'ltr' }}
+                          >
+                            {/* Header */}
+                            <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5 dark:border-white/10">
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400 truncate">
+                                {stat.competencyTitle}
+                              </span>
+                              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-400 hover:text-orange-500 dark:bg-zinc-800">
+                                <i className="fas fa-repeat text-[9px]" />
+                              </div>
+                            </div>
+
+                            {/* Competencies list */}
+                            <ul className="mt-2.5 space-y-2">
+                              {stat.competencies.map((comp, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex items-start gap-1.5 text-[11px] font-medium leading-snug text-slate-700 dark:text-slate-200"
+                                >
+                                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" />
+                                  <span>{comp}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </dl>
+
+                {/* Download CV CTA */}
+                <footer className="flex items-center justify-end pt-2">
+                  <button
+                    onClick={handleDownloadCV}
+                    type="button"
+                    disabled={isDownloading || downloaded}
+                    aria-label="Download CV as PDF"
+                    className={`inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${
+                      isDownloading || downloaded
+                        ? 'cursor-not-allowed opacity-80'
+                        : 'cursor-pointer'
+                    }`}
                   >
-                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/10 text-orange-600 transition-transform duration-200 group-hover:scale-110 dark:bg-orange-500/20 dark:text-orange-400">
-                      <i className={`${stat.icon} text-base`} aria-hidden="true" />
-                    </div>
-                    <dt className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
-                      {stat.value}
-                    </dt>
-                    <dd className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                      {stat.label}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              {/* Download CV CTA */}
-              <footer className="flex items-center justify-end pt-2">
-                <button
-                  onClick={handleDownloadCV}
-                  type="button"
-                  disabled={isDownloading || downloaded}
-                  aria-label="Download CV as PDF"
-                  className={`inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-orange-500/25 transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ${
-                    isDownloading || downloaded ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'
-                  }`}
-                >
-                  {isDownloading ? (
-                    <>
-                      <i className="fas fa-spinner fa-spin text-sm" />
-                      <span>{t('page.about.downloading') || 'Downloading...'}</span>
-                    </>
-                  ) : downloaded ? (
-                    <>
-                      <i className="fas fa-check text-sm" />
-                      <span>{t('page.about.downloaded') || 'Downloaded!'}</span>
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-file-pdf text-sm" />
-                      <span>{t('page.about.downloadCV')}</span>
-                    </>
-                  )}
-                </button>
-              </footer>
+                    {isDownloading ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin text-sm" />
+                        <span>
+                          {t('page.about.downloading') || 'Downloading...'}
+                        </span>
+                      </>
+                    ) : downloaded ? (
+                      <>
+                        <i className="fas fa-check text-sm" />
+                        <span>
+                          {t('page.about.downloaded') || 'Downloaded!'}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-file-pdf text-sm" />
+                        <span>{t('page.about.downloadCV')}</span>
+                      </>
+                    )}
+                  </button>
+                </footer>
+              </div>
             </section>
           )}
 
@@ -350,15 +630,33 @@ export default function About() {
             <section className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                  {t('page.about.tab.skills') || 'Technical Competencies & Matrix'}
+                  {t('page.about.tab.skills') ||
+                    'Technical Competencies & Matrix'}
                 </h2>
                 <div className="flex flex-wrap gap-1.5">
                   {[
-                    { id: 'all', label: t('page.about.skills.all') || 'All Domains' },
-                    { id: 'frontend', label: t('page.about.skills.frontend') || 'Frontend & UI' },
-                    { id: 'mobile', label: t('page.about.skills.mobile') || 'Mobile' },
-                    { id: 'backend', label: t('page.about.skills.backend') || 'Backend & APIs' },
-                    { id: 'devops', label: t('page.about.skills.devops') || 'Architecture & DevOps' },
+                    {
+                      id: 'all',
+                      label: t('page.about.skills.all') || 'All Domains',
+                    },
+                    {
+                      id: 'frontend',
+                      label: t('page.about.skills.frontend') || 'Frontend & UI',
+                    },
+                    {
+                      id: 'mobile',
+                      label: t('page.about.skills.mobile') || 'Mobile',
+                    },
+                    {
+                      id: 'backend',
+                      label: t('page.about.skills.backend') || 'Backend & APIs',
+                    },
+                    {
+                      id: 'devops',
+                      label:
+                        t('page.about.skills.devops') ||
+                        'Architecture & DevOps',
+                    },
                   ].map((cat) => (
                     <button
                       key={cat.id}
@@ -416,15 +714,19 @@ export default function About() {
               <div className="flex items-center justify-between border-b border-slate-100 pb-2 dark:border-white/10">
                 <div>
                   <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                    {t('page.about.tab.experience') || 'Career History & Leadership'}
+                    {t('page.about.tab.experience') ||
+                      'Career History & Leadership'}
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    {t('page.about.experience.subtitle') || 'Enterprise Engineering & Telecommunication Impact • Scrollable Timeline'}
+                    {t('page.about.experience.subtitle') ||
+                      'Enterprise Engineering & Telecommunication Impact • Scrollable Timeline'}
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-orange-600 dark:text-orange-400">
                   <i className="fas fa-arrows-alt-v text-[10px]" />
-                  <span>{t('page.about.experience.scrollable') || 'Scrollable'}</span>
+                  <span>
+                    {t('page.about.experience.scrollable') || 'Scrollable'}
+                  </span>
                 </span>
               </div>
 
@@ -437,7 +739,10 @@ export default function About() {
               >
                 <div className="relative ml-2 border-l-2 border-orange-200 pl-4 sm:ml-3 sm:pl-6 dark:border-orange-900/50">
                   {experienceList.map((exp) => (
-                    <div key={`${exp.company}-${exp.role}-${exp.period}`} className="relative mb-5 last:mb-1">
+                    <div
+                      key={`${exp.company}-${exp.role}-${exp.period}`}
+                      className="relative mb-5 last:mb-1"
+                    >
                       {/* Pulsing indicator node */}
                       <span className="absolute -left-[25px] top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-orange-500 ring-4 ring-orange-100 sm:-left-[33px] dark:ring-zinc-900">
                         <span className="h-1.5 w-1.5 rounded-full bg-white" />
@@ -457,7 +762,9 @@ export default function About() {
                             <span className="inline-block rounded-full bg-slate-200/80 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 dark:bg-zinc-700 dark:text-slate-300">
                               {exp.period}
                             </span>
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400">{exp.location}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                              {exp.location}
+                            </p>
                           </div>
                         </div>
 
@@ -494,7 +801,8 @@ export default function About() {
                     {t('page.about.tab.education') || 'Education & Credentials'}
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    {t('page.about.education.subtitle') || 'Academic Background • Specialized Masterclasses'}
+                    {t('page.about.education.subtitle') ||
+                      'Academic Background • Specialized Masterclasses'}
                   </p>
                 </div>
               </div>
@@ -510,10 +818,12 @@ export default function About() {
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                            {t('page.about.education.higherEducation') || 'Higher Education'}
+                            {t('page.about.education.higherEducation') ||
+                              'Higher Education'}
                           </span>
                           <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                            {t('page.about.education.degree') || 'Bachelor of Science in Engineering (B.Sc.)'}
+                            {t('page.about.education.degree') ||
+                              'Bachelor of Science in Engineering (B.Sc.)'}
                           </h3>
                         </div>
                         <span className="rounded-full bg-orange-100/90 px-3 py-0.5 text-xs font-semibold text-orange-800 dark:bg-orange-950/40 dark:text-orange-300">
@@ -522,7 +832,8 @@ export default function About() {
                       </div>
 
                       <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
-                        {t('page.about.education.major') || 'Major in Telecommunication & Electronics Engineering'}
+                        {t('page.about.education.major') ||
+                          'Major in Telecommunication & Electronics Engineering'}
                       </p>
                       {t('page.about.education.note') && (
                         <p className="mt-2 text-xs italic text-orange-600 dark:text-orange-400">
@@ -531,7 +842,8 @@ export default function About() {
                       )}
                       <div className="mt-4 border-t border-slate-200/80 pt-3 dark:border-white/5">
                         <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                          {t('page.about.education.modules') || 'Engineering Foundations & Core Disciplines:'}
+                          {t('page.about.education.modules') ||
+                            'Engineering Foundations & Core Disciplines:'}
                         </p>
                         <div className="mt-2.5 flex flex-wrap gap-1.5">
                           {[
@@ -566,10 +878,12 @@ export default function About() {
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                            {t('page.about.education.certificationsCategory') || 'Professional Certifications'}
+                            {t('page.about.education.certificationsCategory') ||
+                              'Professional Certifications'}
                           </span>
                           <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                            {t('page.about.education.certificationsTitle') || 'Specialized Engineering & Development Masterclasses'}
+                            {t('page.about.education.certificationsTitle') ||
+                              'Specialized Engineering & Development Masterclasses'}
                           </h3>
                         </div>
                         <span className="rounded-full bg-blue-100/90 px-3 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-950/40 dark:text-blue-300">
@@ -578,20 +892,40 @@ export default function About() {
                       </div>
 
                       <p className="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
-                        {t('page.about.education.certificationsSubtitle') || 'Full-Stack, Mobile & Modern Architecture Certifications'}
+                        {t('page.about.education.certificationsSubtitle') ||
+                          'Full-Stack, Mobile & Modern Architecture Certifications'}
                       </p>
                       <div className="mt-4 border-t border-slate-200/80 pt-3 dark:border-white/5">
                         <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                          {t('page.about.education.certificationsList') || 'Key Certifications & Courses:'}
+                          {t('page.about.education.certificationsList') ||
+                            'Key Certifications & Courses:'}
                         </p>
                         <div className="mt-2.5 flex flex-wrap gap-1.5">
                           {[
-                            { name: 'Angular Enterprise Architecture Masterclass', icon: 'fab fa-angular text-red-500' },
-                            { name: 'React & Next.js Full-Stack Engineering', icon: 'fab fa-react text-blue-500' },
-                            { name: 'React Native & Mobile Development', icon: 'fas fa-mobile-alt text-cyan-500' },
-                            { name: 'TypeScript Advanced Design Patterns', icon: 'fas fa-file-code text-blue-600' },
-                            { name: 'Modern JavaScript (ES6+ / ESNext)', icon: 'fab fa-js text-yellow-500' },
-                            { name: 'Micro-Frontends & Scalable Web Systems', icon: 'fas fa-cubes text-orange-500' },
+                            {
+                              name: 'Angular Enterprise Architecture Masterclass',
+                              icon: 'fab fa-angular text-red-500',
+                            },
+                            {
+                              name: 'React & Next.js Full-Stack Engineering',
+                              icon: 'fab fa-react text-blue-500',
+                            },
+                            {
+                              name: 'React Native & Mobile Development',
+                              icon: 'fas fa-mobile-alt text-cyan-500',
+                            },
+                            {
+                              name: 'TypeScript Advanced Design Patterns',
+                              icon: 'fas fa-file-code text-blue-600',
+                            },
+                            {
+                              name: 'Modern JavaScript (ES6+ / ESNext)',
+                              icon: 'fab fa-js text-yellow-500',
+                            },
+                            {
+                              name: 'Micro-Frontends & Scalable Web Systems',
+                              icon: 'fas fa-cubes text-orange-500',
+                            },
                           ].map((cert) => (
                             <span
                               key={cert.name}
@@ -614,4 +948,3 @@ export default function About() {
     </div>
   )
 }
-
