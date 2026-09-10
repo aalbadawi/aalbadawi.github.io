@@ -124,7 +124,6 @@ export default function Particles({
 
   const drawCircle = (circle: Circle, update = false) => {
     if (context.current) {
-      // eslint-disable-next-line unused-imports/no-unused-vars
       const { x, y, translateX, translateY, size, alpha } = circle;
       context.current.translate(translateX, translateY);
       context.current.beginPath();

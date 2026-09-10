@@ -1,8 +1,6 @@
 export const aboutMe = {
   name: "Amer Albadawi",
-  brief: "",
   profilePic: "/images/amer-pic.png",
-  lastWord: "",
 } as const;
 
 export const typeWriteList = [

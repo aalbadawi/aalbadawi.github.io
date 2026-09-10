@@ -1,116 +1,99 @@
 'use client'
 
 import Image from 'next/image'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Swal from 'sweetalert2'
 
 interface Company {
   id: string
   name: string
-  role: string
   period: string
+  fieldEn: string
+  fieldAr: string
+  overviewEn: string
+  overviewAr: string
   link: string
   imageSrc: string
   alt: string
-  tech: string[]
-  highlights: string[]
 }
 
-const Portfolio = () => {
-  const { t, i18n } = useTranslation()
+const COMPANIES: Company[] = [
+  {
+    id: 'stc',
+    name: 'STC',
+    period: '2017 — Present',
+    fieldEn: 'Telecommunications & Digital Services',
+    fieldAr: 'الاتصالات والتحول الرقمي',
+    overviewEn:
+      'Saudi Telecom Company (stc) is a leading telecommunications and digital enabler in the Middle East and North Africa, delivering cutting-edge telecom infrastructure, cloud services, and digital solutions.',
+    overviewAr:
+      'شركة الاتصالات السعودية (stc) هي الرائدة في مجال الاتصالات والخدمات والحلول الرقمية في منطقة الشرق الأوسط وشمال أفريقيا، وتوفر البنية التحتية والمنصات الرقمية المتطورة.',
+    link: 'https://www.stc.com.sa',
+    imageSrc: '/images/companies/stc-logo.png',
+    alt: 'STC Logo',
+  },
+  {
+    id: 'tata',
+    name: 'Tata Consultancy Services',
+    period: '2019 — Present',
+    fieldEn: 'Global IT Consulting & Enterprise Solutions',
+    fieldAr: 'استشارات وحلول تقنية المعلومات العالمية',
+    overviewEn:
+      'Tata Consultancy Services (TCS) is a global leader in IT services, consulting, and business solutions, partnering with major enterprise and telecom organizations worldwide.',
+    overviewAr:
+      'تاتا للخدمات الاستشارية (TCS) هي شركة عالمية رائدة في خدمات تقنية المعلومات والاستشارات وحلول الأعمال للمؤسسات والشركات الكبرى حول العالم.',
+    link: 'https://www.tcs.com',
+    imageSrc: '/images/companies/tata-logo.png',
+    alt: 'Tata Consultancy Services Logo',
+  },
+  {
+    id: 'wipro',
+    name: 'Wipro Arabia Ltd',
+    period: '2017 — 2019',
+    fieldEn: 'IT Services & System Integration',
+    fieldAr: 'خدمات تقنية المعلومات وتكامل الأنظمة',
+    overviewEn:
+      'Wipro is a prominent global technology and business process services company, delivering integrated digital solutions, systems integration, and enterprise operations support.',
+    overviewAr:
+      'ويبرو هي شركة عالمية رائدة في مجال تقنية المعلومات والاستشارات وتكامل الأنظمة والعمليات الرقمية للمؤسسات والشركات في المملكة والشرق الأوسط.',
+    link: 'https://www.wipro.com',
+    imageSrc: '/images/companies/wipro-logo.png',
+    alt: 'Wipro Arabia Ltd Logo',
+  },
+  {
+    id: 'zain-ksa',
+    name: 'Zain KSA',
+    period: '2015',
+    fieldEn: 'Telecommunications & Wireless Networks',
+    fieldAr: 'الاتصالات والشبكات اللاسلكية',
+    overviewEn:
+      'Zain KSA is a leading telecommunications operator in Saudi Arabia, providing innovative wireless voice, high-speed mobile broadband data, and 5G cellular network services.',
+    overviewAr:
+      'زين السعودية هي إحدى كبرى شركات الاتصالات في المملكة العربية السعودية، وتقدم خدمات الاتصالات اللاسلكية وشبكات الجيل الحديث والبيانات.',
+    link: 'https://www.sa.zain.com',
+    imageSrc: '/images/companies/zain-ksa-logo.jpeg',
+    alt: 'Zain KSA Logo',
+  },
+  {
+    id: 'zain-jordan',
+    name: 'Zain Jordan',
+    period: '2010 — 2011',
+    fieldEn: 'Mobile Telecommunications',
+    fieldAr: 'الاتصالات وشبكات الهاتف المتنقل',
+    overviewEn:
+      'Zain Jordan is the pioneer mobile telecommunications operator in Jordan, delivering comprehensive wireless connectivity, consumer telecom packages, and community initiatives.',
+    overviewAr:
+      'زين الأردن هي أول مشغل اتصالات متنقلة في المملكة الأردنية الهاشمية وتقدم خدمات الاتصال اللاسلكي والحلول الرقمية المتكاملة.',
+    link: 'https://www.jo.zain.com',
+    imageSrc: '/images/companies/zain-logo.png',
+    alt: 'Zain Jordan Logo',
+  },
+]
 
-  const companies: Company[] = [
-    {
-      id: 'stc',
-      name: 'STC',
-      role: 'Senior Software Engineer',
-      period: '2022 — Present',
-      link: 'https://www.stc.com.sa',
-      imageSrc: '/images/companies/stc-logo.png',
-      alt: 'STC Logo',
-      tech: [
-        'Next.js 14',
-        'React',
-        'TypeScript',
-        'Tailwind CSS',
-        'Micro-Frontends',
-      ],
-      highlights: [
-        'Architected and delivered high-performance web platforms and digital services for millions of telecom subscribers.',
-        'Championed micro-frontends and state management optimization, enhancing load speed by over 40%.',
-        'Led sprint planning and mentored engineers on TypeScript & React best practices.',
-      ],
-    },
-    {
-      id: 'wipro',
-      name: 'Wipro Arabia Ltd',
-      role: 'Senior Software Engineer',
-      period: '2020 — 2022',
-      link: 'https://www.wipro.com',
-      imageSrc: '/images/companies/wipro-logo.png',
-      alt: 'Wipro Arabia Ltd Logo',
-      tech: ['Angular', 'TypeScript', 'Node.js', 'RxJS', 'CI/CD'],
-      highlights: [
-        'Developed robust enterprise dashboards and automated customer operations for telecom clients.',
-        'Engineered responsive, accessible front-end interfaces aligned with strict design systems.',
-      ],
-    },
-    {
-      id: 'tata',
-      name: 'Tata Consultancy Services',
-      role: 'Software Engineer / Frontend Lead',
-      period: '2018 — 2020',
-      link: 'https://www.tcs.com',
-      imageSrc: '/images/companies/tata-logo.png',
-      alt: 'Tata Consultancy Services Logo',
-      tech: ['React', 'JavaScript (ES6+)', 'Bootstrap 5', 'Jest', 'REST APIs'],
-      highlights: [
-        'Spearheaded modern SPA frontend migrations and component library standardization.',
-        'Integrated RESTful microservices with automated testing pipelines.',
-      ],
-    },
-    {
-      id: 'zain-ksa',
-      name: 'Zain KSA',
-      role: 'Engineering Trainee (Graduation Project)',
-      period: '2015',
-      link: 'https://www.sa.zain.com',
-      imageSrc: '/images/companies/zain-ksa-logo.jpeg',
-      alt: 'Zain KSA Logo',
-      tech: [
-        'Drive Testing',
-        'RF Field Measurements',
-        'Cellular Networks (2G/3G/4G)',
-        'KPI Analysis',
-        'QoS Optimization',
-      ],
-      highlights: [
-        'Conducted cellular network drive tests and RF field measurements across Riyadh clusters to assess coverage, handover, and signal quality.',
-        'Logged and analyzed cellular KPIs (RSRP, RSRQ, SINR, Call Drops) using specialized test equipment and analysis software.',
-        'Supported RF and network optimization teams in identifying interference issues and optimizing cellular service quality.',
-      ],
-    },
-    {
-      id: 'zain-jordan',
-      name: 'Zain Jordan',
-      role: 'Direct Sales & Youth Segment Representative',
-      period: '2010 — 2011',
-      link: 'https://www.jo.zain.com',
-      imageSrc: '/images/companies/zain-logo.png',
-      alt: 'Zain Jordan Logo',
-      tech: [
-        'Youth Telecom Packages',
-        'Direct Sales',
-        'University Campaigns',
-        'Customer Acquisition',
-      ],
-      highlights: [
-        'Spearheaded direct sales campaigns across Jordanian universities targeting the youth demographic with specialized student packages.',
-        'Conducted on-campus promotional drives and student community outreach to drive youth package adoption.',
-        'Achieved high customer acquisition rates through personalized engagement and understanding student telecom requirements.',
-      ],
-    },
-  ]
+export default function Portfolio() {
+  const { t, i18n } = useTranslation()
+  const isArabic = Boolean(i18n.language?.startsWith('ar'))
 
   const handleCompanyClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -118,46 +101,39 @@ const Portfolio = () => {
   ) => {
     e.preventDefault()
 
-    const isArabic = Boolean(i18n.language?.startsWith('ar'))
     const textAlign = isArabic ? 'right' : 'left'
-    const paddingStyle = isArabic ? 'padding-right:18px;padding-left:0;' : 'padding-left:18px;padding-right:0;'
-
-    const techChipsHtml = company.tech
-      .map(
-        (tech) =>
-          `<span style="display:inline-block;background-color:#fff7ed;color:#c2410c;border:1px solid #ffedd5;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;margin:2px;">${tech}</span>`,
-      )
-      .join('')
-
-    const highlightsHtml = company.highlights
-      .map(
-        (h) =>
-          `<li style="text-align:${textAlign};font-size:12px;color:#4b5563;margin-bottom:6px;line-height:1.5;">${h}</li>`,
-      )
-      .join('')
+    const fieldText = isArabic ? company.fieldAr : company.fieldEn
+    const overviewText = isArabic ? company.overviewAr : company.overviewEn
+    const timelineLabel = isArabic ? 'فترة الخبرة والعمل' : 'Experience Timeline'
+    const fieldLabel = isArabic ? 'المجال والقطاع' : 'Industry & Field'
 
     Swal.fire({
-      title: `<span class="text-xl font-bold text-gray-900">${company.name}</span>`,
+      title: `<span class="text-xl font-bold text-slate-900 dark:text-white">${company.name}</span>`,
       html: `
-        <div style="padding: 4px 8px; text-align:${textAlign}; direction:${isArabic ? 'rtl' : 'ltr'};">
-          <p style="font-size:13px;font-weight:600;color:#ea580c;margin-bottom:4px;text-align:${textAlign};">${company.role} <span style="font-weight:400;color:#9ca3af;">(${company.period})</span></p>
-          <div style="margin:12px 0 16px 0; text-align:${textAlign};">
-            ${techChipsHtml}
+        <div style="padding: 4px 6px; text-align:${textAlign}; direction:${isArabic ? 'rtl' : 'ltr'};">
+          <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px;">
+            <span style="display:inline-flex; align-items:center; gap:5px; background-color:#fff7ed; color:#ea580c; border:1px solid #ffedd5; padding:4px 10px; border-radius:10px; font-size:12px; font-weight:700;">
+              📅 ${timelineLabel}: ${company.period}
+            </span>
+            <span style="display:inline-flex; align-items:center; gap:5px; background-color:#f1f5f9; color:#475569; border:1px solid #e2e8f0; padding:4px 10px; border-radius:10px; font-size:12px; font-weight:600;">
+              🏢 ${fieldLabel}: ${fieldText}
+            </span>
           </div>
-          <ul style="margin:0;${paddingStyle}list-style-type:disc;text-align:${textAlign};">
-            ${highlightsHtml}
-          </ul>
+          <p style="font-size:13px; color:#4b5563; line-height:1.7; margin:0; text-align:${textAlign};">
+            ${overviewText}
+          </p>
         </div>
       `,
       showCancelButton: true,
       confirmButtonText: t('page.portfolio.visit') || 'Visit Website ↗',
       cancelButtonText: t('page.portfolio.close') || 'Close',
       customClass: {
-        popup: 'rounded-2xl',
+        popup: 'rounded-3xl border border-slate-200 dark:border-white/10 dark:bg-[#0f1422] p-6 shadow-2xl backdrop-blur-xl',
+        title: 'text-slate-900 dark:text-white pt-2',
         confirmButton:
-          'bg-gradient-to-r from-orange-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium shadow hover:shadow-lg transition-all',
+          'bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2.5 rounded-xl font-semibold shadow-md shadow-orange-500/25 hover:from-orange-600 hover:to-orange-700 transition-all cursor-pointer',
         cancelButton:
-          'bg-gray-100 text-gray-700 px-6 py-2.5 rounded-xl font-medium hover:bg-gray-200 transition-all',
+          'bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-slate-200 px-6 py-2.5 rounded-xl font-semibold hover:bg-slate-200 dark:hover:bg-zinc-700 transition-all cursor-pointer',
         actions: 'flex justify-center gap-3 mt-6',
       },
       buttonsStyling: false,
@@ -172,8 +148,8 @@ const Portfolio = () => {
 
   return (
     <div className="flex min-h-screen w-full flex-col justify-center px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8">
-      {/* Header */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
             {t('page.Portfolio.title')}
@@ -187,15 +163,15 @@ const Portfolio = () => {
 
         {/* Companies Grid */}
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 lg:grid-cols-5">
-          {companies.map((company) => (
+          {COMPANIES.map((company) => (
             <div key={company.id}>
               <a
                 href={company.link}
                 onClick={(e) => handleCompanyClick(e, company)}
-                aria-label={`View contributions for ${company.name}`}
+                aria-label={`View background for ${company.name}`}
                 className="group relative flex h-full flex-col items-center justify-between rounded-3xl border border-slate-200/90 bg-white/85 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-orange-400 hover:shadow-xl dark:border-white/10 dark:bg-[#0f1422]/85 dark:hover:border-orange-400"
               >
-                {/* Logo Container with Fixed Aspect Ratio & Contain */}
+                {/* Logo Container */}
                 <div className="relative flex h-24 w-full items-center justify-center rounded-2xl bg-slate-50/80 p-2 sm:h-28 dark:bg-zinc-800/40">
                   <Image
                     width={180}
@@ -207,13 +183,13 @@ const Portfolio = () => {
                   />
                 </div>
 
-                {/* Company Name & Details Indicator */}
+                {/* Company Name & Indicator */}
                 <div className="mt-4 w-full text-center">
                   <h3 className="line-clamp-1 text-xs font-bold text-slate-900 transition-colors group-hover:text-orange-600 dark:text-slate-100 dark:group-hover:text-orange-400 sm:text-sm">
                     {company.name}
                   </h3>
                   <div className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-orange-600 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-orange-400">
-                    <span>{t('page.Portfolio.viewRole') || 'View Role'}</span>
+                    <span>{t('page.Portfolio.viewRole') || 'View Company'}</span>
                     <i className="fas fa-chevron-right text-[9px]" />
                   </div>
                 </div>
@@ -226,4 +202,3 @@ const Portfolio = () => {
   )
 }
 
-export default Portfolio

@@ -19,17 +19,9 @@ const Header = () => {
     'JavaScript',
     'Node.js',
     'Tailwind CSS',
-    'RxJS',
-    'Redux',
-    'Signals',
-    'Micro-Frontends',
-    'REST APIs',
-    'GraphQL',
+    'Bootstrap',
     'SQL',
-    'PostgreSQL',
-    'Git',
-    'CI/CD',
-    'Jest',
+    'REST APIs',
     // Domains & Companies
     'Telecom Software Development',
     'STC',
@@ -116,17 +108,24 @@ const Header = () => {
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
       {/* Language alternates */}
-      <link rel="alternate" hrefLang="x-default" href="https://aalbadawi.github.io/" />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href="https://aalbadawi.github.io/"
+      />
       <link rel="alternate" hrefLang="en" href="https://aalbadawi.github.io" />
       <link rel="alternate" hrefLang="ar" href="https://aalbadawi.github.io" />
 
       {/* Favicons and Apple Touch Icons */}
       <link rel="icon" href="/images/logo/ab-logo.png" type="image/png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/ab-logo.png" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/images/logo/ab-logo.png"
+      />
       <meta name="msapplication-TileColor" content="#f97316" />
     </>
   )
 }
 
 export default Header
-
